@@ -1,3 +1,27 @@
 {
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+
+    /* Completeness */
+    "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
+    "baseUrl": ".",
+      "paths": {
+        "@images/*": ["./src/assets/images/*"],
+        "@lotties/*": ["./src/assets/lotties/*"],
+        "@commom/*": ["./src/component/commom/*"],
+        "@reuse/*": ["./src/component/reuse/*"],
+        "@hooks/*": ["./src/hooks/*"],
+        "@interface/*": ["./src/interface/*"],
+        "@method/*": ["./src/method/*"],
+        "@navigation/*": ["./src/navigation/*"],
+        "@asyncThunk/*": ["./src/redux/asyncThunk/*"],
+        "@selector/*": ["./src/redux/selector/*"],
+        "@slice/*": ["./src/redux/slice/*"],
+        "@screen/*": ["./src/screen/*"],
+        "@service/*": ["src/service/*"],
+        "@theme/*": ["./src/theme/*"],
+        "@util/*": ["./src/util/*"],
+      }
+  }
 }
