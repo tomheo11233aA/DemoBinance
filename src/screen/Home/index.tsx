@@ -53,7 +53,7 @@ const Home = () => {
       const versionCurren = res.data[0].data
       const versionInApp = contants.VERSION
       if (versionCurren != versionInApp) {
-        Alert.alert(t('You are using the old version, please update the application to the new version for the best experience.'))
+        Alert.alert(t('Update version'), t('You are using the old version, please update the application to the new version for the best experience.'))
       }
     } else {
       Alert.alert(t(res.message))

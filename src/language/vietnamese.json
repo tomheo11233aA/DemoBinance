@@ -596,6 +596,8 @@
         "Canceled trader copying": "Đã huỷ sao chép giao dịch viên",
         "Currently copying": "Hiện đang sao chép",
         "Cancel copying trader": "Huỷ sao chép giao dịch viên",
-        "Are you sure you want to cancel trader copying?": "Bạn có chắc chắn muốn hủy việc sao chép giao dịch viên không?"
+        "Are you sure you want to cancel trader copying?": "Bạn có chắc chắn muốn hủy việc sao chép giao dịch viên không?",
+
+        "Update version": "Cập nhật phiên bản"
     }
 }
