@@ -1,26 +1,16 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
-import { View } from 'react-native';
+import React from 'react'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+import Container from '@navigation/Container'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
-const Tab = createBottomTabNavigator();
-
-const SettingsScreen = () => {
+const App = () => {
   return (
-    <View>
-
-    </View>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <Container />
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   )
-}
-
-function App() {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        {/* {/* <Tab.Screen name="Home" component={HomeScreen} /> */}
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
 }
 
 export default App

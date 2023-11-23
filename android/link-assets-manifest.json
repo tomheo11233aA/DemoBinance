@@ -1,0 +1,81 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Anuphan-SemiBold.ttf",
+      "sha1": "bc7b4290d931fe97dbe26b4d0b88c518b7344ac3"
+    },
+    {
+      "path": "src/assets/fonts/FiraSansCondensed-Regular.ttf",
+      "sha1": "19d3cd19f26cf12bfbd639640024a7deb4c12074"
+    },
+    {
+      "path": "src/assets/fonts/IBMPlexSans-Medium.ttf",
+      "sha1": "dcb6474ece3ff65b0cd9d371812cf15a69f1e9af"
+    },
+    {
+      "path": "src/assets/fonts/IBMPlexSans-Regular.ttf",
+      "sha1": "07ab3106205f5d285fc010ea00ab86df8ac8411a"
+    },
+    {
+      "path": "src/assets/fonts/Jost-Regular.ttf",
+      "sha1": "a6b7f9966c98479af15400ac41a867b12c1b6e2c"
+    },
+    {
+      "path": "src/assets/fonts/Lato-Regular.ttf",
+      "sha1": "06775847c3ad5bdc4525009f41aaf585bfcba4c2"
+    },
+    {
+      "path": "src/assets/fonts/Myfont16-Regular.ttf",
+      "sha1": "931e77a14093fa5c71e1121103d2101129ff1261"
+    },
+    {
+      "path": "src/assets/fonts/Myfont17-Regular.ttf",
+      "sha1": "56b5d113e601d48d4d51e83aca88a799d4d6a26e"
+    },
+    {
+      "path": "src/assets/fonts/Myfont20-Regular.ttf",
+      "sha1": "02e3346ec4ae9ef2a1f09f9cd1fb91a9198ddf31"
+    },
+    {
+      "path": "src/assets/fonts/Myfont21-Regular.ttf",
+      "sha1": "6651b91d5fecb6d489d7c3fee1b7a78e49d778c8"
+    },
+    {
+      "path": "src/assets/fonts/Myfont22-Regular.ttf",
+      "sha1": "32d52d1361d05143787eee0db8d37bd91e8c67bf"
+    },
+    {
+      "path": "src/assets/fonts/Myfont23-Regular.ttf",
+      "sha1": "fe4d1577c3e2217989c71aec7e3e81f0c63cfef6"
+    },
+    {
+      "path": "src/assets/fonts/Myfont24-Regular.ttf",
+      "sha1": "fa3c03730c55e72787e602d414f7db33caae97f7"
+    },
+    {
+      "path": "src/assets/fonts/Myfont31-Regular.ttf",
+      "sha1": "69f6bbb62b005d26f05e1cc99acd6252be602529"
+    },
+    {
+      "path": "src/assets/fonts/Oswald-SemiBold.ttf",
+      "sha1": "840a320f347d0918bd3a3638dbde42729e732113"
+    },
+    {
+      "path": "src/assets/fonts/Outfit-Light.ttf",
+      "sha1": "854302f72eba5dd11615ae8ed2ab8311e12fe1df"
+    },
+    {
+      "path": "src/assets/fonts/Outfit-SemiBold.ttf",
+      "sha1": "c0b14d5b4659df8a9d84efbd9f290a78dfc16f45"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Medium.ttf",
+      "sha1": "b5ba3632933756e9f7e8a0f83bfe90c215a768e2"
+    },
+    {
+      "path": "src/assets/fonts/SchibstedGrotesk-Medium.ttf",
+      "sha1": "dd252e03de7ce961ca3c7dbe98736b41f0052bb0"
+    }
+  ]
+}

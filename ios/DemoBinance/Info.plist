@@ -38,7 +38,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Our application has a transfer function, so we need the user to provide a picture of that transfer transaction.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Our application has a transfer function, so we need the user to provide a picture of that transfer transaction.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -57,5 +57,27 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Anuphan-SemiBold.ttf</string>
+		<string>FiraSansCondensed-Regular.ttf</string>
+		<string>IBMPlexSans-Medium.ttf</string>
+		<string>IBMPlexSans-Regular.ttf</string>
+		<string>Jost-Regular.ttf</string>
+		<string>Lato-Regular.ttf</string>
+		<string>Myfont16-Regular.ttf</string>
+		<string>Myfont17-Regular.ttf</string>
+		<string>Myfont20-Regular.ttf</string>
+		<string>Myfont21-Regular.ttf</string>
+		<string>Myfont22-Regular.ttf</string>
+		<string>Myfont23-Regular.ttf</string>
+		<string>Myfont24-Regular.ttf</string>
+		<string>Myfont31-Regular.ttf</string>
+		<string>Oswald-SemiBold.ttf</string>
+		<string>Outfit-Light.ttf</string>
+		<string>Outfit-SemiBold.ttf</string>
+		<string>Roboto-Medium.ttf</string>
+		<string>SchibstedGrotesk-Medium.ttf</string>
+	</array>
 </dict>
 </plist>
