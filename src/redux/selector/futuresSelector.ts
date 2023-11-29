@@ -69,3 +69,7 @@ export const tpslPositionFutureSelector = (state: RootState) => state.futures.tp
 export const loadingHistoryFutureSelector = (state: RootState) => state.futures.loadingHistoryFuture 
 
 export const feeFuturesSelector = (state: RootState) => state.futures.fee
+
+export const dPathGreenFuturesSelector = (state: RootState) => state.futures.dPathGreen
+
+export const dPathRedFuturesSelector = (state: RootState) => state.futures.dPathRed

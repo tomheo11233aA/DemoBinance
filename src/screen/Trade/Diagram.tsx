@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector, useTheme } from "@hooks/index"
 import { convertTimeGetChart } from "@method/format"
 import LogoChart from "@screen/Futures/LogoChart"
 import { symbolFuturesSelector } from "@selector/futuresSelector"
-import { candlesTradeSelector, closeTimestampTradeSelector, countCandlesTradeSelector, countDownTradeSelector, dPathMATradeSelector, heighValueChartTradeSelector, maxHighItemTradeSelector, minLowItemTradeSelector, timeLimitSelector } from "@selector/tradeSelector"
+import { candlesTradeSelector, countCandlesTradeSelector, countDownTradeSelector, dPathGreenTradeSelector, dPathMATradeSelector, dPathRedTradeSelector, heighValueChartTradeSelector, maxHighItemTradeSelector, minLowItemTradeSelector, timeLimitSelector } from "@selector/tradeSelector"
 import { getChart } from "@service/tradeService"
 import tradeSlice from "@slice/tradeSlice"
 import { colors } from "@theme/colors"
@@ -15,13 +15,12 @@ import Animated, { runOnJS, useAnimatedGestureHandler, useSharedValue } from "re
 import { G, Svg } from "react-native-svg"
 import { io } from "socket.io-client"
 import { ICoins } from "src/model/futuresModel"
-import Candles from "./Candles"
 import Cursor from "./Cursor"
 import LineX from "./LineX"
 import MinMaxLowHigh from "./MinMaxLowHigh"
 import PathMA from "./PathMA"
 
-const height_container = height * 35 / 100
+export const height_container = height * 35 / 100
 export const heigh_candle = height_container - 40
 export const paddingTop = 20
 export const size_chart = 50
@@ -35,7 +34,6 @@ export default () => {
     const dispatch = useAppDispatch()
     const symbol = useAppSelector(symbolFuturesSelector)
     const timeLimit = useAppSelector(timeLimitSelector)
-    const closeTimeStamp = useAppSelector(closeTimestampTradeSelector)
     const candles = useAppSelector(candlesTradeSelector)
     const minLowItem = useAppSelector(minLowItemTradeSelector)
     const maxHighItem = useAppSelector(maxHighItemTradeSelector)
@@ -43,6 +41,8 @@ export default () => {
     const dPathMA = useAppSelector(dPathMATradeSelector)
     const countDown = useAppSelector(countDownTradeSelector)
     const countCandles = useAppSelector(countCandlesTradeSelector)
+    const dPathGreen = useAppSelector(dPathGreenTradeSelector)
+    const dPathRed = useAppSelector(dPathRedTradeSelector)
 
     const count = useSharedValue(0)
     const scaleCount = useSharedValue(0)
@@ -77,6 +77,7 @@ export default () => {
                     heigh_candle,
                     dataSocket: data,
                     gap_candle: gapCandle.value,
+                    width_candle: widthCandle.value,
                     padding_right_candle: paddingRightCandles.value,
                 }))
             }
@@ -86,10 +87,7 @@ export default () => {
             if (nextAppState === 'inactive') {
                 newSocket.disconnect()
             }
-            // if (nextAppState === 'active') {
-            //     newSocket.connect()
-            // }
-        });
+        })
 
         return () => newSocket.disconnect()
     }, [])
@@ -111,6 +109,7 @@ export default () => {
                 heigh_candle,
                 paddingTop,
                 gap_candle: gapCandle.value,
+                width_candle: widthCandle.value,
                 padding_right_candle: paddingRightCandles.value,
             }))
         }
@@ -123,6 +122,7 @@ export default () => {
             gap_candle: gapCandle.value,
             padding_right_candle: paddingRightCandles.value,
             paddingTop,
+            width_candle: widthCandle.value,
         }))
     }
 
@@ -133,6 +133,7 @@ export default () => {
             gap_candle: gapCandle.value,
             padding_right_candle: paddingRightCandles.value,
             paddingTop,
+            width_candle: widthCandle.value,
         }))
     }
 
@@ -164,6 +165,7 @@ export default () => {
             heigh_candle,
             padding_right_candle: paddingRightCandles.value,
             paddingTop,
+            width_candle: widthCandle.value,
         }))
     }
 
@@ -205,24 +207,14 @@ export default () => {
                                     <LineX
                                         {...{
                                             theme,
-                                            paddingTop,
-                                            maxHighItem,
-                                            heigh_candle,
-                                            heighValueChart,
-                                        }}
-                                    />
-
-                                    <Candles
-                                        {...{
-                                            theme,
                                             candles,
+                                            maxHighItem,
+                                            heighValueChart,
                                             gap_candle: gapCandle.value,
-                                            paddingTop,
-                                            width_candle: widthCandle.value,
-                                            height_container,
                                             padding_right_candle: paddingRightCandles.value,
                                         }}
                                     />
+
                                     <MinMaxLowHigh
                                         {...{
                                             candles,
@@ -233,7 +225,7 @@ export default () => {
                                             padding_right_candle: paddingRightCandles.value,
                                         }}
                                     />
-                                    <PathMA {...{ dPathMA }} />
+                                    <PathMA {...{ dPathMA, dPathGreen, dPathRed }} />
                                 </G>
                                 <Cursor
                                     {...{

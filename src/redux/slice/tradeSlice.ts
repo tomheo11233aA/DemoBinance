@@ -26,6 +26,8 @@ interface ITradeSlice {
         ma25: string;
         ma99: string;
     };
+    dPathGreen: '';
+    dPathRed: '';
     countDown: number;
     timeLimit: ITimeLimit;
     closeTimestamp: number;
@@ -53,6 +55,8 @@ const initialState: ITradeSlice = {
         ma25: '',
         ma99: '',
     },
+    dPathGreen: '',
+    dPathRed: '',
     timeLimit: {},
     closeTimestamp: 0,
     listTimeLimit: [],
@@ -132,8 +136,8 @@ const tradeSlice = createSlice({
             }
             handleSetChart(state, payload)
         },
-        chartTranslate: (state, { payload }) => { 
-            if (state.countCandles >= 395) return 
+        chartTranslate: (state, { payload }) => {
+            if (state.countCandles >= 395) return
             if ((state.countCandles + state.candles.length) >= state.dataTrade.length) return
             state.countCandles++
             const item = state.dataTrade[state.dataTrade.length - (state.candles.length + state.countCandles)]
@@ -153,42 +157,7 @@ const tradeSlice = createSlice({
         },
         setZoom: (state, { payload }) => {
             if (state.candles.length < 1) return
-            const section = payload.heigh_candle / state.heighValueChart
-            let [dPathMA7, dPathMA25, dPathMA99, sumMA7, sumMA25, sumMA99] = ['', '', '', 0, 0, 0]
-            const SIZE = state.dataTrade.length - state.candles.length
-            state.candles.map((item: IChart, index: number) => {
-                if (index === 0) {
-                    for (let i = (SIZE - state.countCandles); i > (SIZE - 99 - state.countCandles); i--) {
-                        const close = Number(state.dataTrade[i]?.close)
-                        sumMA99 += close
-                        if ((SIZE - i - state.countCandles) < 7) sumMA7 += close
-                        if ((SIZE - i - state.countCandles) < 25) sumMA25 += close
-                    }
-                } else {
-                    const firtValueSumMA7 = Number(state.dataTrade[SIZE + index - 7 - state.countCandles]?.close)
-                    const firtValueSumMA25 = Number(state.dataTrade[SIZE + index - 25 - state.countCandles]?.close)
-                    const firtValueSumMA99 = Number(state.dataTrade[SIZE + index - 99 - state.countCandles]?.close)
-                    const current = Number(state.candles[index]?.close)
-                    sumMA7 = sumMA7 - firtValueSumMA7 + current
-                    sumMA25 = sumMA25 - firtValueSumMA25 + current
-                    sumMA99 = sumMA99 - firtValueSumMA99 + current
-                }
-
-                let dma7 = payload.heigh_candle - ((sumMA7 / 7 - state.minLowItem.low) * section) + payload.paddingTop
-                let dma25 = payload.heigh_candle - ((sumMA25 / 25 - state.minLowItem.low) * section) + payload.paddingTop
-                let dma99 = payload.heigh_candle - ((sumMA99 / 99 - state.minLowItem.low) * section) + payload.paddingTop
-
-                const char = index === 0 ? 'M' : 'L'
-                dPathMA7 += `${char}${payload.gap_candle * index - payload.padding_right_candle} ${dma7}`
-                dPathMA25 += `${char}${payload.gap_candle * index - payload.padding_right_candle} ${dma25}`
-                dPathMA99 += `${char}${payload.gap_candle * index - payload.padding_right_candle} ${dma99}`
-            })
-
-            state.dPathMA = {
-                ma7: dPathMA7,
-                ma25: dPathMA25,
-                ma99: dPathMA99,
-            }
+            handleSetChart(state, payload)
         },
     },
 })
@@ -196,6 +165,9 @@ const tradeSlice = createSlice({
 export default tradeSlice
 
 const handleSetChart = (state: WritableDraft<ITradeSlice>, payload: any) => {
+    state.dPathGreen = ''
+    state.dPathRed = ''
+
     let [maxHighItem, minLowItem]: any =
         [{ high: Number.MIN_SAFE_INTEGER }, { low: Number.MAX_SAFE_INTEGER }]
 
@@ -224,6 +196,23 @@ const handleSetChart = (state: WritableDraft<ITradeSlice>, payload: any) => {
         let colorChart =
             item?.close >= item?.open ? colors.greenCan : colors.red3
 
+        let x = payload.gap_candle * index - payload.padding_right_candle
+        let x2 = x - (payload.width_candle / 2) + 0.5
+        let x3 = x + (payload.width_candle / 2) - 0.5
+
+        const path = `
+            M${x} ${highSVG} L${x} ${lowSVG}
+            M${x2} ${openSVG} L${x3} ${openSVG}
+            L${x3} ${closeSVG}
+            L${x2} ${closeSVG}
+            L${x2} ${openSVG}
+          `
+        if (item?.close >= item?.open) {
+            state.dPathGreen += path
+        } else {
+            state.dPathRed += path
+        }
+
         if (index === 0) {
             for (let i = (SIZE - state.countCandles); i > (SIZE - 99 - state.countCandles); i--) {
                 const close = Number(state.dataTrade[i]?.close)
@@ -246,9 +235,9 @@ const handleSetChart = (state: WritableDraft<ITradeSlice>, payload: any) => {
         let dma99 = payload.heigh_candle - ((sumMA99 / 99 - minLowItem.low) * section) + payload.paddingTop || 0
 
         const char = index === 0 ? 'M' : 'L'
-        dPathMA7 += `${char}${payload.gap_candle * index - payload.padding_right_candle} ${dma7}`
-        dPathMA25 += `${char}${payload.gap_candle * index - payload.padding_right_candle} ${dma25}`
-        dPathMA99 += `${char}${payload.gap_candle * index - payload.padding_right_candle} ${dma99}`
+        dPathMA7 += `${char}${x} ${dma7}`
+        dPathMA25 += `${char}${x} ${dma25}`
+        dPathMA99 += `${char}${x} ${dma99}`
 
         return {
             ...item,

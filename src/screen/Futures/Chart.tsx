@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector, useTheme } from '@hooks/index'
 import { ydmhm } from '@method/date'
 import { convertTimeGetChart, numberCommasDot } from '@method/format'
-import { candlesFuturesSelector, countCandlesFuturesSelector, dPathMAFuturesSelector, heighValueChartFuturesSelector, maxHighItemFuturesSelector, minLowItemFuturesSelector, symbolFuturesSelector, timeLimitFuturesSelector } from '@selector/futuresSelector'
+import { candlesFuturesSelector, countCandlesFuturesSelector, dPathGreenFuturesSelector, dPathMAFuturesSelector, dPathRedFuturesSelector, heighValueChartFuturesSelector, maxHighItemFuturesSelector, minLowItemFuturesSelector, symbolFuturesSelector, timeLimitFuturesSelector } from '@selector/futuresSelector'
 import { getChart } from '@service/tradeService'
 import futuresSlice from '@slice/futuresSlice'
 import { colors } from '@theme/colors'
@@ -27,6 +27,7 @@ const WIDTH_CANDLE = width * 2.052 / 100
 const WIDTH_CANDLES = (width * 2.55 / 100) * 30 - WIDTH_CANDLE
 const TOTAL_X_LINE = 4
 const PADDING_RIGHT_CANDLE = SIZE_CHART * GAP_CANDLES - WIDTH_CANDLE - WIDTH_CANDLES
+const TIMES = [0, 15, 30, 45]
 
 export interface IChart extends Trade {
     closeSVG: number,
@@ -55,6 +56,8 @@ const Chart = ({ setOpenChart }: Props) => {
     const minLowItem = useAppSelector(minLowItemFuturesSelector)
     const dPathMA = useAppSelector(dPathMAFuturesSelector)
     const countCandles = useAppSelector(countCandlesFuturesSelector)
+    const dPathGreen = useAppSelector(dPathGreenFuturesSelector)
+    const dPathRed = useAppSelector(dPathRedFuturesSelector)
 
     const count = useSharedValue(0)
     const scaleCount = useSharedValue(0)
@@ -87,6 +90,7 @@ const Chart = ({ setOpenChart }: Props) => {
                     size_chart: SIZE_CHART,
                     heigh_candle: HEIGH_CANDLES,
                     gap_candles: gapCandle.value,
+                    width_candle: widthCandle.value,
                     padding_right_candle: paddingRightCandles.value,
                 }))
             }
@@ -96,9 +100,6 @@ const Chart = ({ setOpenChart }: Props) => {
             if (nextAppState === 'inactive') {
                 newSocket.disconnect()
             }
-            // if (nextAppState === 'active') {
-            //     newSocket.connect()
-            // }
         });
 
         return () => newSocket.disconnect()
@@ -120,72 +121,23 @@ const Chart = ({ setOpenChart }: Props) => {
                 size_chart: SIZE_CHART,
                 heigh_candle: HEIGH_CANDLES,
                 gap_candles: gapCandle.value,
+                width_candle: widthCandle.value,
                 padding_right_candle: paddingRightCandles.value,
             }))
         }
     }
 
-    const render_candle = () => {
-        return candles.map((item: IChart, index) => {
-            const x_point = gapCandle.value * index - paddingRightCandles.value
-            return (
-                <G key={`G_candles_${index}`}>
-                    {(index == 15 || index == 30 || index == 45) &&
-                        <>
-                            <Line
-                                key={`l2_candles_Y ${index}`}
-                                x1={x_point}
-                                y1={0}
-                                x2={x_point}
-                                y2={HEIGH_CANDLES}
-                                stroke={theme.gray2}
-                                strokeWidth={1}
-                            />
-                            <TextSVG
-                                key={`T_candles ${index}`}
-                                x={x_point}
-                                y={HEIGH_SVG - 10}
-                                fontSize={9}
-                                fill={colors.grayBlue}
-                                textAnchor={'middle'}
-                            >
-                                {ydmhm(item.time)}
-                            </TextSVG>
-                        </>
-                    }
-
-                    <Line
-                        key={`L_candles_${index}`}
-                        x1={x_point}
-                        y1={item.highSVG}
-                        x2={x_point}
-                        y2={item.lowSVG}
-                        stroke={item.colorChart}
-                        strokeWidth={1}
-                    />
-                    <Line
-                        key={`l2_candles ${index}`}
-                        x1={x_point}
-                        y1={item.closeSVG == item.openSVG ? item.closeSVG + 1 : item.closeSVG}
-                        x2={x_point}
-                        y2={item.openSVG}
-                        stroke={item.colorChart}
-                        strokeWidth={widthCandle.value}
-                    />
-                </G>
-            )
-        })
-    }
-
     const render_x_line = () => {
-        return Array.from(new Array(4)).map(
-            (_, index: number) => {
+        return TIMES.map(
+            (item: any, index: number) => {
                 let gap_x_line = (HEIGH_CANDLES / (TOTAL_X_LINE - 1)) * index
                 gap_x_line =
                     index === 3 ? gap_x_line - 1 : index === 0 ?
                         gap_x_line + 1 : gap_x_line
 
                 const textValue = Number(maxHighItem?.high) - (heighValueChart / (TOTAL_X_LINE - 1)) * index
+
+                const x_point = gapCandle.value * item - paddingRightCandles.value
 
                 return (
                     <G key={`G_x_line_${index}`}>
@@ -207,6 +159,26 @@ const Chart = ({ setOpenChart }: Props) => {
                             fontSize={9}
                         >
                             {numberCommasDot(textValue.toFixed(2))}
+                        </TextSVG>
+
+                        <Line
+                            key={`l2_candles_Y ${index}`}
+                            x1={x_point}
+                            y1={0}
+                            x2={x_point}
+                            y2={HEIGH_CANDLES}
+                            stroke={theme.gray2}
+                            strokeWidth={1}
+                        />
+                        <TextSVG
+                            key={`T_candles ${index}`}
+                            x={x_point}
+                            y={HEIGH_SVG - 10}
+                            fontSize={9}
+                            fill={colors.grayBlue}
+                            textAnchor={'middle'}
+                        >
+                            {ydmhm(candles[item].time)}
                         </TextSVG>
                     </G>
                 )
@@ -363,6 +335,18 @@ const Chart = ({ setOpenChart }: Props) => {
         return (
             <G key={'G_Path'}>
                 <Path
+                    key={'G_Path_Candle_Green'}
+                    d={dPathGreen}
+                    stroke={colors.green2}
+                    fill={colors.green2}
+                />
+                <Path
+                    key={'G_Path_Candle_Red'}
+                    d={dPathRed}
+                    stroke={colors.red3}
+                    fill={colors.red3}
+                />
+                <Path
                     key={'P_MA7'}
                     d={dPathMA.ma7}
                     strokeWidth={1}
@@ -392,6 +376,7 @@ const Chart = ({ setOpenChart }: Props) => {
             size_chart: SIZE_CHART,
             heigh_candle: HEIGH_CANDLES,
             gap_candles: gapCandle.value,
+            width_candle: widthCandle.value,
             padding_right_candle: paddingRightCandles.value,
         }))
     }
@@ -401,14 +386,16 @@ const Chart = ({ setOpenChart }: Props) => {
             size_chart: SIZE_CHART,
             heigh_candle: HEIGH_CANDLES,
             gap_candles: gapCandle.value,
+            width_candle: widthCandle.value,
             padding_right_candle: paddingRightCandles.value,
         }))
     }
 
     const handleZoom = () => {
         dispatch(futuresSlice.actions.setZoom({
-            gap_candle: gapCandle.value,
+            gap_candles: gapCandle.value,
             heigh_candle: HEIGH_CANDLES,
+            width_candle: widthCandle.value,
             padding_right_candle: paddingRightCandles.value
         }))
     }
@@ -472,7 +459,7 @@ const Chart = ({ setOpenChart }: Props) => {
                             <Svg height={HEIGH_SVG}>
                                 <G key={'G_candle_pathMA'}>
                                     {render_x_line()}
-                                    {render_candle()}
+                                    {/* {render_candle()} */}
                                     {render_pathMA()}
                                     {render_max_min_candle()}
                                     {render_cursor()}

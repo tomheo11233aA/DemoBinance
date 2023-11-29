@@ -7,11 +7,25 @@ interface Props {
         ma25: string,
         ma99: string,
     },
+    dPathGreen: string;
+    dPathRed: string;
 }
 
-export default ({ dPathMA }: Props) => {
+export default ({ dPathMA, dPathGreen, dPathRed }: Props) => {
     return (
         <G key={'G_Path'}>
+            <Path
+                key={'G_Path_Candle_Green'}
+                d={dPathGreen}
+                stroke={colors.green2}
+                fill={colors.green2}
+            />
+            <Path
+                key={'G_Path_Candle_Red'}
+                d={dPathRed}
+                stroke={colors.red3}
+                fill={colors.red3}
+            />
             <Path
                 key={'P_MA7'}
                 d={dPathMA.ma7}
