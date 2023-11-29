@@ -30,7 +30,7 @@ const Header = () => {
                         <Txt color={theme.black} bold size={15}>
                             {currency}
                         </Txt>
-                        <Txt bold size={13}>{'/'}</Txt>
+                        <Txt bold size={13} color={theme.black}>{'/'}</Txt>
                         <Txt color={theme.black} bold size={15}>USDT</Txt>
                     </Box>
                 </View>

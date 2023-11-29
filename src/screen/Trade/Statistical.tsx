@@ -13,7 +13,7 @@ const Statistical = () => {
     const { t } = useTranslation()
     const coins = useAppSelector(coinsFuturesChartSelector)
     const symbol = useAppSelector(symbolFuturesSelector)
-    
+
     getCoinsFromSocket()
 
     let [close, percentChange, color, round] = [0, '0', colors.greenCan, 1]
@@ -43,9 +43,14 @@ const Statistical = () => {
                             {' $'}
                         </Text>
                     </Text>
-                    <Text style={[styles.textSmall, { marginLeft: 10, fontFamily: fonts.M24, fontSize: 14 }]}>
+                    <Text
+                        style={[
+                            styles.textSmall,
+                            { marginLeft: 10, fontFamily: fonts.M24, fontSize: 14, color }
+                        ]}
+                    >
                         {numberCommasDot(percentChange)}
-                        <Text style={[styles.textSmall]}>{'%'}</Text>
+                        <Text style={[styles.textSmall, { color }]}>{'%'}</Text>
                     </Text>
                 </View>
                 <View style={[styles.defiContainer, { backgroundColor: theme.yellow5 }]}>
@@ -104,7 +109,7 @@ const styles = StyleSheet.create({
         fontFamily: fonts.M31,
         fontSize: 24,
         transform: [
-            {scaleY: 1.1}
+            { scaleY: 1.1 }
         ]
     },
     container: {

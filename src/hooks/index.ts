@@ -86,7 +86,6 @@ export const socketLimitDeposit = async () => {
     newSocket.emit('joinUser', `${userID}`)
 
     newSocket.on("limit", (res) => {
-      console.log('limit hook')
       dispatch(getProfileThunk())
       dispatch(getPositionThunk('BTCUSDT'))
       dispatch(getHistoryOpenOrderAllThunk({
@@ -102,7 +101,6 @@ export const socketLimitDeposit = async () => {
     })
 
     newSocket.on('deposit', (res) => {
-      console.log('depsit hook')
       dispatch(getProfileThunk())
       dispatch(getHistoryDepositThunk({ limit: 1000, page: 1 }))
     })

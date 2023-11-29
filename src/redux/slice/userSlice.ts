@@ -45,6 +45,9 @@ const userSlice = createSlice({
     },
     extraReducers: builder => {
         builder
+            .addCase(loginThunk.pending, (state) => {
+                state.loading = true
+            })
             .addCase(loginThunk.fulfilled, (state, { payload }: IPayloadUser<Profile>) => {
                 state.loading = false
                 if (payload.status) {
@@ -74,9 +77,6 @@ const userSlice = createSlice({
                     state.profile = payload.data
                     state.userID = payload.data.id
                 }
-            })
-            .addMatcher(isAnyOf(loginThunk.pending), (state) => {
-                state.loading = true
             })
     }
 })

@@ -1,6 +1,5 @@
 const contants = { 
     HOSTING: 'https://trade.dk-tech.vn',
-    // HOSTING: 'https://hotx.fun',
     HOSTING_CHART: 'https://trade.dk-tech.vn',
     TOKEN: 'token',
     NOT_KYC: 'NOT_KYC',
