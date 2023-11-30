@@ -27,8 +27,14 @@ export default () => {
   hideBottomTab()
 
   useEffect(() => {
-    dispatch(tradeSlice.actions.setLoading(true))
-    AppState.addEventListener('change', handleAppStateChange);
+    const focus = navigation.addListener('focus', () => {
+      dispatch(tradeSlice.actions.setLoading(true))
+    })
+    AppState.addEventListener('change', handleAppStateChange)
+
+    return () => {
+      focus
+    }
   }, [])
 
   const handleAppStateChange = (nextAppState: AppStateStatus) => {

@@ -49,10 +49,6 @@ const Header = ({ drawerRef }: any) => {
             dispatch(futuresSlice.actions.setBuys(data))
         })
 
-        // const focus = navigation.addListener('focus', () => {
-        //     newSocket.connect()
-        // })
-
         const blur = navigation.addListener('blur', () => {
             newSocket.disconnect()
         })
@@ -61,15 +57,11 @@ const Header = ({ drawerRef }: any) => {
             if (nextAppState === 'inactive') {
                 newSocket.disconnect()
             }
-            // if (nextAppState === 'active') {
-            //     newSocket.connect()
-            // }
         });
 
         return () => {
             newSocket.disconnect()
             blur
-            // focus
         }
     }, [])
 

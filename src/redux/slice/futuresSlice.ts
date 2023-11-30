@@ -1,12 +1,12 @@
 import { cancelOpenOrderThunk, closeMarketFutureAllThunk, closeMarketFutureThunk, getChartFuturesThunk, getPositionThunk, getTotalBuyThunk, getTotalSellThunk, leverAdjustmentAPIThunk } from "@asyncThunk/futuresAsyncThunk";
+import { convertTimeGetChart } from "@method/format";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { IChart } from "@screen/Futures/Chart";
 import { colors } from "@theme/colors";
-import { Colors } from "react-native/Libraries/NewAppScreen";
-import { ICoins, IFeeOrderFuture, IPositions, ISellBuy, ITpslPosition, ITriggerTPSL } from "src/model/futuresModel";
 import { WritableDraft } from "immer/dist/internal";
+import { Colors } from "react-native/Libraries/NewAppScreen";
+import { ICoins, IPositions, ISellBuy, ITpslPosition, ITriggerTPSL } from "src/model/futuresModel";
 import { ITimeLimit } from "src/model/tradeModel";
-import { convertTimeGetChart } from "@method/format";
 
 interface IfuturesSlice {
     loading: boolean,
@@ -328,11 +328,20 @@ const futuresSlice = createSlice({
                     state.leverAdjustment.idPosition = -1
                     state.leverAdjustment.core = payload.core
                 }
-            }).addCase(getTotalSellThunk.fulfilled, (state, { payload }) => {
+            })
+            .addCase(getTotalSellThunk.pending, (state) => {
+                state.sells = []
+                state.sellPrice = 0
+            })
+            .addCase(getTotalSellThunk.fulfilled, (state, { payload }) => {
                 if (payload.status) {
                     setSellOrBuy(state, payload.data.array, 'sell')
                 }
-            }).addCase(getTotalBuyThunk.fulfilled, (state, { payload }) => {
+            })
+            .addCase(getTotalBuyThunk.pending, (state) => {
+                state.buys = []
+            })
+            .addCase(getTotalBuyThunk.fulfilled, (state, { payload }) => {
                 if (payload.status) {
                     setSellOrBuy(state, payload.data.array, 'buy')
                 }

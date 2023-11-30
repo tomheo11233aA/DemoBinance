@@ -83,6 +83,18 @@ export default () => {
             }
         })
 
+        newSocket.on(`${symbol}BUY`, (data) => {
+            if (data.array) {
+                dispatch(tradeSlice.actions.setBuys(data.array))
+            }
+        })
+
+        newSocket.on(`${symbol}SELL`, (data) => {
+            if (data.array) {
+                dispatch(tradeSlice.actions.setSells(data.array))
+            }
+        })
+
         AppState.addEventListener('change', (nextAppState: AppStateStatus) => {
             if (nextAppState === 'inactive') {
                 newSocket.disconnect()

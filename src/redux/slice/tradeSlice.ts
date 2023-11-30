@@ -3,6 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { IChart } from "@screen/Futures/Chart";
 import { colors } from "@theme/colors";
 import { WritableDraft } from "immer/dist/internal";
+import { ISellBuy } from "src/model/futuresModel";
 import { ITimeLimit, Trade } from "src/model/tradeModel";
 
 interface ITradeSlice {
@@ -32,6 +33,8 @@ interface ITradeSlice {
     timeLimit: ITimeLimit;
     closeTimestamp: number;
     listTimeLimit: ITimeLimit[];
+    sells: ISellBuy[];
+    buys: ISellBuy[];
 }
 
 const initialState: ITradeSlice = {
@@ -61,12 +64,22 @@ const initialState: ITradeSlice = {
     closeTimestamp: 0,
     listTimeLimit: [],
     countDown: 0,
+    sells: [],
+    buys: [],
 }
 
 const tradeSlice = createSlice({
     name: 'trade',
     initialState,
     reducers: {
+        setBuys: (state, { payload }) => {
+            const data = payload.sort((p1: any, p2: any) => (p1.price < p2.price) ? 1 : (p1.price > p2.price) ? -1 : 0)
+            state.buys = data.slice(0, 7)
+        },
+        setSells: (state, { payload }) => {
+            const data = payload.sort((p1: any, p2: any) => (p1.price < p2.price) ? 1 : (p1.price > p2.price) ? -1 : 0)
+            state.sells = data.slice(0, 7)
+        },
         setLoading: (state, action: PayloadAction<boolean>) => {
             state.loading = action.payload
         },

@@ -39,3 +39,7 @@ export const countCandlesTradeSelector = (state: RootState) => state.trade.count
 export const dPathGreenTradeSelector = (state: RootState) => state.trade.dPathGreen 
 
 export const dPathRedTradeSelector = (state: RootState) => state.trade.dPathRed
+
+export const buysTradeSelector = (state: RootState) => state.trade.buys
+
+export const sellsTradeSelector = (state: RootState) => state.trade.sells 

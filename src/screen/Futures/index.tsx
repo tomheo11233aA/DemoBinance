@@ -103,16 +103,3 @@ const Futures = () => {
 }
 
 export default Futures
-
-// import { View, Text } from 'react-native'
-// import React from 'react'
-// import Box from '@commom/Box'
-// import ComingSoon from '@screen/ComingSoon'
-
-// const Futures = () => {
-//   return (
-//     <ComingSoon />
-//   )
-// }
-
-// export default Futures
