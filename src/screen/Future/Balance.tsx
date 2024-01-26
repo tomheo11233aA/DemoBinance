@@ -11,13 +11,31 @@ import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
 import { screen } from '@util/screens'
 import React, { useEffect, useState } from 'react'
-import { View } from 'react-native'
+import { View, ActivityIndicator } from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker'
 
 interface Props {
     t: any;
     balance: number;
 }
+
+const ArrowDownIcon = () => (
+    <Icon
+        source={require('@images/wallet/arrow-down.png')}
+        size={10}
+        resizeMode={'contain'}
+        marginRight={2}
+    />
+)
+
+const ArrowUpIcon = () => (
+    <Icon
+        source={require('@images/wallet/arrow-up.png')}
+        size={10}
+        resizeMode={'contain'}
+        marginRight={2}
+    />
+)
 
 const Balance = ({ balance, t }: Props) => {
     const theme = useTheme()
@@ -27,6 +45,7 @@ const Balance = ({ balance, t }: Props) => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState('usdt');
     const [loading, setLoading] = useState(false);
+
     const [items, setItems] = useState([
         { label: 'BTC', value: 'btc' },
         { label: 'ETH', value: 'eth' },
@@ -88,7 +107,7 @@ const Balance = ({ balance, t }: Props) => {
                         borderWidth: 0.3,
                         borderColor: theme.black,
                         borderStyle: 'dashed',
-                    }}/>
+                    }} />
                 </View>
 
                 <Btn onPress={() => dispatch(userSlice.actions.setShowBalance(!showBalance))}>
@@ -130,72 +149,54 @@ const Balance = ({ balance, t }: Props) => {
                             {/* {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })} */}
                             0,00600559
                         </Txt>
-                        <DropDownPicker
-                            loading={loading}
-                            open={open}
-                            value={value}
-                            items={items}
-                            setOpen={setOpen}
-                            setValue={setValue}
-                            setItems={setItems}
-                            style={{
-                                borderWidth: 0,
-                                width: '20%',
-                                zIndex: 1,
-                                // height: '10%',
-                                marginTop: 3,
-                            }}
-                            dropDownContainerStyle={{
-                                width: '25%',
-                                borderWidth: 0,
-                                marginTop: 5,
-                                backgroundColor: '#f5f5f5',
-                                zIndex: 1,
-                            }}
-                            textStyle={{
-                                fontFamily: fonts.BNPM,
-                                fontSize: 19,
-                                color: 'gray',
-                                alignSelf: 'center',
-                            }}
-                            ArrowDownIconComponent={() => {
-                                return (
-                                    <Icon
-                                        source={require('@images/wallet/arrow-down.png')}
-                                        size={10}
-                                        resizeMode={'contain'}
-                                        marginRight={2}
-                                    />
-                                )
-                            }}
-                            ArrowUpIconComponent={() => {
-                                return (
-                                    <Icon
-                                        source={require('@images/wallet/arrow-up.png')}
-                                        size={10}
-                                        resizeMode={'contain'}
-                                        marginRight={2}
-                                    />
-                                )
-                            }}
-                            selectedItemLabelStyle={{ color: theme.black }}
-                            labelStyle={{ color: theme.black }}
-                            listMode='SCROLLVIEW'
-                            // showArrowIcon={false}
-                            showTickIcon={false}
-                            showArrowIcon={false}
-                        />
+                        {
+                            <DropDownPicker
+                                loading={loading}
+                                open={open}
+                                value={value}
+                                items={items}
+                                setOpen={setOpen}
+                                setValue={setValue}
+                                setItems={setItems}
+                                style={{
+                                    borderWidth: 0,
+                                    width: '20%',
+                                    zIndex: 1,
+                                }}
+                                dropDownContainerStyle={{
+                                    width: '25%',
+                                    borderWidth: 0,
+                                    marginTop: 5,
+                                    backgroundColor: '#f5f5f5',
+                                    zIndex: 1,
+                                }}
+                                textStyle={{
+                                    fontFamily: fonts.BNPM,
+                                    fontSize: 13,
+                                    color: 'gray',
+                                    alignSelf: 'center',
+                                }}
+                                ArrowDownIconComponent={ArrowDownIcon}
+                                ArrowUpIconComponent={ArrowUpIcon}
+                                selectedItemLabelStyle={{ color: theme.black }}
+                                labelStyle={{ color: theme.black }}
+                                listMode='SCROLLVIEW'
+                                showTickIcon={false}
+                            />
+
+                        }
                     </View>
-                    <Txt fontFamily={fonts.SAN} color={colors.gray5} size={19}>
+                    <Txt fontFamily={fonts.BNPM} color={colors.gray5} size={15}>
                         {/* ≈ {numberCommasDot(balance.toFixed(2))} */}
                         ≈ {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })}
-                        <Txt color={colors.gray5} size={19} fontFamily={fonts.BNPM}>{' $'}</Txt>
+                        {/* ≈ 240,78 */}
+                        <Txt color={colors.gray5} size={15} fontFamily={fonts.BNPM}>{' $'}</Txt>
                     </Txt>
                 </Box>
                 :
                 <>
                     <Txt size={30} marginTop={10} color={theme.white}>******</Txt>
-                    <Txt fontFamily={fonts.AS} color={colors.gray5}>******</Txt>
+                    <Txt fontFamily={fonts.BNPM} color={colors.gray5}>******</Txt>
                 </>
             }
             <Btn
