@@ -8,8 +8,8 @@ import { fonts } from '@theme/fonts'
 import React from 'react'
 import { StyleSheet } from 'react-native'
 
-const size_text_box = 12
-const size_text_box2 = 12
+const size_text_box = 14
+const size_text_box2 = 14
 
 const Statistical = ({
     t,
@@ -99,12 +99,12 @@ const styles = StyleSheet.create({
         // fontFamily: 'Myfont24-Regular',
         fontFamily: fonts.BNPSB,
         fontWeight: 'bold',
-        fontSize: 14,
+        fontSize: 16,
         marginTop: 5,
     },
     txtValue2: {
         color: colors.gray5,
-        fontSize: 12,
+        fontSize: 14,
         fontFamily: fonts.BNPM
         // fontFamily: 'Myfont23-Regular'
     },
