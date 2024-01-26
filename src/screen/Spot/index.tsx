@@ -21,7 +21,7 @@ const Spot = () => {
     return (
         <Box>
             <Balance {...{spot}} />
-            <Box height={5} backgroundColor={theme.gray} marginTop={20} />
+            <Box height={5} backgroundColor={theme.gray} marginTop={20} zIndex={-1} />
             <Coins data={spot.coins} />
         </Box>
     )

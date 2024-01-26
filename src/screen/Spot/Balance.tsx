@@ -22,6 +22,7 @@ import { io } from 'socket.io-client'
 import { ICoins, IPositions } from 'src/model/futuresModel'
 import { Coin } from 'src/model/tradeModel'
 import { Profile } from 'src/model/userModel'
+import DropDownPicker from 'react-native-dropdown-picker';
 
 interface Props {
     spot: ISpot;
@@ -36,6 +37,16 @@ const Balance = ({ spot }: Props) => {
     const [position, setPosition] = useState<IPositions[] | null>()
     const dispatch = useAppDispatch()
     const { t } = useTranslation()
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState('usdt');
+    const [items, setItems] = useState([
+        { label: 'BTC', value: 'btc' },
+        { label: 'ETH', value: 'eth' },
+        { label: 'BNB', value: 'bnb' },
+        { label: 'USDT', value: 'usdt' },
+        { label: 'USD', value: 'usd' },
+    ]);
+
 
     useEffect(() => {
         handleGetPosition()
@@ -84,11 +95,14 @@ const Balance = ({ spot }: Props) => {
     const color = PNL >= 0 ? colors.green2 : colors.red3
 
     return (
-        <Box paddingHorizontal={20}>
+        <Box
+            paddingHorizontal={20}
+        >
             <Box row alignCenter justifySpaceBetween>
                 <Box row alignCenter>
                     <Txt fontFamily={fonts.IBMPR} size={12} color={theme.black}>
-                        {t(`${t('Total Balance')} (BTC)    `)}
+                        {/* {t(`${t('Total Balance')} (BTC)    `)} */}
+                        {t(`${t('Total Balance')}  `)}
                     </Txt>
                     <Btn onPress={() => dispatch(userSlice.actions.setShowBalance(!showBalance))}>
                         <Icon
@@ -107,10 +121,75 @@ const Balance = ({ spot }: Props) => {
 
             {showBalance ?
                 <>
-                    <Txt size={29} fontFamily={'Myfont24-Regular'} marginTop={5} color={theme.black}>
-                        {numberCommasDot(spot.balanceSpot)}
-                    </Txt>
-                    <Txt fontFamily={'Myfont23-Regular'} color={colors.gray5} marginTop={5} size={15}>
+                    <Box
+                        row
+                        alignCenter
+                        zIndex={1}
+                        style={{
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+
+                        }}
+                    >
+                        <Txt size={29} fontFamily={'Myfont24-Regular'} marginTop={5} color={theme.black}>
+                            {numberCommasDot(spot.balanceSpot)}
+                        </Txt>
+                        <DropDownPicker
+                            open={open}
+                            value={value}
+                            items={items}
+                            setOpen={setOpen}
+                            setValue={setValue}
+                            setItems={setItems}
+                            style={{
+                                borderWidth: 0,
+                                width: '25%',
+                                zIndex: 1,
+                            }}
+                            dropDownContainerStyle={{
+                                width: '38%',
+                                borderWidth: 0,
+                                marginTop: 5,
+                                backgroundColor: '#f5f5f5',
+                                zIndex: 1,
+                            }}
+                            textStyle={{
+                                fontFamily: fonts.IBMPM,
+                                fontSize: 13,
+                                color: 'gray',
+                                alignSelf: 'center',
+                            }}
+                            // ArrowDownIconComponent={() => {
+                            //     return (
+                            //         <Icon
+                            //             source={require('@images/wallet/arrow-down.png')}
+                            //             size={10}
+                            //             resizeMode={'contain'}
+                            //         />
+                            //     )
+                            // }}
+                            // ArrowUpIconComponent={() => {
+                            //     return (
+                            //         <Icon
+                            //             source={require('@images/wallet/arrow-up.png')}
+                            //             size={10}
+                            //             resizeMode={'contain'}
+                            //         />
+                            //     )
+                            // }}
+                            selectedItemLabelStyle={{color: theme.black}}
+                            labelStyle={{color: theme.black}}
+                        />
+                    </Box>
+                    <Txt
+                        fontFamily={'Myfont23-Regular'}
+                        color={colors.gray5}
+                        marginTop={5}
+                        size={15}
+                        style={{
+                            zIndex: -1,
+                        }}
+                    >
                         ≈ {numberCommasDot(spot.totalExchangeRate.toFixed(2))}
                         <Txt color={colors.gray5} size={14} fontFamily={fonts.IBMPR}>{' $'}</Txt>
                     </Txt>
@@ -122,7 +201,12 @@ const Balance = ({ spot }: Props) => {
                 </>
             }
 
-            <Box row marginTop={20} alignCenter>
+            <Box
+                row
+                marginTop={20}
+                alignCenter
+                zIndex={-1}
+            >
                 <Txt color={colors.gray5} fontFamily={fonts.RM} size={11}>{t("Today's PNL")}</Txt>
                 <Icon
                     size={11}

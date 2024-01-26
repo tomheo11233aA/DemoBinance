@@ -45,6 +45,7 @@ const Coins = ({ data }: any) => {
             marginTop={15}
             paddingHorizontal={15}
             paddingBottom={100}
+            zIndex={-1}
         >
             <Box marginBottom={15} row justifySpaceBetween>
                 <Txt fontFamily={fonts.AS} size={16} color={theme.black}>{t('Balances')}</Txt>
@@ -64,10 +65,10 @@ const Coins = ({ data }: any) => {
                         theme={theme}
                     />
                 )}
-                <CoinItem
+                {/* <CoinItem
                     coin={coinHX}
                     theme={theme}
-                />
+                /> */}
             </Box>
         </Box>
     )
