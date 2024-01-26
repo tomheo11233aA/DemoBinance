@@ -20,6 +20,8 @@ const Coins = ({ data }: any) => {
     const dispatch = useAppDispatch()
     const [coinHX, setCoinHX] = useState<any>({})
 
+    // console.log(data)
+
     useEffect(() => {
         handleGetWallet()
     }, [])

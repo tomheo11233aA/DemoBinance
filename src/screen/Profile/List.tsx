@@ -40,10 +40,10 @@ const data: Data[] = [
         title: 'Help & Support',
         icon: require('@images/future/book.png'),
     },
-    // {
-    //     title: 'Share the app',
-    //     icon: require('@images/future/share.png'),
-    // },
+    {
+        title: 'Share the app',
+        icon: require('@images/future/share.png'),
+    },
     {
         title: 'Log out',
         icon: require('@images/wallet/logout.png'),
@@ -78,7 +78,9 @@ export default ({ t }: any) => {
                     marginTop={35}
                     key={item.title}
                     justifySpaceBetween
-                    onPress={() => handleItemData(item)}
+                    // onPress={() => handleItemData(item)}
+                    // nếu gift card và share thì show modal share
+                    onPress={() => item.title === 'Share the app' ? setShowModalShare(true) : handleItemData(item)}
                 >
                     <Box row alignCenter>
                         <Icon

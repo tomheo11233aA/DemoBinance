@@ -26,6 +26,7 @@ const Balance = ({ balance, t }: Props) => {
     useEffect(() => {
         const date = new Date()
         setWiningDay(date.getDate())
+        console.log(balance)
     }, [])
 
     return (

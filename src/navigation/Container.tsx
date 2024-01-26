@@ -39,7 +39,7 @@ const tabs: ITab[] = [
     {
         name: screen.TRADES_STACK,
         component: TradesStack,
-        title: 'Coppy Trade',
+        title: 'Trade',
         icon: require('@images/tab/trade1.png'),
         iconFocus: require('@images/tab/trade2.png'),
     },

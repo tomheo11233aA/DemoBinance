@@ -30,6 +30,7 @@ export default ({ isShow, setShow }: Props) => {
         if (amount !== '') {
             const res = await setBalance(Number(amount))
             if (res.status) {
+                console.log(res)
                 await dispatch(getProfileThunk())
                 setShow(false)
             }

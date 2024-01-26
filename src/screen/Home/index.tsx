@@ -43,22 +43,22 @@ const Home = () => {
     return () => { focus }
   }, [theme])
 
-  useEffect(() => {
-    handleGetValueConfig()
-  }, [])
+  // useEffect(() => {
+  //   handleGetValueConfig()
+  // }, [])
 
-  const handleGetValueConfig = async () => {
-    const res = await getValueConfig('VERSIONAPP')
-    if (res.status) {
-      const versionCurren = res.data[0].data
-      const versionInApp = contants.VERSION
-      if (versionCurren != versionInApp) {
-        Alert.alert(t('Update version'), t('You are using the old version, please update the application to the new version for the best experience.'))
-      }
-    } else {
-      Alert.alert(t(res.message))
-    }
-  }
+  // const handleGetValueConfig = async () => {
+  //   const res = await getValueConfig('VERSIONAPP')
+  //   if (res.status) {
+  //     const versionCurren = res.data[0].data
+  //     const versionInApp = contants.VERSION
+  //     if (versionCurren != versionInApp) {
+  //       Alert.alert(t('Update version'), t('You are using the old version, please update the application to the new version for the best experience.'))
+  //     }
+  //   } else {
+  //     Alert.alert(t(res.message))
+  //   }
+  // }
 
   const handleRefesh = async () => {
     setRefesh(true)
