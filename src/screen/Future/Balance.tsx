@@ -52,12 +52,12 @@ const Balance = ({ balance, t }: Props) => {
                         marginRight={10}
                         radius={3}
                     >
-                        <Txt fontFamily={fonts.SANM} size={12} color={theme.black}>
+                        <Txt fontFamily={fonts.IBMPR} size={12} color={theme.black}>
                             USDⓈ-M
                         </Txt>
                     </Box>
                     <Box>
-                        <Txt fontFamily={fonts.SANM} size={12} color={colors.gray5}>COIN-M</Txt>
+                        <Txt fontFamily={fonts.IBMPR} size={12} color={colors.gray5}>COIN-M</Txt>
                     </Box>
                 </Box>
 
@@ -92,7 +92,7 @@ const Balance = ({ balance, t }: Props) => {
                     padding={3}
                     backgroundColor={theme.gray}
                 >
-                    <Txt size={10} fontFamily={fonts.SANM} color={theme.black}>
+                    <Txt size={10} fontFamily={fonts.IBMPR} color={theme.black}>
                         {'USDT '}
                     </Txt>
                     <Icon
@@ -106,7 +106,7 @@ const Balance = ({ balance, t }: Props) => {
                     <View style={{ flexDirection: 'row' }}>
                         <Txt
                             size={25}
-                            fontFamily={fonts.SANM}
+                            fontFamily={fonts.IBMPM}
                             fontType={'600'}
                             color={theme.black}
                         >
@@ -134,7 +134,7 @@ const Balance = ({ balance, t }: Props) => {
                                 zIndex: 1,
                             }}
                             textStyle={{
-                                fontFamily: fonts.SANM,
+                                fontFamily: fonts.IBMPR,
                                 fontSize: 13,
                                 color: 'gray',
                                 alignSelf: 'center',

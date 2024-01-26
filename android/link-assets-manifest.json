@@ -6,6 +6,18 @@
       "sha1": "bc7b4290d931fe97dbe26b4d0b88c518b7344ac3"
     },
     {
+      "path": "src/assets/fonts/BinancePlex-Medium.ttf",
+      "sha1": "dac85cf749904d7d1bd3e45685818a1126a964cb"
+    },
+    {
+      "path": "src/assets/fonts/BinancePlex-Regular.ttf",
+      "sha1": "4e6cb5f749775eb5871bd84a9990b8bf2e56b134"
+    },
+    {
+      "path": "src/assets/fonts/BinancePlex-SemiBold.ttf",
+      "sha1": "1af4e72530e42b792a46225c04178e1f3a709904"
+    },
+    {
       "path": "src/assets/fonts/FiraSansCondensed-Regular.ttf",
       "sha1": "19d3cd19f26cf12bfbd639640024a7deb4c12074"
     },
