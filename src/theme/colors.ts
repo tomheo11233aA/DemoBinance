@@ -93,6 +93,7 @@ export const colors = {
     grayBlue4: '#77808f',
     lightYellow: '#fff6d8',
     lightYellow2: '#36352f',
+    mYellow: '#ffd434',
     yellow: '#fbd434',
     yellow2: '#fbd536',
     yellowBold: '#d19f12',

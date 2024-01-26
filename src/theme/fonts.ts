@@ -16,5 +16,6 @@ export const fonts = {
     M24: 'Myfont24-Regular',
     M31: 'Myfont31-Regular',
     SAN: 'OpenSans-Light',
+    SANM: 'OpenSans-Medium',
     SANB: 'OpenSans-Bold',
 }

@@ -90,9 +90,16 @@ const Future = () => {
             >
                 <Btn
                     onPress={() => navigate(screen.TRADE)}
-                    style={[styles.button, { backgroundColor: theme.gray8 }]}
+                    style={[styles.button, { backgroundColor: colors.mYellow }]}
                 >
-                    <Txt fontFamily={fonts.SANB} size={size_text_button} color={'#f0b90b'}>
+                    <Txt
+                        fontFamily={fonts.SANM}
+                        size={size_text_button}
+                        color={theme.black}
+                        style={{
+                            fontWeight: '500',
+                        }}
+                    >
                         {t('Trade')}
                     </Txt>
                 </Btn>
@@ -101,7 +108,10 @@ const Future = () => {
                     onPress={() => navigate(screen.CONVERT)}
                     style={[styles.button, { backgroundColor: theme.gray8 }]}
                 >
-                    <Txt fontFamily={fonts.IBMPM} size={size_text_button} color={theme.black}>
+                    <Txt
+                        fontFamily={fonts.IBMPM}
+                        size={size_text_button}
+                        color={theme.black}>
                         {t('Convert')}
                     </Txt>
                 </Btn>

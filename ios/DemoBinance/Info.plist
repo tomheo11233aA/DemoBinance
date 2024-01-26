@@ -66,6 +66,7 @@
 		<string>SchibstedGrotesk-Medium.ttf</string>
 		<string>OpenSans-Light.ttf</string>
 		<string>OpenSans-Bold.ttf</string>
+		<string>OpenSans-Medium.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
