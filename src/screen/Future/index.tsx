@@ -109,7 +109,7 @@ const Future = () => {
                     style={[styles.button, { backgroundColor: theme.gray8 }]}
                 >
                     <Txt
-                        fontFamily={fonts.IBMPM}
+                        fontFamily={fonts.SANM}
                         size={size_text_button}
                         color={theme.black}>
                         {t('Convert')}
@@ -119,7 +119,7 @@ const Future = () => {
                     onPress={() => navigate(screen.TRANSFER)}
                     style={[styles.button, { backgroundColor: theme.gray8 }]}
                 >
-                    <Txt fontFamily={fonts.IBMPM} size={size_text_button} color={theme.black}>
+                    <Txt fontFamily={fonts.SANM} size={size_text_button} color={theme.black}>
                         {t('Transfer')}
                     </Txt>
                 </Btn>

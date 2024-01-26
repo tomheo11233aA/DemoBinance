@@ -104,7 +104,7 @@ const Balance = ({ spot }: Props) => {
         >
             <Box row alignCenter justifySpaceBetween>
                 <Box row alignCenter>
-                    <Txt fontFamily={fonts.IBMPR} size={12} color={theme.black}>
+                    <Txt fontFamily={fonts.IBMPR} size={20} color={theme.black}>
                         {/* {t(`${t('Total Balance')} (BTC)    `)} */}
                         {t(`${t('Total Balance')}  `)}
                     </Txt>
