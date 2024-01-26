@@ -36,6 +36,8 @@
 		DEAEF40B6C9A4C638B34C27C /* Myfont17-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3808894C670E49B29C7F1D19 /* Myfont17-Regular.ttf */; };
 		FA5BDE02FB004EDAAFF5C0E9 /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 018A7DC7A117479883172BEB /* IBMPlexSans-Regular.ttf */; };
 		FC5DE19B445249B8AFA64A9A /* FiraSansCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD03D2441BEA4F4D954C8A73 /* FiraSansCondensed-Regular.ttf */; };
+		71E1C6C94E6641A78E4A421F /* IBMPlexSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFC4E1440FCE4DE09ADB2791 /* IBMPlexSans-Bold.ttf */; };
+		C4D71EA67A5343ADAF8030B4 /* IBMPlexSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CA4A1D09A524AA4B309A220 /* IBMPlexSans-Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		D89372F0543747B685955AC5 /* Lato-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Regular.ttf"; path = "../src/assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
 		E6A3948F8DD843C9AF0446FA /* Myfont16-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Myfont16-Regular.ttf"; path = "../src/assets/fonts/Myfont16-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		BFC4E1440FCE4DE09ADB2791 /* IBMPlexSans-Bold.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-Bold.ttf"; path = "../src/assets/fonts/IBMPlexSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2CA4A1D09A524AA4B309A220 /* IBMPlexSans-Light.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-Light.ttf"; path = "../src/assets/fonts/IBMPlexSans-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +211,8 @@
 				06B54F66D1C642888507DB81 /* OpenSans-Light.ttf */,
 				CD13B50AD49241319CF358C4 /* OpenSans-Bold.ttf */,
 				0115C3ABC2A94173B6D9F3F0 /* OpenSans-Medium.ttf */,
+				BFC4E1440FCE4DE09ADB2791 /* IBMPlexSans-Bold.ttf */,
+				2CA4A1D09A524AA4B309A220 /* IBMPlexSans-Light.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -340,6 +346,8 @@
 				B6885B08F7CA480084A2B0AD /* OpenSans-Light.ttf in Resources */,
 				908D318E100E47EB9A39C521 /* OpenSans-Bold.ttf in Resources */,
 				6B85930FB011462EB38FD327 /* OpenSans-Medium.ttf in Resources */,
+				71E1C6C94E6641A78E4A421F /* IBMPlexSans-Bold.ttf in Resources */,
+				C4D71EA67A5343ADAF8030B4 /* IBMPlexSans-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

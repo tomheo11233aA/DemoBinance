@@ -11,6 +11,7 @@ import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
 import { screen } from '@util/screens'
 import React, { useEffect, useState } from 'react'
+import { View } from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker'
 
 interface Props {
@@ -70,11 +71,13 @@ const Balance = ({ balance, t }: Props) => {
             </Box>
 
             <Box row alignCenter>
-
                 <Txt fontFamily={fonts.SAN}
-                    size={11}
+                    size={12}
                     color={theme.black}
-                >{t(` ${t('Total Balance')} `)} </Txt>
+                    line
+                >
+                    {t(` ${t('Margin Balance')} `)}
+                </Txt>
 
                 <Btn onPress={() => dispatch(userSlice.actions.setShowBalance(!showBalance))}>
                     <Icon
@@ -100,16 +103,12 @@ const Balance = ({ balance, t }: Props) => {
             </Box>
             {showBalance ?
                 <Box marginTop={9}>
-                    <Box row>
+                    <View style={{ flexDirection: 'row' }}>
                         <Txt
-                            size={27}
-                            // fontFamily={'Myfont24-Regular'}
+                            size={25}
                             fontFamily={fonts.SANM}
-                            // fontType={'600'}
+                            fontType={'600'}
                             color={theme.black}
-                            style={{
-                                fontWeight: '700',
-                            }}
                         >
                             {/* {numberCommasDot(balance.toFixed(2))} */}
                             {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })}
@@ -125,6 +124,7 @@ const Balance = ({ balance, t }: Props) => {
                                 borderWidth: 0,
                                 width: '20%',
                                 zIndex: 1,
+                                // height: '10%',
                             }}
                             dropDownContainerStyle={{
                                 width: '25%',
@@ -134,7 +134,7 @@ const Balance = ({ balance, t }: Props) => {
                                 zIndex: 1,
                             }}
                             textStyle={{
-                                fontFamily: fonts.IBMPM,
+                                fontFamily: fonts.SANM,
                                 fontSize: 13,
                                 color: 'gray',
                                 alignSelf: 'center',
@@ -145,6 +145,7 @@ const Balance = ({ balance, t }: Props) => {
                                         source={require('@images/wallet/arrow-down.png')}
                                         size={10}
                                         resizeMode={'contain'}
+                                        marginRight={2}
                                     />
                                 )
                             }}
@@ -154,16 +155,18 @@ const Balance = ({ balance, t }: Props) => {
                                         source={require('@images/wallet/arrow-up.png')}
                                         size={10}
                                         resizeMode={'contain'}
+                                        marginRight={2}
                                     />
                                 )
                             }}
                             selectedItemLabelStyle={{ color: theme.black }}
                             labelStyle={{ color: theme.black }}
                         />
-                    </Box>
-                    <Txt fontFamily={'Myfont23-Regular'} color={colors.gray5} marginTop={10} size={15}>
-                        ≈ {numberCommasDot(balance.toFixed(2))}
-                        <Txt color={colors.gray5} size={14} fontFamily={fonts.IBMPR}>{' $'}</Txt>
+                    </View>
+                    <Txt fontFamily={fonts.SAN} color={colors.gray5} size={11}>
+                        {/* ≈ {numberCommasDot(balance.toFixed(2))} */}
+                        ≈ {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })}
+                        <Txt color={colors.gray5} size={11} fontFamily={fonts.IBMPR}>{' $'}</Txt>
                     </Txt>
                 </Box>
                 :
@@ -178,6 +181,7 @@ const Balance = ({ balance, t }: Props) => {
                 marginTop={15}
                 alignSelf={'flex-start'}
                 onPress={() => navigate(screen.PNL_ANALYSIS)}
+                zIndex={-1}
             >
                 <Box
                     paddingVertical={5}

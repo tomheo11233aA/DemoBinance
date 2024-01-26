@@ -8,8 +8,8 @@ import { fonts } from '@theme/fonts'
 import React from 'react'
 import { StyleSheet } from 'react-native'
 
-const size_text_box = 11
-const size_text_box2 = 10
+const size_text_box = 12
+const size_text_box2 = 12
 
 const Statistical = ({
     t,
@@ -24,6 +24,7 @@ const Statistical = ({
             borderBottomWidth={1}
             borderColor={theme.gray}
             marginTop={15}
+            zIndex={-1}
         >
             <Box
                 row
@@ -42,8 +43,8 @@ const Statistical = ({
                         color={colors.gray5}
                         size={size_text_box2}
                         size2={size_text_box}
-                        font={fonts.IBMPR}
-                    />
+                        font={fonts.SANM}
+                        />
                     <Txt style={[styles.txtValue1, { color: theme.black }]}>
                         {numberCommasDot(TOTAL_MARGIN.toFixed(2))}
                     </Txt>
@@ -59,8 +60,8 @@ const Statistical = ({
                         color={colors.gray5}
                         size={size_text_box2}
                         size2={size_text_box}
-                        font={fonts.IBMPR}
-                    />
+                        font={fonts.SANM}
+                        />
                     <Txt style={[styles.txtValue1, { color: theme.black }]}>
                         {numberCommasDot(wallet_balance?.toFixed(2))}
                     </Txt>
@@ -77,7 +78,7 @@ const Statistical = ({
                     color={colors.gray5}
                     size={size_text_box2}
                     size2={size_text_box}
-                    font={fonts.IBMPR}
+                    font={fonts.SANM}
                 />
                 <Txt style={[styles.txtValue1, { color: theme.black }]}>
                     {numberCommasDot(totalPNL?.toFixed(2))}

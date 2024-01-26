@@ -91,7 +91,7 @@ export default BoxLine
 
 const styles = StyleSheet.create({
     txtContent: {
-        borderStyle: 'dashed',
+        borderStyle: 'dotted',
         borderWidth: 1,
         borderBottomWidth: 1,
         // width: '100%',

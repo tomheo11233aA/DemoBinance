@@ -10,6 +10,14 @@
       "sha1": "19d3cd19f26cf12bfbd639640024a7deb4c12074"
     },
     {
+      "path": "src/assets/fonts/IBMPlexSans-Bold.ttf",
+      "sha1": "6c829b9e0904df3399e7ac03ee1bb1f72c2d5e52"
+    },
+    {
+      "path": "src/assets/fonts/IBMPlexSans-Light.ttf",
+      "sha1": "371d18ef3fa2148a1c0b40834a9228eaa7bb2e31"
+    },
+    {
       "path": "src/assets/fonts/IBMPlexSans-Medium.ttf",
       "sha1": "dcb6474ece3ff65b0cd9d371812cf15a69f1e9af"
     },
