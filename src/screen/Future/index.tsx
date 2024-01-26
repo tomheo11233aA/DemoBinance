@@ -92,7 +92,7 @@ const Future = () => {
                     onPress={() => navigate(screen.TRADE)}
                     style={[styles.button, { backgroundColor: theme.gray8 }]}
                 >
-                    <Txt fontFamily={fonts.IBMPM} size={size_text_button} color={theme.black}>
+                    <Txt fontFamily={fonts.SANB} size={size_text_button} color={'#f0b90b'}>
                         {t('Trade')}
                     </Txt>
                 </Btn>

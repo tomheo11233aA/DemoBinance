@@ -58,6 +58,10 @@
       "sha1": "69f6bbb62b005d26f05e1cc99acd6252be602529"
     },
     {
+      "path": "src/assets/fonts/OpenSans-Bold.ttf",
+      "sha1": "953814da1b753763dfa5a7ecc18bdbb14890e16b"
+    },
+    {
       "path": "src/assets/fonts/OpenSans-Light.ttf",
       "sha1": "9292ee344b331c5959c7b130d1a2df5543dfa58a"
     },
