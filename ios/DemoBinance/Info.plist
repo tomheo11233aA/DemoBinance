@@ -38,7 +38,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Our application has a transfer function, so we need the user to provide a picture of that transfer transaction.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Our application has a transfer function, so we need the user to provide a picture of that transfer transaction.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -64,6 +64,7 @@
 		<string>Outfit-SemiBold.ttf</string>
 		<string>Roboto-Medium.ttf</string>
 		<string>SchibstedGrotesk-Medium.ttf</string>
+		<string>OpenSans-Light.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

@@ -94,6 +94,10 @@ const Balance = ({ spot }: Props) => {
 
     const color = PNL >= 0 ? colors.green2 : colors.red3
 
+    const selectedCoin = spot.coins.find((coin: any) => coin.currency.toLowerCase() === value)
+    const displayBalance = value === 'usd' ? spot.coins.find((coin: any) => coin.currency.toLowerCase() === 'usdt')?.balance : selectedCoin?.balance || 0
+    const displayExchangeRate = value === 'usd' ? spot.coins.find((coin: any) => coin.currency.toLowerCase() === 'usdt')?.exchangeRate : selectedCoin?.exchangeRate || 0
+    
     return (
         <Box
             paddingHorizontal={20}
@@ -132,7 +136,8 @@ const Balance = ({ spot }: Props) => {
                         }}
                     >
                         <Txt size={29} fontFamily={'Myfont24-Regular'} marginTop={5} color={theme.black}>
-                            {numberCommasDot(spot.balanceSpot)}
+                            {/* {numberCommasDot(spot.balanceSpot)} */}
+                            {numberCommasDot(displayBalance.toFixed(2))}
                         </Txt>
                         <DropDownPicker
                             open={open}
@@ -143,11 +148,11 @@ const Balance = ({ spot }: Props) => {
                             setItems={setItems}
                             style={{
                                 borderWidth: 0,
-                                width: '25%',
+                                width: '20%',
                                 zIndex: 1,
                             }}
                             dropDownContainerStyle={{
-                                width: '38%',
+                                width: '25%',
                                 borderWidth: 0,
                                 marginTop: 5,
                                 backgroundColor: '#f5f5f5',
@@ -159,24 +164,24 @@ const Balance = ({ spot }: Props) => {
                                 color: 'gray',
                                 alignSelf: 'center',
                             }}
-                            // ArrowDownIconComponent={() => {
-                            //     return (
-                            //         <Icon
-                            //             source={require('@images/wallet/arrow-down.png')}
-                            //             size={10}
-                            //             resizeMode={'contain'}
-                            //         />
-                            //     )
-                            // }}
-                            // ArrowUpIconComponent={() => {
-                            //     return (
-                            //         <Icon
-                            //             source={require('@images/wallet/arrow-up.png')}
-                            //             size={10}
-                            //             resizeMode={'contain'}
-                            //         />
-                            //     )
-                            // }}
+                            ArrowDownIconComponent={() => {
+                                return (
+                                    <Icon
+                                        source={require('@images/wallet/arrow-down.png')}
+                                        size={10}
+                                        resizeMode={'contain'}
+                                    />
+                                )
+                            }}
+                            ArrowUpIconComponent={() => {
+                                return (
+                                    <Icon
+                                        source={require('@images/wallet/arrow-up.png')}
+                                        size={10}
+                                        resizeMode={'contain'}
+                                    />
+                                )
+                            }}
                             selectedItemLabelStyle={{color: theme.black}}
                             labelStyle={{color: theme.black}}
                         />
@@ -190,7 +195,8 @@ const Balance = ({ spot }: Props) => {
                             zIndex: -1,
                         }}
                     >
-                        ≈ {numberCommasDot(spot.totalExchangeRate.toFixed(2))}
+                        {/* ≈ {numberCommasDot(spot.totalExchangeRate.toFixed(2))} */}
+                        ≈ {numberCommasDot(displayExchangeRate.toFixed(2))}
                         <Txt color={colors.gray5} size={14} fontFamily={fonts.IBMPR}>{' $'}</Txt>
                     </Txt>
                 </>

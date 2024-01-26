@@ -58,6 +58,10 @@
       "sha1": "69f6bbb62b005d26f05e1cc99acd6252be602529"
     },
     {
+      "path": "src/assets/fonts/OpenSans-Light.ttf",
+      "sha1": "9292ee344b331c5959c7b130d1a2df5543dfa58a"
+    },
+    {
       "path": "src/assets/fonts/Oswald-SemiBold.ttf",
       "sha1": "840a320f347d0918bd3a3638dbde42729e732113"
     },
