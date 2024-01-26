@@ -26,6 +26,7 @@ const Balance = ({ balance, t }: Props) => {
     const showBalance = useAppSelector(showBalanceSelector)
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState('usdt');
+    const [loading, setLoading] = useState(false);
     const [items, setItems] = useState([
         { label: 'BTC', value: 'btc' },
         { label: 'ETH', value: 'eth' },
@@ -52,12 +53,12 @@ const Balance = ({ balance, t }: Props) => {
                         marginRight={10}
                         radius={3}
                     >
-                        <Txt fontFamily={fonts.IBMPR} size={12} color={theme.black}>
+                        <Txt fontFamily={fonts.BNPM} size={12} color={theme.black}>
                             USDⓈ-M
                         </Txt>
                     </Box>
                     <Box>
-                        <Txt fontFamily={fonts.IBMPR} size={12} color={colors.gray5}>COIN-M</Txt>
+                        <Txt fontFamily={fonts.BNPM} size={12} color={colors.gray5}>COIN-M</Txt>
                     </Box>
                 </Box>
 
@@ -70,18 +71,30 @@ const Balance = ({ balance, t }: Props) => {
                 </Btn>
             </Box>
 
-            <Box row alignCenter>
-                <Txt fontFamily={fonts.SAN}
-                    size={12}
-                    color={theme.black}
-                    line
-                >
-                    {t(` ${t('Margin Balance')} `)}
-                </Txt>
+            <Box row alignCenter
+                style={{
+                    alignItems: 'center',
+                }}
+            >
+                <View>
+                    <Txt fontFamily={fonts.BNPM}
+                        size={14}
+                        color={theme.black}
+                    >
+                        {t(` ${t('Margin Balance')} `)}
+                    </Txt>
+                    {/* underline style dotted */}
+                    <View style={{
+                        borderWidth: 0.3,
+                        borderColor: theme.black,
+                        borderStyle: 'dashed',
+                    }}/>
+                </View>
 
                 <Btn onPress={() => dispatch(userSlice.actions.setShowBalance(!showBalance))}>
                     <Icon
-                        size={14}
+                        marginTop={2}
+                        size={16}
                         source={showBalance ? require('@images/wallet/eye-open.png') : require('@images/wallet/eye-close.png')}
                     />
                 </Btn>
@@ -92,7 +105,7 @@ const Balance = ({ balance, t }: Props) => {
                     padding={3}
                     backgroundColor={theme.gray}
                 >
-                    <Txt size={10} fontFamily={fonts.IBMPR} color={theme.black}>
+                    <Txt size={10} fontFamily={fonts.BNPM} color={theme.black}>
                         {'USDT '}
                     </Txt>
                     <Icon
@@ -103,17 +116,22 @@ const Balance = ({ balance, t }: Props) => {
             </Box>
             {showBalance ?
                 <Box marginTop={9}>
-                    <View style={{ flexDirection: 'row' }}>
+                    <View style={{
+                        flexDirection: 'row',
+                        // alignItems: 'flex-end'
+                    }}>
                         <Txt
-                            size={25}
-                            fontFamily={fonts.IBMPM}
+                            size={32}
+                            fontFamily={fonts.BNPM}
                             fontType={'600'}
                             color={theme.black}
                         >
                             {/* {numberCommasDot(balance.toFixed(2))} */}
-                            {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })}
+                            {/* {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })} */}
+                            0,00600559
                         </Txt>
                         <DropDownPicker
+                            loading={loading}
                             open={open}
                             value={value}
                             items={items}
@@ -125,6 +143,7 @@ const Balance = ({ balance, t }: Props) => {
                                 width: '20%',
                                 zIndex: 1,
                                 // height: '10%',
+                                marginTop: 3,
                             }}
                             dropDownContainerStyle={{
                                 width: '25%',
@@ -134,8 +153,8 @@ const Balance = ({ balance, t }: Props) => {
                                 zIndex: 1,
                             }}
                             textStyle={{
-                                fontFamily: fonts.IBMPR,
-                                fontSize: 13,
+                                fontFamily: fonts.BNPM,
+                                fontSize: 19,
                                 color: 'gray',
                                 alignSelf: 'center',
                             }}
@@ -161,12 +180,16 @@ const Balance = ({ balance, t }: Props) => {
                             }}
                             selectedItemLabelStyle={{ color: theme.black }}
                             labelStyle={{ color: theme.black }}
+                            listMode='SCROLLVIEW'
+                            // showArrowIcon={false}
+                            showTickIcon={false}
+                            showArrowIcon={false}
                         />
                     </View>
-                    <Txt fontFamily={fonts.SAN} color={colors.gray5} size={11}>
+                    <Txt fontFamily={fonts.SAN} color={colors.gray5} size={19}>
                         {/* ≈ {numberCommasDot(balance.toFixed(2))} */}
                         ≈ {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })}
-                        <Txt color={colors.gray5} size={11} fontFamily={fonts.IBMPR}>{' $'}</Txt>
+                        <Txt color={colors.gray5} size={19} fontFamily={fonts.BNPM}>{' $'}</Txt>
                     </Txt>
                 </Box>
                 :

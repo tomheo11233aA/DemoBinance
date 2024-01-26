@@ -43,7 +43,7 @@ const Statistical = ({
                         color={colors.gray5}
                         size={size_text_box2}
                         size2={size_text_box}
-                        font={fonts.SANM}
+                        font={fonts.BNPM}
                         />
                     <Txt style={[styles.txtValue1, { color: theme.black }]}>
                         {numberCommasDot(TOTAL_MARGIN.toFixed(2))}
@@ -60,7 +60,7 @@ const Statistical = ({
                         color={colors.gray5}
                         size={size_text_box2}
                         size2={size_text_box}
-                        font={fonts.SANM}
+                        font={fonts.BNPM}
                         />
                     <Txt style={[styles.txtValue1, { color: theme.black }]}>
                         {numberCommasDot(wallet_balance?.toFixed(2))}
@@ -78,7 +78,7 @@ const Statistical = ({
                     color={colors.gray5}
                     size={size_text_box2}
                     size2={size_text_box}
-                    font={fonts.SANM}
+                    font={fonts.BNPM}
                 />
                 <Txt style={[styles.txtValue1, { color: theme.black }]}>
                     {numberCommasDot(totalPNL?.toFixed(2))}
@@ -96,18 +96,21 @@ export default Statistical
 
 const styles = StyleSheet.create({
     txtValue1: {
-        fontFamily: 'Myfont24-Regular',
+        // fontFamily: 'Myfont24-Regular',
+        fontFamily: fonts.BNPSB,
+        fontWeight: 'bold',
         fontSize: 14,
-        marginTop: 10,
+        marginTop: 5,
     },
     txtValue2: {
         color: colors.gray5,
         fontSize: 12,
-        fontFamily: 'Myfont23-Regular'
+        fontFamily: fonts.BNPM
+        // fontFamily: 'Myfont23-Regular'
     },
     txtDolar: {
         color: colors.gray5,
-        fontFamily: fonts.IBMPR,
+        fontFamily: fonts.BNPR,
         fontSize: 10,
     }
 })

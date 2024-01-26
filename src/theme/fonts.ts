@@ -18,4 +18,7 @@ export const fonts = {
     SAN: 'OpenSans-Light',
     SANM: 'OpenSans-Medium',
     SANB: 'OpenSans-Bold',
+    BNPM: 'BinancePlex-Medium',
+    BNPR: 'BinancePlex-Regular',
+    BNPSB: 'BinancePlex-SemiBold',
 }

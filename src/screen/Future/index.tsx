@@ -93,12 +93,10 @@ const Future = () => {
                     style={[styles.button, { backgroundColor: colors.mYellow }]}
                 >
                     <Txt
-                        fontFamily={fonts.IBMPM}
+                        fontFamily={fonts.BNPSB}
                         size={size_text_button}
                         color={theme.black}
-                        style={{
-                            fontWeight: '500',
-                        }}
+                        fontType={'500'}
                     >
                         {t('Trade')}
                     </Txt>
@@ -109,8 +107,9 @@ const Future = () => {
                     style={[styles.button, { backgroundColor: theme.gray8 }]}
                 >
                     <Txt
-                        fontFamily={fonts.IBMPM}
+                        fontFamily={fonts.BNPSB}
                         size={size_text_button}
+                        fontType={'500'}
                         color={theme.black}>
                         {t('Convert')}
                     </Txt>
@@ -119,7 +118,12 @@ const Future = () => {
                     onPress={() => navigate(screen.TRANSFER)}
                     style={[styles.button, { backgroundColor: theme.gray8 }]}
                 >
-                    <Txt fontFamily={fonts.IBMPM} size={size_text_button} color={theme.black}>
+                    <Txt
+                        fontFamily={fonts.BNPSB}
+                        size={size_text_button}
+                        color={theme.black}
+                        fontType={'500'}
+                    >
                         {t('Transfer')}
                     </Txt>
                 </Btn>
