@@ -90,13 +90,13 @@ const Overview = () => {
             <Box paddingHorizontal={20}>
                 <Box row alignCenter justifySpaceBetween>
                     <Box row alignCenter>
-                        <Txt fontFamily={fonts.IBMPR} size={12} color={theme.black}>
-                            {t('Total Balance')} {'(BTC) '}
+                        <Txt fontFamily={fonts.IBMPR} size={14} color={theme.black}>
+                            {t('Total Balance') + ' '}
                         </Txt>
                         <Btn onPress={() => dispatch(userSlice.actions.setShowBalance(!showBalance))}>
                             <Icon
                                 source={showBalance ? require('@images/wallet/eye-open.png') : require('@images/wallet/eye-close.png')}
-                                size={20}
+                                size={16}
                             />
                         </Btn>
                     </Box>
@@ -129,8 +129,14 @@ const Overview = () => {
                 </Box>
                 {showBalance ?
                     <>
-                        <Txt size={28} fontFamily={'Myfont24-Regular'} marginTop={5} color={theme.black}>
-                            {numberCommasDot(COIN_PRICE.toFixed(8))}
+                        <Txt
+                            fontType={'600'}
+                            size={32}
+                            fontFamily={fonts.BNPM}
+                            marginTop={5}
+                            color={theme.black}
+                        >
+                            ${numberCommasDot(COIN_PRICE.toFixed(8))}
                         </Txt>
                         <Txt fontFamily={'Myfont23-Regular'} color={colors.gray5} marginTop={10} size={17}>
                             ≈ {numberCommasDot(BALANCE.toFixed(2))}
@@ -143,7 +149,7 @@ const Overview = () => {
                         <Txt fontFamily={fonts.AS} color={colors.gray5}>******</Txt>
                     </>
                 }
-                <Button t={t}/>
+                <Button t={t} />
             </Box>
             <Portfolio {...{ COIN_PRICE, BALANCE, t }} />
         </Box>

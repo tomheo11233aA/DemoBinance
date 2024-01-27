@@ -110,7 +110,8 @@ const Balance = ({ balance, t }: Props) => {
                 }}
             >
                 <View>
-                    <Txt fontFamily={fonts.BNPM}
+                    <Txt fontFamily={fonts.BNPR}
+                    fontType={'normal'}
                         size={14}
                         color={theme.black}
                     >
@@ -171,6 +172,7 @@ const Balance = ({ balance, t }: Props) => {
                             setValue={setValue}
                             setItems={setItems}
                             style={{
+                                marginTop: 2,
                                 borderWidth: 0,
                                 width: '20%',
                                 zIndex: 1,
@@ -183,7 +185,7 @@ const Balance = ({ balance, t }: Props) => {
                             }}
                             textStyle={{
                                 fontFamily: fonts.BNPM,
-                                fontSize: 13,
+                                fontSize: 14,
                                 color: 'gray',
                                 alignSelf: 'center',
                             }}
@@ -193,19 +195,26 @@ const Balance = ({ balance, t }: Props) => {
                             labelStyle={{ color: theme.black }}
                             listMode='SCROLLVIEW'
                             showTickIcon={false}
+                            arrowIconContainerStyle={{
+                                marginRight: 0,
+                            }}
                         />
 
 
                     </View>
-                    <Txt fontFamily={fonts.BNPM} color={colors.gray5} size={15} style={{ zIndex: -1 }}>
+                    <Txt
+                        fontFamily={fonts.BNPM}
+                        color={colors.gray5}
+                        size={13}
+                        style={{ zIndex: -1 }}>
                         {/* ≈ {numberCommasDot(balance.toFixed(2))} */}
                         ≈ {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })}
-                        <Txt color={colors.gray5} size={15} fontFamily={fonts.BNPM}>{' $'}</Txt>
+                        <Txt color={colors.gray5} size={13} fontFamily={fonts.BNPM}>{' $'}</Txt>
                     </Txt>
                 </Box>
                 :
                 <>
-                    <Txt size={30} marginTop={10} color={theme.white}>******</Txt>
+                    <Txt size={32} marginTop={10} color={theme.white}>******</Txt>
                     <Txt fontFamily={fonts.BNPM} color={colors.gray5}>******</Txt>
                 </>
             }
