@@ -146,8 +146,8 @@ const Balance = ({ balance, t }: Props) => {
                             color={theme.black}
                         >
                             {/* {numberCommasDot(balance.toFixed(2))} */}
-                            {/* {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })} */}
                             0,00600559
+                            {/* {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })} */}
                         </Txt>
                         {
                             <DropDownPicker
@@ -188,8 +188,8 @@ const Balance = ({ balance, t }: Props) => {
                     </View>
                     <Txt fontFamily={fonts.BNPM} color={colors.gray5} size={15}>
                         {/* ≈ {numberCommasDot(balance.toFixed(2))} */}
-                        ≈ {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })}
-                        {/* ≈ 240,78 */}
+                        {/* ≈ {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })} */}
+                        ≈ 240,78
                         <Txt color={colors.gray5} size={15} fontFamily={fonts.BNPM}>{' $'}</Txt>
                     </Txt>
                 </Box>

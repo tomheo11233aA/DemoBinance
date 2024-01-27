@@ -6,6 +6,7 @@ const Assets = () => {
   const { t } = useTranslation()
   return (
     <NoData message={t('You have no assets')} />
+    
   )
 }
 

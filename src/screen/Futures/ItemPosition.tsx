@@ -41,7 +41,6 @@ const ItemPosition = ({
     onShowModalTPSLPosition,
 }: Props) => {
     position = converPostirions(position, coins, profile.balance)
-    // console.log('position', position)
     return (
         <Box
             marginTop={10}
@@ -171,9 +170,11 @@ const ItemPosition = ({
                     <Txt style={[styles.title]}>{t('Risk')}</Txt>
                     <Txt
                         style={styles.riskTitle}
-                        color={position?.RISK > 35 ? colors.yellow : colors.green2}
+                        // color={position?.RISK > 35 ? colors.yellow : colors.green2}
+                        color={position?.risk > 35 ? colors.yellow : colors.green2}
                     >
-                        {position.regime === 'cross' ? '0,01' : position?.RISK.toFixed(2)}
+                        {/* {position.regime === 'cross' ? '0,01' : position?.risk.toFixed(2)} */}
+                        {position?.risk.toFixed(2) ?? '--'}
                         <Txt
                             fontFamily={fonts.FSCR}
                             color={position?.RISK > 35 ? colors.yellow : colors.green2}

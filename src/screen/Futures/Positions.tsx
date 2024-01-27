@@ -24,6 +24,7 @@ interface Props {
 }
 
 const Positions = ({ positions }: Props) => {
+    // console.log('positions', positions)
     const theme = useTheme()
     const { t } = useTranslation()
     const dispatch = useAppDispatch()

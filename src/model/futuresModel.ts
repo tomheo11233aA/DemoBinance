@@ -19,6 +19,7 @@ export interface IPositions extends IOpenOrder {
     side: 'buy' | 'sell';
     liquidationPrice: number;
     regime: 'cross' | 'isolated';
+    risk: number;
 }
 
 export interface IFunding {
