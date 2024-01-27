@@ -168,44 +168,50 @@ const Overview = () => {
                                 {numberCommasDot(COIN_PRICE.toFixed(8))}
                             </Txt>
                             <DropDownPicker
-                            open={open}
-                            value={value}
-                            items={items}
-                            setOpen={setOpen}
-                            setValue={setValue}
-                            setItems={setItems}
-                            style={{
-                                marginTop: 5,
-                                borderWidth: 0,
-                                width: '20%',
-                                zIndex: 1,
-                            }}
-                            dropDownContainerStyle={{
-                                width: '30%',
-                                borderWidth: 0,
-                                backgroundColor: '#f5f5f5',
-                                zIndex: 1,
-                            }}
-                            textStyle={{
-                                fontFamily: fonts.BNPM,
-                                fontSize: 14,
-                                color: 'gray',
-                                alignSelf: 'center',
-                            }}
-                            ArrowDownIconComponent={ArrowDownIcon}
-                            ArrowUpIconComponent={ArrowUpIcon}
-                            selectedItemLabelStyle={{ color: theme.black }}
-                            labelStyle={{ color: theme.black }}
-                            listMode='SCROLLVIEW'
-                            showTickIcon={false}
-                            arrowIconContainerStyle={{
-                                marginRight: 0,
-                            }}
-                        />
+                                open={open}
+                                value={value}
+                                items={items}
+                                setOpen={setOpen}
+                                setValue={setValue}
+                                setItems={setItems}
+                                style={{
+                                    marginTop: 5,
+                                    borderWidth: 0,
+                                    width: '20%',
+                                    zIndex: 1,
+                                }}
+                                dropDownContainerStyle={{
+                                    width: '30%',
+                                    borderWidth: 0,
+                                    backgroundColor: '#f5f5f5',
+                                    zIndex: 1,
+                                }}
+                                textStyle={{
+                                    fontFamily: fonts.BNPM,
+                                    fontSize: 14,
+                                    color: 'gray',
+                                    alignSelf: 'center',
+                                }}
+                                ArrowDownIconComponent={ArrowDownIcon}
+                                ArrowUpIconComponent={ArrowUpIcon}
+                                selectedItemLabelStyle={{ color: theme.black }}
+                                labelStyle={{ color: theme.black }}
+                                listMode='SCROLLVIEW'
+                                showTickIcon={false}
+                                arrowIconContainerStyle={{
+                                    marginRight: 0,
+                                }}
+                            />
                         </Box>
-                        <Txt 
-                        fontFamily={fonts.BNPM} color={colors.gray5} marginTop={10} size={14}>
-                            ≈ {numberCommasDot(BALANCE.toFixed(2))}
+                        <Txt
+                            fontFamily={fonts.BNPM}
+                            color={colors.gray77}
+                            marginTop={0}
+                            size={16}
+                            style={{ zIndex: -1 }}
+                        >
+                            {/* ≈ {numberCommasDot(BALANCE.toFixed(2))} */}
+                            ≈ {BALANCE.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                             <Txt color={colors.gray5} size={14} fontFamily={fonts.BNPM}>{' $'}</Txt>
                         </Txt>
                     </>

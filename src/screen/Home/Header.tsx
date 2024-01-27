@@ -35,17 +35,18 @@ const Header = () => {
         >
             <TouchableOpacity onPress={handleMoveProfileScreen}>
                 <Img
-                    source={require('@images/home/user.png')}
+                    source={(require('@images/iconbinance.png'))}
                     width={21}
                     height={22}
                     resizeMode={'stretch'}
+                    radius={7}
                 />
             </TouchableOpacity>
 
             <Box
                 flex={1}
-                height={30}
-                radius={20}
+                height={32}
+                radius={8}
                 justifyCenter
                 marginLeft={15}
                 backgroundColor={theme.gray2}
@@ -54,13 +55,18 @@ const Header = () => {
                     height={40}
                     paddingHorizontal={40}
                     hint={'BTC'}
-                    style={{ fontSize: 16 }}
+                    hintColor={colors.gray77}
+                    style={{ 
+                        fontSize: 14,
+                        fontFamily: fonts.BNPM,
+                        color: colors.black
+                     }}
                     color={colors.grayBlue}
                 />
-                <Box width={20} absolute top={8} left={10}>
+                <Box absolute left={10}>
                     <Icon
                         source={require('@images/home/search.png')}
-                        size={16}
+                        size={15}
                     />
                 </Box>
             </Box>
@@ -71,6 +77,8 @@ const Header = () => {
                         source={require('@images/home/scan.png')}
                         size={16}
                         marginLeft={LEFT}
+                        tintColor={'black'}
+
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -79,6 +87,8 @@ const Header = () => {
                         size={19}
                         marginLeft={LEFT}
                         resizeMode='contain'
+                        tintColor={'black'}
+
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -87,7 +97,8 @@ const Header = () => {
                         size={19}
                         marginLeft={LEFT}
                         resizeMode='contain'
-                        tintColor={colors.gray10}
+                        // tintColor={colors.gray10}
+                        tintColor={'black'}
                     />
                     <Box
                         backgroundColor={colors.yellow}
@@ -95,12 +106,12 @@ const Header = () => {
                         justifyCenter
                         absolute
                         width={19}
-                        height={21}
+                        height={19}
                         radius={50}
                         right={-10}
                         top={-15}
                     >
-                        <Txt size={10} fontFamily={fonts.OL}>0</Txt>
+                        <Txt size={10} fontFamily={fonts.BNPL}>0</Txt>
                     </Box>
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -109,7 +120,8 @@ const Header = () => {
                         size={19}
                         marginLeft={LEFT}
                         resizeMode='contain'
-                        tintColor={colors.gray10}
+                        // tintColor={colors.gray10}
+                        tintColor={'black'}
                     />
                 </TouchableOpacity>
             </Box>
