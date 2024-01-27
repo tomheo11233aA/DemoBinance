@@ -14,7 +14,7 @@ import userSlice from '@slice/userSlice'
 import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
 import contants from '@util/contants'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { io } from 'socket.io-client'
 import { ICoins } from 'src/model/futuresModel'
@@ -22,6 +22,25 @@ import { Profile } from 'src/model/userModel'
 import Button from './Button'
 import Portfolio from './Portfolio'
 import ComingSoon from '@screen/ComingSoon'
+import DropDownPicker from 'react-native-dropdown-picker'
+
+const ArrowDownIcon = () => (
+    <Icon
+        source={require('@images/wallet/arrow-down.png')}
+        size={10}
+        resizeMode={'contain'}
+        marginRight={2}
+    />
+)
+
+const ArrowUpIcon = () => (
+    <Icon
+        source={require('@images/wallet/arrow-up.png')}
+        size={10}
+        resizeMode={'contain'}
+        marginRight={2}
+    />
+)
 
 const Overview = () => {
     const theme = useTheme()
@@ -33,6 +52,15 @@ const Overview = () => {
     const symbol = useAppSelector(symbolFuturesSelector)
     const positions = useAppSelector(positionsFuturesSelector)
     const navigation = useNavigation<any>()
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState('usdt');
+    const [items, setItems] = useState([
+        { label: 'BTC', value: 'btc' },
+        { label: 'ETH', value: 'eth' },
+        { label: 'BNB', value: 'bnb' },
+        { label: 'USDT', value: 'usdt' },
+        { label: 'USD', value: 'usd' },
+    ]);
 
     useEffect(() => {
         handleGetListCoin()
@@ -90,7 +118,7 @@ const Overview = () => {
             <Box paddingHorizontal={20}>
                 <Box row alignCenter justifySpaceBetween>
                     <Box row alignCenter>
-                        <Txt fontFamily={fonts.IBMPR} size={14} color={theme.black}>
+                        <Txt fontType={'normal'} fontFamily={fonts.BNPL} size={14} color={theme.black}>
                             {t('Total Balance') + ' '}
                         </Txt>
                         <Btn onPress={() => dispatch(userSlice.actions.setShowBalance(!showBalance))}>
@@ -129,18 +157,56 @@ const Overview = () => {
                 </Box>
                 {showBalance ?
                     <>
-                        <Txt
-                            fontType={'600'}
-                            size={32}
-                            fontFamily={fonts.BNPM}
-                            marginTop={5}
-                            color={theme.black}
-                        >
-                            ${numberCommasDot(COIN_PRICE.toFixed(8))}
-                        </Txt>
-                        <Txt fontFamily={'Myfont23-Regular'} color={colors.gray5} marginTop={10} size={17}>
+                        <Box row>
+                            <Txt
+                                fontType={'600'}
+                                size={32}
+                                fontFamily={fonts.BNPM}
+                                marginTop={5}
+                                color={theme.black}
+                            >
+                                {numberCommasDot(COIN_PRICE.toFixed(8))}
+                            </Txt>
+                            <DropDownPicker
+                            open={open}
+                            value={value}
+                            items={items}
+                            setOpen={setOpen}
+                            setValue={setValue}
+                            setItems={setItems}
+                            style={{
+                                marginTop: 5,
+                                borderWidth: 0,
+                                width: '20%',
+                                zIndex: 1,
+                            }}
+                            dropDownContainerStyle={{
+                                width: '30%',
+                                borderWidth: 0,
+                                backgroundColor: '#f5f5f5',
+                                zIndex: 1,
+                            }}
+                            textStyle={{
+                                fontFamily: fonts.BNPM,
+                                fontSize: 14,
+                                color: 'gray',
+                                alignSelf: 'center',
+                            }}
+                            ArrowDownIconComponent={ArrowDownIcon}
+                            ArrowUpIconComponent={ArrowUpIcon}
+                            selectedItemLabelStyle={{ color: theme.black }}
+                            labelStyle={{ color: theme.black }}
+                            listMode='SCROLLVIEW'
+                            showTickIcon={false}
+                            arrowIconContainerStyle={{
+                                marginRight: 0,
+                            }}
+                        />
+                        </Box>
+                        <Txt 
+                        fontFamily={fonts.BNPM} color={colors.gray5} marginTop={10} size={14}>
                             ≈ {numberCommasDot(BALANCE.toFixed(2))}
-                            <Txt color={colors.gray5} size={14} fontFamily={fonts.IBMPR}>{' $'}</Txt>
+                            <Txt color={colors.gray5} size={14} fontFamily={fonts.BNPM}>{' $'}</Txt>
                         </Txt>
                     </>
                     :

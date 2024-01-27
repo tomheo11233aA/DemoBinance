@@ -110,8 +110,8 @@ const Balance = ({ balance, t }: Props) => {
                 }}
             >
                 <View>
-                    <Txt fontFamily={fonts.BNPR}
-                    fontType={'normal'}
+                    <Txt fontFamily={fonts.BNPL}
+                        fontType={'normal'}
                         size={14}
                         color={theme.black}
                     >
@@ -204,12 +204,12 @@ const Balance = ({ balance, t }: Props) => {
                     </View>
                     <Txt
                         fontFamily={fonts.BNPM}
-                        color={colors.gray5}
-                        size={13}
+                        color={colors.gray77}
+                        size={16}
                         style={{ zIndex: -1 }}>
                         {/* ≈ {numberCommasDot(balance.toFixed(2))} */}
                         ≈ {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })}
-                        <Txt color={colors.gray5} size={13} fontFamily={fonts.BNPM}>{' $'}</Txt>
+                        <Txt color={colors.gray77} size={16} fontFamily={fonts.BNPM}>{' $'}</Txt>
                     </Txt>
                 </Box>
                 :

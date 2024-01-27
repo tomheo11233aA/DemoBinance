@@ -17,11 +17,12 @@ const Button = ({ t }: any) => {
     const profile: Profile = useAppSelector<any>(profileUserSelector)
 
     return (
-        <Box>
+        <Box zIndex={-1}> 
             <Box row alignCenter marginVertical={10}>
                 <Btn
                     style={styles.btn}
-                    backgroundColor={theme.gray2}
+                    // backgroundColor={theme.gray2}
+                    backgroundColor={colors.yellow}
                     onPress={() => navigate(screen.SPOT_COIN, {
                         coin: {
                             currency: 'USDT',
@@ -49,7 +50,8 @@ const Button = ({ t }: any) => {
                     })}
                     marginLeft={10}
                     style={styles.btn}
-                    backgroundColor={colors.yellow}
+                    // backgroundColor={colors.yellow}
+                    backgroundColor={theme.gray2}
                 >
                     <Txt fontFamily={fonts.IBMPM}>{t('Withdraw')}</Txt>
                 </Btn>

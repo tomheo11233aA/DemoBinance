@@ -84,7 +84,7 @@ const Portfolio = ({ COIN_PRICE, BALANCE, t }: Props) => {
     ]
 
     return (
-        <Box paddingHorizontal={20}>
+        <Box paddingHorizontal={20} zIndex={-1}>
             <Txt marginTop={15} fontFamily={fonts.AS} size={18} marginBottom={10} color={theme.black}>
                 {t('Portfolio')}
             </Txt>

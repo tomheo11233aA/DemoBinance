@@ -46,10 +46,12 @@ const Statistical = ({
                         font={fonts.BNPM}
                         />
                     <Txt style={[styles.txtValue1, { color: theme.black }]}>
-                        {numberCommasDot(TOTAL_MARGIN.toFixed(2))}
+                        {/* {numberCommasDot(TOTAL_MARGIN.toFixed(2))} */}
+                        {TOTAL_MARGIN.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                     </Txt>
                     <Txt style={styles.txtValue2}>
-                        ≈ {numberCommasDot(TOTAL_MARGIN.toFixed(2))}
+                        {/* ≈ {numberCommasDot(TOTAL_MARGIN.toFixed(2))} */}
+                        ≈ {TOTAL_MARGIN.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                         <Txt style={styles.txtDolar}>{' $'}</Txt>
                     </Txt>
                 </Box>
@@ -63,10 +65,12 @@ const Statistical = ({
                         font={fonts.BNPM}
                         />
                     <Txt style={[styles.txtValue1, { color: theme.black }]}>
-                        {numberCommasDot(wallet_balance?.toFixed(2))}
+                        {/* {numberCommasDot(wallet_balance?.toFixed(2))} */}
+                        {wallet_balance?.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                     </Txt>
                     <Txt style={styles.txtValue2}>
-                        ≈ {numberCommasDot(wallet_balance?.toFixed(2))}
+                        {/* ≈ {numberCommasDot(wallet_balance?.toFixed(2))} */}
+                        ≈ {wallet_balance?.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                         <Txt style={styles.txtDolar}>{' $'}</Txt>
                     </Txt>
                 </Box>
@@ -81,10 +85,12 @@ const Statistical = ({
                     font={fonts.BNPM}
                 />
                 <Txt style={[styles.txtValue1, { color: theme.black }]}>
-                    {numberCommasDot(totalPNL?.toFixed(2))}
+                    {/* {numberCommasDot(totalPNL?.toFixed(2))} */}
+                    {totalPNL?.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                 </Txt>
                 <Txt style={styles.txtValue2}>
-                    ≈ {numberCommasDot(totalPNL.toFixed(2))}
+                    {/* ≈ {numberCommasDot(totalPNL.toFixed(2))} */}
+                    ≈ {totalPNL?.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                     <Txt style={styles.txtDolar}>{' $'}</Txt>
                 </Txt>
             </Box>
@@ -103,14 +109,14 @@ const styles = StyleSheet.create({
         marginTop: 5,
     },
     txtValue2: {
-        color: colors.gray5,
+        color: colors.gray77,
         fontSize: 14,
         fontFamily: fonts.BNPM
         // fontFamily: 'Myfont23-Regular'
     },
     txtDolar: {
-        color: colors.gray5,
-        fontFamily: fonts.BNPR,
-        fontSize: 10,
+        color: colors.gray77,
+        fontFamily: fonts.BNPL,
+        fontSize: 14,
     }
 })
