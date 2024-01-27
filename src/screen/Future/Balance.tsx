@@ -13,6 +13,11 @@ import { screen } from '@util/screens'
 import React, { useEffect, useState } from 'react'
 import { View, ActivityIndicator } from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker'
+import { coinsFuturesChartSelector } from '@selector/futuresSelector'
+import { Profile } from 'src/model/userModel'
+import { profileUserSelector } from '@selector/userSelector'
+import { convertToValueSpot } from '@method/format'
+import { walletSpotSelector } from '@selector/spotSelector'
 
 interface Props {
     t: any;
@@ -42,10 +47,13 @@ const Balance = ({ balance, t }: Props) => {
     const dispatch = useAppDispatch()
     const [winingDay, setWiningDay] = useState(0)
     const showBalance = useAppSelector(showBalanceSelector)
+    const wallet = useAppSelector(walletSpotSelector)
+    const coins = useAppSelector(coinsFuturesChartSelector)
+    const profile: Profile = useAppSelector<any>(profileUserSelector)
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState('usdt');
-    const [loading, setLoading] = useState(false);
-
+    const spot = convertToValueSpot(coins, wallet, profile)
+    const [coinBalance, setCoinBalance] = useState(0)
     const [items, setItems] = useState([
         { label: 'BTC', value: 'btc' },
         { label: 'ETH', value: 'eth' },
@@ -56,9 +64,15 @@ const Balance = ({ balance, t }: Props) => {
     useEffect(() => {
         const date = new Date()
         setWiningDay(date.getDate())
-        console.log(balance)
     }, [])
+    useEffect(() => {
+        const selectCoin = spot.coins.find((coin: any) => coin.currency === value.toUpperCase())
+        if (selectCoin) {
+            setCoinBalance(selectCoin.close)
+        }
+    }, [value])
 
+    const balance1 = profile.balance / coinBalance
     return (
         <Box paddingHorizontal={20}>
             <Box marginBottom={15} row alignCenter justifySpaceBetween>
@@ -145,51 +159,47 @@ const Balance = ({ balance, t }: Props) => {
                             fontType={'600'}
                             color={theme.black}
                         >
-                            {/* {numberCommasDot(balance.toFixed(2))} */}
-                            0,00600559
-                            {/* {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })} */}
+                            {value === 'usdt' || value === 'usd' ? balance.toLocaleString('en-US', { maximumFractionDigits: 2 })
+                                : balance1.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                         </Txt>
-                        {
-                            <DropDownPicker
-                                loading={loading}
-                                open={open}
-                                value={value}
-                                items={items}
-                                setOpen={setOpen}
-                                setValue={setValue}
-                                setItems={setItems}
-                                style={{
-                                    borderWidth: 0,
-                                    width: '20%',
-                                    zIndex: 1,
-                                }}
-                                dropDownContainerStyle={{
-                                    width: '25%',
-                                    borderWidth: 0,
-                                    marginTop: 5,
-                                    backgroundColor: '#f5f5f5',
-                                    zIndex: 1,
-                                }}
-                                textStyle={{
-                                    fontFamily: fonts.BNPM,
-                                    fontSize: 13,
-                                    color: 'gray',
-                                    alignSelf: 'center',
-                                }}
-                                ArrowDownIconComponent={ArrowDownIcon}
-                                ArrowUpIconComponent={ArrowUpIcon}
-                                selectedItemLabelStyle={{ color: theme.black }}
-                                labelStyle={{ color: theme.black }}
-                                listMode='SCROLLVIEW'
-                                showTickIcon={false}
-                            />
 
-                        }
+                        <DropDownPicker
+                            open={open}
+                            value={value}
+                            items={items}
+                            setOpen={setOpen}
+                            setValue={setValue}
+                            setItems={setItems}
+                            style={{
+                                borderWidth: 0,
+                                width: '20%',
+                                zIndex: 1,
+                            }}
+                            dropDownContainerStyle={{
+                                width: '30%',
+                                borderWidth: 0,
+                                backgroundColor: '#f5f5f5',
+                                zIndex: 1,
+                            }}
+                            textStyle={{
+                                fontFamily: fonts.BNPM,
+                                fontSize: 13,
+                                color: 'gray',
+                                alignSelf: 'center',
+                            }}
+                            ArrowDownIconComponent={ArrowDownIcon}
+                            ArrowUpIconComponent={ArrowUpIcon}
+                            selectedItemLabelStyle={{ color: theme.black }}
+                            labelStyle={{ color: theme.black }}
+                            listMode='SCROLLVIEW'
+                            showTickIcon={false}
+                        />
+
+
                     </View>
-                    <Txt fontFamily={fonts.BNPM} color={colors.gray5} size={15}>
+                    <Txt fontFamily={fonts.BNPM} color={colors.gray5} size={15} style={{ zIndex: -1 }}>
                         {/* ≈ {numberCommasDot(balance.toFixed(2))} */}
-                        {/* ≈ {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })} */}
-                        ≈ 240,78
+                        ≈ {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                         <Txt color={colors.gray5} size={15} fontFamily={fonts.BNPM}>{' $'}</Txt>
                     </Txt>
                 </Box>

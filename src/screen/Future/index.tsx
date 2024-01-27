@@ -34,7 +34,6 @@ const Future = () => {
     const profile: Profile = useAppSelector<any>(profileUserSelector)
     const positions = useAppSelector(positionsFuturesSelector)
     const navigation = useNavigation<any>()
-
     useEffect(() => {
         handleGetListCoin()
     }, [])

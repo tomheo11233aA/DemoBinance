@@ -28,7 +28,26 @@ interface Props {
     spot: ISpot;
 }
 
+const ArrowDownIcon = () => (
+    <Icon
+        source={require('@images/wallet/arrow-down.png')}
+        size={10}
+        resizeMode={'contain'}
+        marginRight={2}
+    />
+)
+
+const ArrowUpIcon = () => (
+    <Icon
+        source={require('@images/wallet/arrow-up.png')}
+        size={10}
+        resizeMode={'contain'}
+        marginRight={2}
+    />
+)
+
 const Balance = ({ spot }: Props) => {
+    // console.log('spot', spot)
     const theme = useTheme()
     const showBalance = useAppSelector(showBalanceSelector)
     const profile: Profile = useAppSelector<any>(profileUserSelector)
@@ -97,7 +116,7 @@ const Balance = ({ spot }: Props) => {
     const selectedCoin = spot.coins.find((coin: any) => coin.currency.toLowerCase() === value)
     const displayBalance = value === 'usd' ? spot.coins.find((coin: any) => coin.currency.toLowerCase() === 'usdt')?.balance : selectedCoin?.balance || 0
     const displayExchangeRate = value === 'usd' ? spot.coins.find((coin: any) => coin.currency.toLowerCase() === 'usdt')?.exchangeRate : selectedCoin?.exchangeRate || 0
-    
+
     return (
         <Box
             paddingHorizontal={20}
@@ -136,8 +155,8 @@ const Balance = ({ spot }: Props) => {
                         }}
                     >
                         <Txt size={29} fontFamily={'Myfont24-Regular'} marginTop={5} color={theme.black}>
-                            {/* {numberCommasDot(spot.balanceSpot)} */}
-                            {numberCommasDot(displayBalance.toFixed(2))}
+                            {numberCommasDot(spot.balanceSpot)}
+                            {/* {numberCommasDot(displayBalance.toFixed(2))} */}
                         </Txt>
                         <DropDownPicker
                             open={open}
@@ -164,26 +183,11 @@ const Balance = ({ spot }: Props) => {
                                 color: 'gray',
                                 alignSelf: 'center',
                             }}
-                            ArrowDownIconComponent={() => {
-                                return (
-                                    <Icon
-                                        source={require('@images/wallet/arrow-down.png')}
-                                        size={10}
-                                        resizeMode={'contain'}
-                                    />
-                                )
-                            }}
-                            ArrowUpIconComponent={() => {
-                                return (
-                                    <Icon
-                                        source={require('@images/wallet/arrow-up.png')}
-                                        size={10}
-                                        resizeMode={'contain'}
-                                    />
-                                )
-                            }}
-                            selectedItemLabelStyle={{color: theme.black}}
-                            labelStyle={{color: theme.black}}
+                            ArrowDownIconComponent={ArrowDownIcon}
+                            ArrowUpIconComponent={ArrowUpIcon}
+                            selectedItemLabelStyle={{ color: theme.black }}
+                            labelStyle={{ color: theme.black }}
+                            showTickIcon={false}
                         />
                     </Box>
                     <Txt

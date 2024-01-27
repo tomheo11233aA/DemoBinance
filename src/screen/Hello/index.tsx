@@ -26,7 +26,6 @@ const Hello = ({ navigation }: any) => {
             dispatch(userSlice.actions.setTheme(theme))
 
             const token = await AsyncStorage.getItem(contants.TOKEN) || null
-            console.log(token)
             if (token) {
                 await dispatch(getProfileThunkUserID())
             }
