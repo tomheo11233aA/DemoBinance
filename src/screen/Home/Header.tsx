@@ -65,11 +65,11 @@ const Header = () => {
                      }}
                     color={colors.grayBlue}
                 />
-                <Box absolute left={10}>
+                <Box absolute left={12}>
                     <Icon
                         source={require('@images/home/search.png')}
                         // size={15}
-                        size={wp(3.5)}
+                        size={wp(2.8)}
                     />
                 </Box>
             </Box>
@@ -119,8 +119,8 @@ const Header = () => {
                         width={hp(1.6)}
                         height={hp(1.6)}
                         radius={50}
-                        right={-hp(1.2)}
-                        top={-hp(1.1)}
+                        right={-hp(0.6)}
+                        top={-hp(0.7)}
                     >
                         <Txt size={10} fontFamily={fonts.BNPL}>0</Txt>
                     </Box>
