@@ -12,6 +12,7 @@ import { screen } from '@util/screens'
 import React from 'react'
 import { Platform, TouchableOpacity } from 'react-native'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
+import Notification from '../../assets/images/svg/notification.svg'
 
 const LEFT = 20
 
@@ -79,7 +80,7 @@ const Header = () => {
                         // size={16}
                         size={hp(1.6)}
                         marginLeft={LEFT}
-                        tintColor={'black'}
+                        tintColor={'#1E2329'}
 
                     />
                 </TouchableOpacity>
@@ -90,19 +91,24 @@ const Header = () => {
                         size={hp(1.6)}
                         marginLeft={LEFT}
                         resizeMode='contain'
-                        tintColor={'black'}
+                        tintColor={'#1E2329'}
 
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Icon
+                    {/* <Icon
                         source={require('@images/home/bell.png')}
-                        // size={19}
                         size={hp(1.6)}
                         marginLeft={LEFT}
                         resizeMode='contain'
-                        // tintColor={colors.gray10}
-                        tintColor={'black'}
+                        tintColor={'#1E2329'}
+                    /> */}
+                    <Notification
+                        width={25}
+                        height={22}
+                        style={{
+                            marginLeft: LEFT,
+                        }}
                     />
                     <Box
                         backgroundColor={colors.yellow}
@@ -126,7 +132,7 @@ const Header = () => {
                         marginLeft={LEFT}
                         resizeMode='contain'
                         // tintColor={colors.gray10}
-                        tintColor={'black'}
+                        tintColor={'#1E2329'}
                     />
                 </TouchableOpacity>
             </Box>
