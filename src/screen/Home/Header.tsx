@@ -38,8 +38,10 @@ const Header = () => {
             <TouchableOpacity onPress={handleMoveProfileScreen}>
                 <Img
                     source={(require('@images/iconbinance.png'))}
-                    width={21}
-                    height={22}
+                    // width={21}
+                    // height={22}
+                    width={wp(5.5)}
+                    height={hp(2.5)}
                     resizeMode={'stretch'}
                     radius={7}
                 />
@@ -47,14 +49,14 @@ const Header = () => {
 
             <Box
                 flex={1}
-                height={hp(4)}
+                height={hp(3.5)}
                 radius={8}
                 justifyCenter
                 marginLeft={15}
                 backgroundColor={theme.gray2}
             >
                 <Input
-                    paddingHorizontal={40}
+                    paddingHorizontal={30}
                     hint={'BTC'}
                     hintColor={colors.gray77}
                     style={{ 
@@ -96,20 +98,20 @@ const Header = () => {
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    {/* <Icon
-                        source={require('@images/home/bell.png')}
-                        size={hp(1.6)}
+                    <Icon
+                        source={require('@images/myHome/notification.png')}
+                        size={hp(2)}
                         marginLeft={LEFT}
                         resizeMode='contain'
                         tintColor={'#1E2329'}
-                    /> */}
-                    <Notification
+                    />
+                    {/* <Notification
                         width={25}
                         height={22}
                         style={{
                             marginLeft: LEFT,
                         }}
-                    />
+                    /> */}
                     <Box
                         backgroundColor={colors.yellow}
                         alignCenter
