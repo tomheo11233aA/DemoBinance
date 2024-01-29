@@ -478,7 +478,7 @@ PODS:
   - RNScreens (3.27.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
-  - RNSVG (13.14.0):
+  - RNSVG (14.1.0):
     - React-Core
   - SocketRocket (0.6.1)
   - TOCropViewController (2.6.1)
@@ -751,7 +751,7 @@ SPEC CHECKSUMS:
   RNReactNativeHapticFeedback: ec56a5f81c3941206fd85625fa669ffc7b4545f9
   RNReanimated: f186e85d9f28c9383d05ca39e11dd194f59093ec
   RNScreens: 3c2d122f5e08c192e254c510b212306da97d2581
-  RNSVG: d00c8f91c3cbf6d476451313a18f04d220d4f396
+  RNSVG: ba3e7232f45e34b7b47e74472386cf4e1a676d0a
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
   VisionCamera: 99dc0cb2770ab1a4bb0d8dc35d5961bb640767cd
