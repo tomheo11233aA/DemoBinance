@@ -38,8 +38,6 @@ const Header = () => {
             <TouchableOpacity onPress={handleMoveProfileScreen}>
                 <Img
                     source={(require('@images/iconbinance.png'))}
-                    // width={21}
-                    // height={22}
                     width={wp(5.5)}
                     height={hp(2.5)}
                     resizeMode={'stretch'}
