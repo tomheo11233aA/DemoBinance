@@ -3,6 +3,7 @@ import Btn from '@commom/Btn'
 import Icon from '@commom/Icon'
 import Txt from '@commom/Txt'
 import { useTheme } from '@hooks/index'
+import { colors } from '@theme/colors'
 import React from 'react'
 import { ImageSourcePropType } from 'react-native'
 
@@ -27,12 +28,17 @@ const ItemOption = ({
             onPress={onPress}
         >
             <Box
-                width={41}
-                height={41}
-                radius={50}
-                alignCenter
-                justifyCenter
-                backgroundColor={theme.gray2}
+                width={50}
+                height={50}
+                radius={15}
+                // alignCenter
+                // justifyCenter
+                borderWidth={0.5}
+                borderColor={colors.gray3}
+                style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}
             >
                 <Icon
                     source={icon}

@@ -206,7 +206,8 @@ const Balance = ({ balance, t }: Props) => {
                         fontFamily={fonts.BNPM}
                         color={colors.gray77}
                         size={16}
-                        style={{ zIndex: -1 }}>
+                        style={{ zIndex: -1 }}
+                    >
                         {/* ≈ {numberCommasDot(balance.toFixed(2))} */}
                         ≈ {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                         <Txt color={colors.gray77} size={16} fontFamily={fonts.BNPM}>{' $'}</Txt>

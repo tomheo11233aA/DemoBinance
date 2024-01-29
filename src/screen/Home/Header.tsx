@@ -11,6 +11,7 @@ import { fonts } from '@theme/fonts'
 import { screen } from '@util/screens'
 import React from 'react'
 import { Platform, TouchableOpacity } from 'react-native'
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 
 const LEFT = 20
 
@@ -45,14 +46,13 @@ const Header = () => {
 
             <Box
                 flex={1}
-                height={32}
+                height={hp(4)}
                 radius={8}
                 justifyCenter
                 marginLeft={15}
                 backgroundColor={theme.gray2}
             >
                 <Input
-                    height={40}
                     paddingHorizontal={40}
                     hint={'BTC'}
                     hintColor={colors.gray77}
@@ -66,7 +66,8 @@ const Header = () => {
                 <Box absolute left={10}>
                     <Icon
                         source={require('@images/home/search.png')}
-                        size={15}
+                        // size={15}
+                        size={wp(3.5)}
                     />
                 </Box>
             </Box>
@@ -75,7 +76,8 @@ const Header = () => {
                 <TouchableOpacity>
                     <Icon
                         source={require('@images/home/scan.png')}
-                        size={16}
+                        // size={16}
+                        size={hp(1.6)}
                         marginLeft={LEFT}
                         tintColor={'black'}
 
@@ -84,7 +86,8 @@ const Header = () => {
                 <TouchableOpacity>
                     <Icon
                         source={require('@images/profile/cskh.png')}
-                        size={19}
+                        // size={19}
+                        size={hp(1.6)}
                         marginLeft={LEFT}
                         resizeMode='contain'
                         tintColor={'black'}
@@ -94,7 +97,8 @@ const Header = () => {
                 <TouchableOpacity>
                     <Icon
                         source={require('@images/home/bell.png')}
-                        size={19}
+                        // size={19}
+                        size={hp(1.6)}
                         marginLeft={LEFT}
                         resizeMode='contain'
                         // tintColor={colors.gray10}
@@ -105,11 +109,11 @@ const Header = () => {
                         alignCenter
                         justifyCenter
                         absolute
-                        width={19}
-                        height={19}
+                        width={hp(1.6)}
+                        height={hp(1.6)}
                         radius={50}
-                        right={-10}
-                        top={-15}
+                        right={-hp(1.2)}
+                        top={-hp(1.1)}
                     >
                         <Txt size={10} fontFamily={fonts.BNPL}>0</Txt>
                     </Box>
@@ -117,7 +121,8 @@ const Header = () => {
                 <TouchableOpacity>
                     <Icon
                         source={require('@images/home/hand-coin.png')}
-                        size={19}
+                        // size={19}
+                        size={hp(1.6)}
                         marginLeft={LEFT}
                         resizeMode='contain'
                         // tintColor={colors.gray10}

@@ -18,6 +18,7 @@ import { screen } from "@util/screens";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Profile } from "src/model/userModel";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
 
 export default () => {
     const theme = useTheme()
@@ -72,7 +73,12 @@ export default () => {
         >
             <Box>
                 <Box row alignCenter>
-                    <Txt size={10} color={theme.black}>
+                    <Txt
+                        color={theme.black}
+                        fontFamily={fonts.BNPL}
+                        fontType={'normal'}
+                        size={14}
+                    >
                         {t('Total (USDT)')}
                     </Txt>
                     <Icon
@@ -85,29 +91,39 @@ export default () => {
                 {!hide ?
                     <>
                         <Box row alignCenter marginVertical={7}>
-                            <Txt fontFamily={fonts.M24} size={25} color={theme.black}>
-                                {numberCommasDot(BALANCE?.toFixed(2))}
+                            <Txt
+                                // fontFamily={fonts.M24}
+                                // size={25}
+                                // color={theme.black}
+                                size={32}
+                                fontFamily={fonts.BNPM}
+                                fontType={'600'}
+                                color={theme.black}
+                            >
+                                {/* {numberCommasDot(BALANCE?.toFixed(2))} */}
+                                {BALANCE.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                             </Txt>
-                            <Btn
+                            {/* <Btn
                                 onPress={() => setHide(true)}
                             >
                                 <Icon
-                                    size={20}
+                                    // size={20}
+                                    size={hp(1.6)}
                                     marginLeft={5}
                                     source={require('@images/wallet/eye-open.png')}
                                 />
-                            </Btn>
+                            </Btn> */}
                         </Box>
 
                         <Box row alignCenter>
-                            <Txt size={11} color={colors.grayBlue2}>
-                                {'≈ '}
-                                <Txt size={15} color={colors.grayBlue2} fontFamily={fonts.M23}>
-                                    {numberCommasDot(BALANCE?.toFixed(2))}
-                                </Txt>
-                            </Txt>
-                            <Txt size={11} color={colors.grayBlue2}>
-                                {' $'}
+                            <Txt
+                                fontFamily={fonts.BNPM}
+                                color={colors.grayBlue2}
+                                size={16}
+                                style={{ zIndex: -1 }}
+                            >
+                                ≈ {BALANCE.toLocaleString('en-US', { maximumFractionDigits: 2 })}
+                                <Txt color={colors.grayBlue2} size={16} fontFamily={fonts.BNPM}>{' $'}</Txt>
                             </Txt>
                         </Box>
                     </> :

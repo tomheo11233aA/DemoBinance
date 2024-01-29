@@ -10,6 +10,9 @@ import { isLoginUserSelector, profileUserSelector } from '@selector/userSelector
 import { navigate } from '@navigation/navigationRef'
 import { screen } from '@util/screens'
 import { Profile } from 'src/model/userModel'
+import Recharge from '../../assets/images/svg/recharge.svg'
+import { colors } from '@theme/colors'
+
 
 const Options = () => {
     const theme = useTheme()
@@ -32,11 +35,46 @@ const Options = () => {
             marginTop={30}
             justifySpaceAround
         >
-            <ItemOption
+            {/* <ItemOption
                 onPress={handle}
                 title={t('Binance Academy')}
                 icon={require('@images/home/hat.png')}
-            />
+            /> */}
+            <Btn
+                width={60}
+                alignCenter
+                onPress={() => {}}
+            >
+                <Box
+                    width={50}
+                    height={50}
+                    radius={15}
+                    // alignCenter
+                    // justifyCenter
+                    borderWidth={0.5}
+                    borderColor={colors.gray3}
+                    style={{
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    {/* <Icon
+                        source={icon}
+                        resizeMode={'contain'}
+                        size={size}
+                    /> */}
+                    <Recharge width={30} height={30} />
+                </Box>
+                <Txt
+                    color={theme.black}
+                    numberOfLines={2}
+                    size={10}
+                    center
+                    marginTop={5}
+                >
+                    {t('Recharge')}
+                </Txt>
+            </Btn>
             <ItemOption
                 onPress={() => {
                     if (!isLogin) {
