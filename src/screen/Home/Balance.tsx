@@ -79,7 +79,8 @@ export default () => {
                         fontType={'normal'}
                         size={14}
                     >
-                        {t('Total (USDT)')}
+                        {t('Total Balance')}
+                        {' (USDT)'}
                     </Txt>
                     <Icon
                         size={11}

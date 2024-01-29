@@ -54,7 +54,8 @@ const Header = () => {
                 backgroundColor={theme.gray2}
             >
                 <Input
-                    paddingHorizontal={30}
+                    // paddingHorizontal={30}
+                    paddingHorizontal={wp(8)}
                     hint={'BTC'}
                     hintColor={colors.gray77}
                     style={{ 
