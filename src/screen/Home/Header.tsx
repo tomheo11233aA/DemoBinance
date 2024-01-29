@@ -119,8 +119,8 @@ const Header = () => {
                         width={hp(1.6)}
                         height={hp(1.6)}
                         radius={50}
-                        right={-hp(0.6)}
-                        top={-hp(0.7)}
+                        right={-hp(0.9)}
+                        top={-hp(0.8)}
                     >
                         <Txt size={10} fontFamily={fonts.BNPL}>0</Txt>
                     </Box>

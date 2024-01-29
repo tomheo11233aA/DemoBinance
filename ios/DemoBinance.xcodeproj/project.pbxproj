@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* DemoBinanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* DemoBinanceTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-DemoBinance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-DemoBinance.a */; };
 		0EEE16BD00AB44EBB62DC69A /* Outfit-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2BFBF4CCA6842949468F60A /* Outfit-SemiBold.ttf */; };
 		125CB68BAACE4554888F337E /* BinancePlex-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6278DB6D7BB447EAB0A47AE9 /* BinancePlex-Regular.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
@@ -19,17 +18,18 @@
 		2F6A476E8E6E4A6B82309AC8 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56BA459080514521B9184006 /* Roboto-Medium.ttf */; };
 		3867FC015BC0485C810F7FA9 /* Oswald-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EBFBA9B65B346E181ECCB66 /* Oswald-SemiBold.ttf */; };
 		6164744C2F8D48A5B36282DB /* Myfont16-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6A3948F8DD843C9AF0446FA /* Myfont16-Regular.ttf */; };
+		63D973F1053FDC4178DED968 /* libPods-Binance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6DC66AC1B00B2E02ACBB3EC /* libPods-Binance.a */; };
 		6B85930FB011462EB38FD327 /* OpenSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0115C3ABC2A94173B6D9F3F0 /* OpenSans-Medium.ttf */; };
 		71E1C6C94E6641A78E4A421F /* IBMPlexSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFC4E1440FCE4DE09ADB2791 /* IBMPlexSans-Bold.ttf */; };
 		75718A37C4454030B320DDBC /* Myfont21-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77692C42282843449A7161C0 /* Myfont21-Regular.ttf */; };
 		7647F66A8117424E923770A6 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D89372F0543747B685955AC5 /* Lato-Regular.ttf */; };
-		7699B88040F8A987B510C191 /* libPods-DemoBinance-DemoBinanceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-DemoBinance-DemoBinanceTests.a */; };
 		7EB08E30C5B24CC7A8FD9EA0 /* Outfit-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73742F5F51E04FF0A5D12DAD /* Outfit-Light.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8B172B6D8D484BB5A6420E3C /* Myfont23-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 61D435A7B73E4D169A544C8C /* Myfont23-Regular.ttf */; };
 		9057DA7688164FEE85DFF6CA /* Anuphan-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70115904C5E64D88B44C8EBD /* Anuphan-SemiBold.ttf */; };
 		908D318E100E47EB9A39C521 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD13B50AD49241319CF358C4 /* OpenSans-Bold.ttf */; };
 		977681ADA26C4F5BB6830182 /* Jost-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7970E731EA0646ADAF3396A2 /* Jost-Regular.ttf */; };
+		A2B81466EC7E324AB5EE136D /* libPods-Binance-BinanceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FED2B8895E214D0A77DD09 /* libPods-Binance-BinanceTests.a */; };
 		AB1B2B6858FE4742B53DC6C8 /* Myfont20-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81438EC87BE64B15A5437ABC /* Myfont20-Regular.ttf */; };
 		ADB9581F818D41B6A680D851 /* SchibstedGrotesk-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45B33303EF5D42FF832255DC /* SchibstedGrotesk-Medium.ttf */; };
 		B6885B08F7CA480084A2B0AD /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06B54F66D1C642888507DB81 /* OpenSans-Light.ttf */; };
@@ -55,32 +55,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* DemoBinanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoBinanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* BinanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BinanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* DemoBinanceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoBinanceTests.m; sourceTree = "<group>"; };
-		0115C3ABC2A94173B6D9F3F0 /* OpenSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Medium.ttf"; path = "../src/assets/fonts/OpenSans-Medium.ttf"; sourceTree = "<group>"; };
+		0115C3ABC2A94173B6D9F3F0 /* OpenSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Medium.ttf"; path = "../src/assets/fonts/OpenSans-Medium.ttf"; sourceTree = "<group>"; };
 		018A7DC7A117479883172BEB /* IBMPlexSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Regular.ttf"; path = "../src/assets/fonts/IBMPlexSans-Regular.ttf"; sourceTree = "<group>"; };
-		06B54F66D1C642888507DB81 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Light.ttf"; path = "../src/assets/fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
-		0B5E3C1863D04DB8A739B0F7 /* BinancePlex-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BinancePlex-Light.ttf"; path = "../src/assets/fonts/BinancePlex-Light.ttf"; sourceTree = "<group>"; };
+		06B54F66D1C642888507DB81 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Light.ttf"; path = "../src/assets/fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		0752E18E86715EA1B5ECC324 /* Pods-Binance-BinanceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Binance-BinanceTests.release.xcconfig"; path = "Target Support Files/Pods-Binance-BinanceTests/Pods-Binance-BinanceTests.release.xcconfig"; sourceTree = "<group>"; };
+		0B5E3C1863D04DB8A739B0F7 /* BinancePlex-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BinancePlex-Light.ttf"; path = "../src/assets/fonts/BinancePlex-Light.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* DemoBinance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoBinance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = DemoBinance/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = DemoBinance/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = DemoBinance/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = DemoBinance/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = DemoBinance/main.m; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-DemoBinance-DemoBinanceTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DemoBinance-DemoBinanceTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DBDAE0C3D13497CA7239D7E /* Myfont22-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Myfont22-Regular.ttf"; path = "../src/assets/fonts/Myfont22-Regular.ttf"; sourceTree = "<group>"; };
-		2CA4A1D09A524AA4B309A220 /* IBMPlexSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Light.ttf"; path = "../src/assets/fonts/IBMPlexSans-Light.ttf"; sourceTree = "<group>"; };
+		2CA4A1D09A524AA4B309A220 /* IBMPlexSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Light.ttf"; path = "../src/assets/fonts/IBMPlexSans-Light.ttf"; sourceTree = "<group>"; };
 		3808894C670E49B29C7F1D19 /* Myfont17-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Myfont17-Regular.ttf"; path = "../src/assets/fonts/Myfont17-Regular.ttf"; sourceTree = "<group>"; };
+		3902F2A0F42384956FC915AE /* Pods-Binance-BinanceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Binance-BinanceTests.debug.xcconfig"; path = "Target Support Files/Pods-Binance-BinanceTests/Pods-Binance-BinanceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-DemoBinance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoBinance.debug.xcconfig"; path = "Target Support Files/Pods-DemoBinance/Pods-DemoBinance.debug.xcconfig"; sourceTree = "<group>"; };
+		40FED2B8895E214D0A77DD09 /* libPods-Binance-BinanceTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Binance-BinanceTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45B33303EF5D42FF832255DC /* SchibstedGrotesk-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SchibstedGrotesk-Medium.ttf"; path = "../src/assets/fonts/SchibstedGrotesk-Medium.ttf"; sourceTree = "<group>"; };
+		569B1D7A4FD86069BF63DCDB /* Pods-Binance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Binance.debug.xcconfig"; path = "Target Support Files/Pods-Binance/Pods-Binance.debug.xcconfig"; sourceTree = "<group>"; };
 		56BA459080514521B9184006 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../src/assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-DemoBinance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoBinance.release.xcconfig"; path = "Target Support Files/Pods-DemoBinance/Pods-DemoBinance.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-DemoBinance-DemoBinanceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoBinance-DemoBinanceTests.debug.xcconfig"; path = "Target Support Files/Pods-DemoBinance-DemoBinanceTests/Pods-DemoBinance-DemoBinanceTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-DemoBinance.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DemoBinance.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EBFBA9B65B346E181ECCB66 /* Oswald-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Oswald-SemiBold.ttf"; path = "../src/assets/fonts/Oswald-SemiBold.ttf"; sourceTree = "<group>"; };
 		61D435A7B73E4D169A544C8C /* Myfont23-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Myfont23-Regular.ttf"; path = "../src/assets/fonts/Myfont23-Regular.ttf"; sourceTree = "<group>"; };
-		6278DB6D7BB447EAB0A47AE9 /* BinancePlex-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BinancePlex-Regular.ttf"; path = "../src/assets/fonts/BinancePlex-Regular.ttf"; sourceTree = "<group>"; };
+		6278DB6D7BB447EAB0A47AE9 /* BinancePlex-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BinancePlex-Regular.ttf"; path = "../src/assets/fonts/BinancePlex-Regular.ttf"; sourceTree = "<group>"; };
+		673D6EE3955EB8EDDDC2991A /* Pods-Binance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Binance.release.xcconfig"; path = "Target Support Files/Pods-Binance/Pods-Binance.release.xcconfig"; sourceTree = "<group>"; };
 		70115904C5E64D88B44C8EBD /* Anuphan-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Anuphan-SemiBold.ttf"; path = "../src/assets/fonts/Anuphan-SemiBold.ttf"; sourceTree = "<group>"; };
 		73742F5F51E04FF0A5D12DAD /* Outfit-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Outfit-Light.ttf"; path = "../src/assets/fonts/Outfit-Light.ttf"; sourceTree = "<group>"; };
 		77692C42282843449A7161C0 /* Myfont21-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Myfont21-Regular.ttf"; path = "../src/assets/fonts/Myfont21-Regular.ttf"; sourceTree = "<group>"; };
@@ -91,15 +94,16 @@
 		9E36222A8E2C4161ABA7E9B1 /* Myfont24-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Myfont24-Regular.ttf"; path = "../src/assets/fonts/Myfont24-Regular.ttf"; sourceTree = "<group>"; };
 		B923F6723B6241A6BFE0E629 /* Myfont31-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Myfont31-Regular.ttf"; path = "../src/assets/fonts/Myfont31-Regular.ttf"; sourceTree = "<group>"; };
 		BD03D2441BEA4F4D954C8A73 /* FiraSansCondensed-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSansCondensed-Regular.ttf"; path = "../src/assets/fonts/FiraSansCondensed-Regular.ttf"; sourceTree = "<group>"; };
-		BFC4E1440FCE4DE09ADB2791 /* IBMPlexSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Bold.ttf"; path = "../src/assets/fonts/IBMPlexSans-Bold.ttf"; sourceTree = "<group>"; };
+		BFC4E1440FCE4DE09ADB2791 /* IBMPlexSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Bold.ttf"; path = "../src/assets/fonts/IBMPlexSans-Bold.ttf"; sourceTree = "<group>"; };
 		C2BFBF4CCA6842949468F60A /* Outfit-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Outfit-SemiBold.ttf"; path = "../src/assets/fonts/Outfit-SemiBold.ttf"; sourceTree = "<group>"; };
-		C85767D818F04E7485E0CE44 /* BinancePlex-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BinancePlex-Medium.ttf"; path = "../src/assets/fonts/BinancePlex-Medium.ttf"; sourceTree = "<group>"; };
+		C85767D818F04E7485E0CE44 /* BinancePlex-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BinancePlex-Medium.ttf"; path = "../src/assets/fonts/BinancePlex-Medium.ttf"; sourceTree = "<group>"; };
 		CBD11CA31FBF4C61B700A373 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Medium.ttf"; path = "../src/assets/fonts/IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
-		CD13B50AD49241319CF358C4 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Bold.ttf"; path = "../src/assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
-		CE35E15760E44204B47AF486 /* BinancePlex-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BinancePlex-SemiBold.ttf"; path = "../src/assets/fonts/BinancePlex-SemiBold.ttf"; sourceTree = "<group>"; };
+		CD13B50AD49241319CF358C4 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Bold.ttf"; path = "../src/assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		CE35E15760E44204B47AF486 /* BinancePlex-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BinancePlex-SemiBold.ttf"; path = "../src/assets/fonts/BinancePlex-SemiBold.ttf"; sourceTree = "<group>"; };
 		D89372F0543747B685955AC5 /* Lato-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Regular.ttf"; path = "../src/assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
 		E6A3948F8DD843C9AF0446FA /* Myfont16-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Myfont16-Regular.ttf"; path = "../src/assets/fonts/Myfont16-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F6DC66AC1B00B2E02ACBB3EC /* libPods-Binance.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Binance.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-DemoBinance-DemoBinanceTests.a in Frameworks */,
+				A2B81466EC7E324AB5EE136D /* libPods-Binance-BinanceTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-DemoBinance.a in Frameworks */,
+				63D973F1053FDC4178DED968 /* libPods-Binance.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,8 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-DemoBinance.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-DemoBinance-DemoBinanceTests.a */,
+				F6DC66AC1B00B2E02ACBB3EC /* libPods-Binance.a */,
+				40FED2B8895E214D0A77DD09 /* libPods-Binance-BinanceTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -189,7 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* DemoBinance.app */,
-				00E356EE1AD99517003FC87E /* DemoBinanceTests.xctest */,
+				00E356EE1AD99517003FC87E /* BinanceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -236,6 +240,10 @@
 				5709B34CF0A7D63546082F79 /* Pods-DemoBinance.release.xcconfig */,
 				5B7EB9410499542E8C5724F5 /* Pods-DemoBinance-DemoBinanceTests.debug.xcconfig */,
 				89C6BE57DB24E9ADA2F236DE /* Pods-DemoBinance-DemoBinanceTests.release.xcconfig */,
+				569B1D7A4FD86069BF63DCDB /* Pods-Binance.debug.xcconfig */,
+				673D6EE3955EB8EDDDC2991A /* Pods-Binance.release.xcconfig */,
+				3902F2A0F42384956FC915AE /* Pods-Binance-BinanceTests.debug.xcconfig */,
+				0752E18E86715EA1B5ECC324 /* Pods-Binance-BinanceTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -243,9 +251,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* DemoBinanceTests */ = {
+		00E356ED1AD99517003FC87E /* BinanceTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "DemoBinanceTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "BinanceTests" */;
 			buildPhases = (
 				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -259,14 +267,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = DemoBinanceTests;
+			name = BinanceTests;
 			productName = DemoBinanceTests;
-			productReference = 00E356EE1AD99517003FC87E /* DemoBinanceTests.xctest */;
+			productReference = 00E356EE1AD99517003FC87E /* BinanceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* DemoBinance */ = {
+		13B07F861A680F5B00A75B9A /* Binance */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "DemoBinance" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Binance" */;
 			buildPhases = (
 				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -281,7 +289,7 @@
 			);
 			dependencies = (
 			);
-			name = DemoBinance;
+			name = Binance;
 			productName = DemoBinance;
 			productReference = 13B07F961A680F5B00A75B9A /* DemoBinance.app */;
 			productType = "com.apple.product-type.application";
@@ -292,7 +300,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
@@ -316,8 +324,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* DemoBinance */,
-				00E356ED1AD99517003FC87E /* DemoBinanceTests */,
+				13B07F861A680F5B00A75B9A /* Binance */,
+				00E356ED1AD99517003FC87E /* BinanceTests */,
 			);
 		};
 /* End PBXProject section */
@@ -392,15 +400,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DemoBinance/Pods-DemoBinance-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Binance/Pods-Binance-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DemoBinance/Pods-DemoBinance-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Binance/Pods-Binance-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DemoBinance/Pods-DemoBinance-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Binance/Pods-Binance-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
@@ -418,7 +426,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DemoBinance-DemoBinanceTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Binance-BinanceTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -440,7 +448,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DemoBinance-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Binance-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -453,15 +461,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DemoBinance-DemoBinanceTests/Pods-DemoBinance-DemoBinanceTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Binance-BinanceTests/Pods-Binance-BinanceTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DemoBinance-DemoBinanceTests/Pods-DemoBinance-DemoBinanceTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Binance-BinanceTests/Pods-Binance-BinanceTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DemoBinance-DemoBinanceTests/Pods-DemoBinance-DemoBinanceTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Binance-BinanceTests/Pods-Binance-BinanceTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
@@ -470,15 +478,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DemoBinance/Pods-DemoBinance-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Binance/Pods-Binance-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DemoBinance/Pods-DemoBinance-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Binance/Pods-Binance-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DemoBinance/Pods-DemoBinance-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Binance/Pods-Binance-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
@@ -487,15 +495,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DemoBinance-DemoBinanceTests/Pods-DemoBinance-DemoBinanceTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Binance-BinanceTests/Pods-Binance-BinanceTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DemoBinance-DemoBinanceTests/Pods-DemoBinance-DemoBinanceTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Binance-BinanceTests/Pods-Binance-BinanceTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DemoBinance-DemoBinanceTests/Pods-DemoBinance-DemoBinanceTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Binance-BinanceTests/Pods-Binance-BinanceTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -542,7 +550,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* DemoBinance */;
+			target = 13B07F861A680F5B00A75B9A /* Binance */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -550,8 +558,9 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-DemoBinance-DemoBinanceTests.debug.xcconfig */;
+			baseConfigurationReference = 3902F2A0F42384956FC915AE /* Pods-Binance-BinanceTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -577,8 +586,9 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-DemoBinance-DemoBinanceTests.release.xcconfig */;
+			baseConfigurationReference = 0752E18E86715EA1B5ECC324 /* Pods-Binance-BinanceTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = DemoBinanceTests/Info.plist;
@@ -601,7 +611,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-DemoBinance.debug.xcconfig */;
+			baseConfigurationReference = 569B1D7A4FD86069BF63DCDB /* Pods-Binance.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -629,7 +639,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-DemoBinance.release.xcconfig */;
+			baseConfigurationReference = 673D6EE3955EB8EDDDC2991A /* Pods-Binance.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -793,7 +803,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "DemoBinanceTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "BinanceTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -802,7 +812,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "DemoBinance" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Binance" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
