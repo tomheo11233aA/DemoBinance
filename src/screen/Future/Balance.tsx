@@ -83,9 +83,10 @@ const Balance = ({ balance, t }: Props) => {
         if (selectCoin) {
             setCoinBalance(selectCoin.close)
         }
-    }, [value])
+    }, [value, spot])
 
-    const balance1 = profile.balance / coinBalance
+    // const balance1 = profile.balance / coinBalance
+    const balance1 = balance / coinBalance
     const positions = useAppSelector(positionsFuturesSelector)
     getCoinsFromSocket()
     let totalROE = 0

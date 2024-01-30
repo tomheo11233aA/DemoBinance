@@ -60,12 +60,13 @@ export default () => {
     const coins = useAppSelector(coinsFuturesChartSelector)
     const positions = useAppSelector(positionsFuturesSelector)
     const profile: Profile = useAppSelector<any>(profileUserSelector)
+    const [coinBalance, setCoinBalance] = useState(0)
     const [items, setItems] = useState([
-        { label: 'BTC', value: 'btc' },
-        { label: 'ETH', value: 'eth' },
-        { label: 'BNB', value: 'bnb' },
-        { label: 'USDT', value: 'usdt' },
-        { label: 'USD', value: 'usd' },
+        { label: '(BTC)', value: 'btc' },
+        { label: '(ETH)', value: 'eth' },
+        { label: '(BNB)', value: 'bnb' },
+        { label: '(USDT)', value: 'usdt' },
+        { label: '(USD)', value: 'usd' },
     ]);
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState('usdt');
@@ -99,6 +100,16 @@ export default () => {
     const spot = convertToValueSpot(coins, wallet, profile)
     BALANCE += spot.totalExchangeRate
 
+    useEffect(() => {
+        const selectCoin = spot.coins.find((coin: any) => coin.currency === value.toUpperCase())
+        if (selectCoin) {
+            setCoinBalance(selectCoin.close)
+        }
+    }, [value, spot])
+    const balance1 = BALANCE / coinBalance
+
+
+
     return (
         <Box
             row
@@ -127,7 +138,7 @@ export default () => {
                         setItems={setItems}
                         style={{
                             borderWidth: 0,
-                            width: wp('20%'),
+                            width: wp('22%'),
                             zIndex: 1,
                             backgroundColor: 'transparent',
                         }}
@@ -154,17 +165,12 @@ export default () => {
                         }}
                         listMode='SCROLLVIEW'
                         showTickIcon={false}
-                    />
-                    <Icon
-                        size={11}
-                        marginLeft={5}
-                        source={require('@images/trade/more.png')}
-                    />
+                    ></DropDownPicker>
                 </Box>
 
                 {!hide ?
                     <>
-                        <Box row alignCenter marginVertical={7} zIndex={-1}>
+                        <Box row alignCenter marginBottom={7} zIndex={-1}>
                             <Txt
                                 // fontFamily={fonts.M24}
                                 // size={25}
@@ -175,7 +181,9 @@ export default () => {
                                 color={theme.black}
                             >
                                 {/* {numberCommasDot(BALANCE?.toFixed(2))} */}
-                                {BALANCE.toLocaleString('en-US', { maximumFractionDigits: 2 })}
+                                {/* {BALANCE.toLocaleString('en-US', { maximumFractionDigits: 2 })} */}
+                                {value === 'usdt' || value === 'usd' ? BALANCE.toLocaleString('en-US', { maximumFractionDigits: 2 })
+                                    : balance1.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                             </Txt>
                             {/* <Btn
                                 onPress={() => setHide(true)}
@@ -223,7 +231,7 @@ export default () => {
 
             </Box>
 
-            <Btn
+            {/* <Btn
                 onPress={() => navigate(screen.DEPOSIT_CRYPTO, { coin: { currency: 'USDT' } })}
                 width={80}
                 radius={4}
@@ -233,7 +241,7 @@ export default () => {
                 backgroundColor={colors.yellow}
             >
                 <Txt fontFamily={fonts.IBMPM} size={12}>{t('Deposit')}</Txt>
-            </Btn>
+            </Btn> */}
         </Box>
     )
 }
