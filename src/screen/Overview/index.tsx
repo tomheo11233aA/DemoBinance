@@ -172,12 +172,12 @@ const Overview = () => {
                             marginTop={5}
                         >
                             <Txt
-                                fontType={'600'}
+                                fontType={'bold'}
                                 size={32}
                                 fontFamily={fonts.BNPM}
                                 color={theme.black}
                             >
-                                {numberCommasDot(COIN_PRICE.toFixed(8))}
+                                ${numberCommasDot(COIN_PRICE.toFixed(8))}
                             </Txt>
                             <DropDownPicker
                                 open={open}

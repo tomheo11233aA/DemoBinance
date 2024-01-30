@@ -51,7 +51,7 @@ const Statistical = ({
                     </Txt> */}
                     <Txt style={[styles.txtValue1, { color: theme.black }]}>
                         {/* {numberCommasDot(TOTAL_MARGIN.toFixed(2))} */}
-                        ${TOTAL_MARGIN.toLocaleString('en-US', { maximumFractionDigits: 2 })}
+                        {TOTAL_MARGIN.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                     </Txt>
                     <Txt style={styles.txtValue2}>
                         ≈ {TOTAL_MARGIN.toLocaleString('en-US', { maximumFractionDigits: 2 })}
@@ -69,7 +69,7 @@ const Statistical = ({
                     />
                     <Txt style={[styles.txtValue1, { color: theme.black }]}>
                         {/* {numberCommasDot(wallet_balance?.toFixed(2))} */}
-                        ${totalPNL?.toLocaleString('en-US', { maximumFractionDigits: 2 })}
+                        {totalPNL?.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                     </Txt>
                     <Txt style={styles.txtValue2}>
                         ≈ {totalPNL?.toLocaleString('en-US', { maximumFractionDigits: 2 })}

@@ -58,7 +58,6 @@ const CountDown = () => {
         }
 
         setDb(coins)
-
         let nextFundingTime = coins[0]?.uMarginList[0]?.nextFundingTime
         const timeStamp = convertTimestamp(nextFundingTime)
 
