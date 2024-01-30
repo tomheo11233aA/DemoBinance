@@ -46,6 +46,7 @@ const Options = () => {
                 alignStart
                 marginTop={30}
                 justifySpaceBetween
+                zIndex={-1}
             >
                 <Btn
                     width={60}
@@ -209,7 +210,6 @@ const Options = () => {
                 row
                 marginTop={15}
                 alignStart
-                // justifySpaceBetween
             >
                 <Btn
                     width={60}

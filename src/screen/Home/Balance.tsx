@@ -19,6 +19,34 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Profile } from "src/model/userModel";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { themeUserSelector } from '@selector/userSelector'
+import DropDownPicker from "react-native-dropdown-picker";
+
+const ArrowDownIcon = () => {
+    const themeUser = useAppSelector(themeUserSelector)
+    return (
+        <Icon
+            source={require('@images/wallet/arrow-down.png')}
+            size={10}
+            resizeMode={'contain'}
+            marginRight={2}
+            tintColor={themeUser === 'dark' ? colors.white : colors.black}
+        />
+    )
+}
+
+const ArrowUpIcon = () => {
+    const themeUser = useAppSelector(themeUserSelector)
+    return (
+        <Icon
+            source={require('@images/wallet/arrow-up.png')}
+            size={10}
+            resizeMode={'contain'}
+            marginRight={2}
+            tintColor={themeUser === 'dark' ? colors.white : colors.black}
+        />
+    )
+}
 
 export default () => {
     const theme = useTheme()
@@ -32,7 +60,15 @@ export default () => {
     const coins = useAppSelector(coinsFuturesChartSelector)
     const positions = useAppSelector(positionsFuturesSelector)
     const profile: Profile = useAppSelector<any>(profileUserSelector)
-
+    const [items, setItems] = useState([
+        { label: 'BTC', value: 'btc' },
+        { label: 'ETH', value: 'eth' },
+        { label: 'BNB', value: 'bnb' },
+        { label: 'USDT', value: 'usdt' },
+        { label: 'USD', value: 'usd' },
+    ]);
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState('usdt');
     useEffect(() => {
         handleGetListCoin()
     }, [])
@@ -80,8 +116,45 @@ export default () => {
                         size={14}
                     >
                         {t('Total Balance')}
-                        {' (USDT)'}
+                        {/* {' (USDT)'} */}
                     </Txt>
+                    <DropDownPicker
+                        open={open}
+                        value={value}
+                        items={items}
+                        setOpen={setOpen}
+                        setValue={setValue}
+                        setItems={setItems}
+                        style={{
+                            borderWidth: 0,
+                            width: wp('20%'),
+                            zIndex: 1,
+                            backgroundColor: 'transparent',
+                        }}
+                        dropDownContainerStyle={{
+                            width: wp('30%'),
+                            borderWidth: 0,
+                            backgroundColor: '#f5f5f5',
+                            zIndex: 1,
+                        }}
+                        textStyle={{
+                            fontFamily: fonts.BNPL,
+                            fontSize: 14,
+                            color: colors.grayBlue2,
+                            fontWeight: '500',
+                            alignSelf: 'center',
+                        }}
+                        ArrowDownIconComponent={ArrowDownIcon}
+                        ArrowUpIconComponent={ArrowUpIcon}
+                        selectedItemLabelStyle={{ color: theme.gray }}
+                        labelStyle={{
+                            fontFamily: fonts.BNPL,
+                            fontSize: 14,
+                            color: theme.black,
+                        }}
+                        listMode='SCROLLVIEW'
+                        showTickIcon={false}
+                    />
                     <Icon
                         size={11}
                         marginLeft={5}
@@ -91,7 +164,7 @@ export default () => {
 
                 {!hide ?
                     <>
-                        <Box row alignCenter marginVertical={7}>
+                        <Box row alignCenter marginVertical={7} zIndex={-1}>
                             <Txt
                                 // fontFamily={fonts.M24}
                                 // size={25}
@@ -116,7 +189,7 @@ export default () => {
                             </Btn> */}
                         </Box>
 
-                        <Box row alignCenter>
+                        <Box row alignCenter zIndex={-1}>
                             <Txt
                                 fontFamily={fonts.BNPM}
                                 color={colors.grayBlue2}
@@ -129,7 +202,7 @@ export default () => {
                         </Box>
                     </> :
                     <>
-                        <Box row alignStart marginVertical={7}>
+                        <Box row alignStart marginVertical={7} zIndex={-1}>
                             <Txt fontFamily={fonts.M24} size={25} color={theme.white}>
                                 *******
                             </Txt>
