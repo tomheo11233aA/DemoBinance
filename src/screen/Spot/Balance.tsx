@@ -24,28 +24,37 @@ import { Coin } from 'src/model/tradeModel'
 import { Profile } from 'src/model/userModel'
 import DropDownPicker from 'react-native-dropdown-picker';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
+import { themeUserSelector } from '@selector/userSelector'
 
 interface Props {
     spot: ISpot;
 }
 
-const ArrowDownIcon = () => (
-    <Icon
-        source={require('@images/wallet/arrow-down.png')}
-        size={10}
-        resizeMode={'contain'}
-        marginRight={2}
-    />
-)
+const ArrowDownIcon = () => {
+    const themeUser = useAppSelector(themeUserSelector)
+    return (
+        <Icon
+            source={require('@images/wallet/arrow-down.png')}
+            size={10}
+            resizeMode={'contain'}
+            marginRight={2}
+            tintColor={themeUser === 'dark' ? colors.white : colors.black}
+        />
+    )
+}
 
-const ArrowUpIcon = () => (
-    <Icon
-        source={require('@images/wallet/arrow-up.png')}
-        size={10}
-        resizeMode={'contain'}
-        marginRight={2}
-    />
-)
+const ArrowUpIcon = () => {
+    const themeUser = useAppSelector(themeUserSelector)
+    return (
+        <Icon
+            source={require('@images/wallet/arrow-up.png')}
+            size={10}
+            resizeMode={'contain'}
+            marginRight={2}
+            tintColor={themeUser === 'dark' ? colors.white : colors.black}
+        />
+    )
+}
 
 const Balance = ({ spot }: Props) => {
     const theme = useTheme()
@@ -123,20 +132,13 @@ const Balance = ({ spot }: Props) => {
         >
             <Box row alignCenter justifySpaceBetween>
                 <Box row alignCenter>
-                    {/* <Txt fontFamily={fonts.IBMPR} size={20} color={theme.black}>
-                        {t(`${t('Total Balance')}  `)}
-                    </Txt> */}
-                    <Txt
-                        fontFamily={fonts.BNPL}
-                        size={14}
-                        color={theme.black}
-                    >
-                        {t(`${t('Total Balance')}  `)}
+                    <Txt fontType={'normal'} fontFamily={fonts.BNPL} size={14} color={theme.black}>
+                        {t('Total Balance') + ' '}
                     </Txt>
                     <Btn onPress={() => dispatch(userSlice.actions.setShowBalance(!showBalance))}>
                         <Icon
                             source={showBalance ? require('@images/wallet/eye-open.png') : require('@images/wallet/eye-close.png')}
-                            size={18}
+                            size={16}
                         />
                     </Btn>
                 </Box>
@@ -152,10 +154,7 @@ const Balance = ({ spot }: Props) => {
                 <>
                     <Box
                         row
-                        alignCenter
-                        zIndex={1}
-                        style={{
-                        }}
+                        marginTop={5}
                     >
                         <Txt
                             size={32}
@@ -177,17 +176,17 @@ const Balance = ({ spot }: Props) => {
                                 width: wp('20%'),
                                 zIndex: 1,
                                 backgroundColor: 'transparent',
+                                marginTop: 5,
                             }}
                             dropDownContainerStyle={{
                                 width: wp('30%'),
                                 borderWidth: 0,
-                                marginTop: 5,
                                 backgroundColor: '#f5f5f5',
                                 zIndex: 1,
                             }}
                             textStyle={{
-                                fontFamily: fonts.BNPL,
-                                fontSize: 13,
+                                fontFamily: fonts.BNPM,
+                                fontSize: 14,
                                 color: 'gray',
                                 alignSelf: 'center',
                             }}
@@ -269,7 +268,7 @@ const Balance = ({ spot }: Props) => {
                     backgroundColor={colors.yellow}
                     style={styles.button}
                 >
-                    <Txt fontFamily={fonts.BNPSB} size={13} fontType={'500'}>{t('Deposit')}</Txt>
+                    <Txt fontFamily={fonts.BNPSB} size={14} fontType={'500'}>{t('Deposit')}</Txt>
                 </Btn>
                 <Btn
                     // onPress={() => navigate(screen.COIN_LIST_WITHDRAW)}
@@ -286,14 +285,14 @@ const Balance = ({ spot }: Props) => {
                     backgroundColor={theme.gray2}
                     marginHorizontal={10}
                 >
-                    <Txt fontFamily={fonts.BNPSB} fontType={'500'} size={13} color={theme.black}>{t('Withdraw')}</Txt>
+                    <Txt fontFamily={fonts.BNPSB} fontType={'500'} size={14} color={theme.black}>{t('Withdraw')}</Txt>
                 </Btn>
                 <Btn
                     onPress={() => navigate(screen.COMMING_SOON)}
                     style={styles.button}
                     backgroundColor={theme.gray2}
                 >
-                    <Txt fontFamily={fonts.BNPSB} fontType={'500'} size={13} color={theme.black}>{t('Transfer')}</Txt>
+                    <Txt fontFamily={fonts.BNPSB} fontType={'500'} size={14} color={theme.black}>{t('Transfer')}</Txt>
                 </Btn>
             </Box>
         </Box>

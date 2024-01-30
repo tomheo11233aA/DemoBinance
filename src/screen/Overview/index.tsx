@@ -24,24 +24,33 @@ import Portfolio from './Portfolio'
 import ComingSoon from '@screen/ComingSoon'
 import DropDownPicker from 'react-native-dropdown-picker'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
+import { themeUserSelector } from '@selector/userSelector'
 
-const ArrowDownIcon = () => (
-    <Icon
-        source={require('@images/wallet/arrow-down.png')}
-        size={10}
-        resizeMode={'contain'}
-        marginRight={2}
-    />
-)
+const ArrowDownIcon = () => {
+    const themeUser = useAppSelector(themeUserSelector)
+    return (
+        <Icon
+            source={require('@images/wallet/arrow-down.png')}
+            size={10}
+            resizeMode={'contain'}
+            marginRight={2}
+            tintColor={themeUser === 'dark' ? colors.white : colors.black}
+        />
+    )
+}
 
-const ArrowUpIcon = () => (
-    <Icon
-        source={require('@images/wallet/arrow-up.png')}
-        size={10}
-        resizeMode={'contain'}
-        marginRight={2}
-    />
-)
+const ArrowUpIcon = () => {
+    const themeUser = useAppSelector(themeUserSelector)
+    return (
+        <Icon
+            source={require('@images/wallet/arrow-up.png')}
+            size={10}
+            resizeMode={'contain'}
+            marginRight={2}
+            tintColor={themeUser === 'dark' ? colors.white : colors.black}
+        />
+    )
+}
 
 const Overview = () => {
     const theme = useTheme()
@@ -211,7 +220,6 @@ const Overview = () => {
                             size={16}
                             style={{ zIndex: -1 }}
                         >
-                            {/* ≈ {numberCommasDot(BALANCE.toFixed(2))} */}
                             ≈ {BALANCE.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                             <Txt color={colors.gray5} size={14} fontFamily={fonts.BNPM}>{' $'}</Txt>
                         </Txt>

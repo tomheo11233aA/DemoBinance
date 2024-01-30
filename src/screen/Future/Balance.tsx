@@ -22,29 +22,38 @@ import { getCoinsFromSocket } from '@hooks/index'
 import { calcPNL, calcROE } from '@method/format'
 import { positionsFuturesSelector } from '@selector/futuresSelector'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
+import { themeUserSelector } from '@selector/userSelector'
 
 interface Props {
     t: any;
     balance: number;
 }
 
-const ArrowDownIcon = () => (
-    <Icon
-        source={require('@images/wallet/arrow-down.png')}
-        size={10}
-        resizeMode={'contain'}
-        marginRight={2}
-    />
-)
+const ArrowDownIcon = () => {
+    const themeUser = useAppSelector(themeUserSelector)
+    return (
+        <Icon
+            source={require('@images/wallet/arrow-down.png')}
+            size={10}
+            resizeMode={'contain'}
+            marginRight={2}
+            tintColor={themeUser === 'dark' ? colors.white : colors.black}
+        />
+    )
+}
 
-const ArrowUpIcon = () => (
-    <Icon
-        source={require('@images/wallet/arrow-up.png')}
-        size={10}
-        resizeMode={'contain'}
-        marginRight={2}
-    />
-)
+const ArrowUpIcon = () => {
+    const themeUser = useAppSelector(themeUserSelector)
+    return (
+        <Icon
+            source={require('@images/wallet/arrow-up.png')}
+            size={10}
+            resizeMode={'contain'}
+            marginRight={2}
+            tintColor={themeUser === 'dark' ? colors.white : colors.black}
+        />
+    )
+}
 
 const Balance = ({ balance, t }: Props) => {
     const theme = useTheme()

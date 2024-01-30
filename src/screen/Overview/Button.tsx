@@ -33,7 +33,7 @@ const Button = ({ t }: any) => {
                         }
                     })}
                 >
-                    <Txt fontFamily={fonts.IBMPM} color={theme.black}>
+                    <Txt size={14} fontType={'500'} fontFamily={fonts.BNPSB}>
                         {t('Deposit')}
                     </Txt>
                 </Btn>
@@ -53,7 +53,7 @@ const Button = ({ t }: any) => {
                     // backgroundColor={colors.yellow}
                     backgroundColor={theme.gray2}
                 >
-                    <Txt fontFamily={fonts.IBMPM}>{t('Withdraw')}</Txt>
+                    <Txt fontFamily={fonts.BNPSB} size={14} fontType={'500'} color={theme.black}>{t('Withdraw')}</Txt>
                 </Btn>
             </Box>
 
