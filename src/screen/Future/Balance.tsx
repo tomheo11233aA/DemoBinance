@@ -21,7 +21,7 @@ import { walletSpotSelector } from '@selector/spotSelector'
 import { getCoinsFromSocket } from '@hooks/index'
 import { calcPNL, calcROE } from '@method/format'
 import { positionsFuturesSelector } from '@selector/futuresSelector'
-
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 
 interface Props {
     t: any;
@@ -195,12 +195,14 @@ const Balance = ({ balance, t }: Props) => {
                             style={{
                                 marginTop: 2,
                                 borderWidth: 0,
-                                width: '20%',
+                                // width: '20%',
+                                width: wp('20%'),
                                 zIndex: 1,
                                 backgroundColor: 'transparent',
                             }}
                             dropDownContainerStyle={{
-                                width: '30%',
+                                // width: '30%',
+                                width: wp('30%'),
                                 borderWidth: 0,
                                 backgroundColor: '#f5f5f5',
                                 zIndex: 1,
@@ -217,9 +219,6 @@ const Balance = ({ balance, t }: Props) => {
                             labelStyle={{ color: theme.black }}
                             listMode='SCROLLVIEW'
                             showTickIcon={false}
-                            arrowIconContainerStyle={{
-                                marginRight: 0,
-                            }}
                         />
 
 

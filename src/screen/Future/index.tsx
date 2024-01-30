@@ -96,7 +96,7 @@ const Future = () => {
                     <Txt
                         fontFamily={fonts.BNPSB}
                         size={size_text_button}
-                        color={theme.black}
+                        // color={theme.black}
                         fontType={'500'}
                     >
                         {t('Trade')}
