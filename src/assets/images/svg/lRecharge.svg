@@ -9,8 +9,8 @@
 	-->
 	<path fill-rule="evenodd" clip-rule="evenodd" d="M10.197 9.94695L6.03809 9.98779L12.0129 15.9626L17.9878 9.98779L13.8115 9.9787L10.197 9.94695Z" fill="#F0B90B">
 	</path>
-	<path fill-rule="evenodd" clip-rule="evenodd" d="M13.5 3H10.5V9.94961L13.5 9.97597V3Z" fill="#ffffff">
+	<path fill-rule="evenodd" clip-rule="evenodd" d="M13.5 3H10.5V9.94961L13.5 9.97597V3Z" fill="#EAECEF">
 	</path>
-	<path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 14H6.5V18H17.5V14H20.5V18V21H3.5V18V14Z" fill="#ffffff">
+	<path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 14H6.5V18H17.5V14H20.5V18V21H3.5V18V14Z" fill="#EAECEF">
 	</path>
 </svg>
