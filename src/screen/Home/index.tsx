@@ -20,6 +20,7 @@ import { delay } from '@method/alert'
 import LoadingYellow from '@reuse/LoadingYellow'
 import { getProfileThunk } from '@asyncThunk/userAsyncThunk'
 import KYCStatus from './KYCStatus'
+import Tab from './Tab'
 
 const Home = () => {
   const theme = useTheme()
@@ -27,6 +28,7 @@ const Home = () => {
   const dispatch = useAppDispatch()
   const navigation = useNavigation()
   const isLogin = useAppSelector(isLoginUserSelector)
+  const [tab, setTab] = useState('Hot')
 
   const [refesh, setRefesh] = useState(false)
 
@@ -86,9 +88,30 @@ const Home = () => {
             {isLogin && <Balance />}
             {isLogin && <KYCStatus />}
             <Options />
-            <Funding />
-            <TypeCoin />
-            <Coins />
+            {/* <Funding /> */}
+            <Tab {...{ tab, setTab }} />
+            {/* <TypeCoin /> */}
+            <>
+              {refesh ?
+                <></>
+                :
+                <Box
+                  flex={1}
+                  backgroundColor={theme.bg}
+                >
+                  {tab === 'Favorites' ?
+                    <Coins /> : tab === 'Hot' ?
+                      <Coins /> : tab === 'Gainers' ?
+                        <Coins /> : tab === 'Losers' ?
+                          <Coins /> : tab === 'New Listings' ?
+                            <Coins /> : tab === '24h Vol' ?
+                              <Coins /> : tab === 'Market Cap' ?
+                                <Coins /> : <Coins />
+                  }
+                </Box>
+              }
+            </>
+            {/* <Coins /> */}
           </Box>
         </KeyBoardSafe>
       }

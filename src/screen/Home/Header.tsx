@@ -13,13 +13,14 @@ import React from 'react'
 import { Platform, TouchableOpacity } from 'react-native'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import Notification from '../../assets/images/svg/notification.svg'
+import { themeUserSelector } from '@selector/userSelector'
 
 const LEFT = 20
 
 const Header = () => {
     const theme = useTheme()
     const isLogin = useAppSelector(isLoginUserSelector)
-
+    const themeUser = useAppSelector(themeUserSelector)
     const handleMoveProfileScreen = () => {
         if (isLogin) {
             navigate(screen.PROFILE)
@@ -58,11 +59,11 @@ const Header = () => {
                     paddingHorizontal={wp(8)}
                     hint={'BTC'}
                     hintColor={colors.gray77}
-                    style={{ 
+                    style={{
                         fontSize: 14,
                         fontFamily: fonts.BNPM,
                         color: colors.black
-                     }}
+                    }}
                     color={colors.grayBlue}
                 />
                 <Box absolute left={12}>
@@ -81,8 +82,8 @@ const Header = () => {
                         // size={16}
                         size={hp(1.6)}
                         marginLeft={LEFT}
-                        tintColor={'#1E2329'}
-
+                        // tintColor={'#1E2329'}
+                        tintColor={themeUser === 'dark' ? '#fff' : '#1E2329'}
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -92,8 +93,8 @@ const Header = () => {
                         size={hp(1.6)}
                         marginLeft={LEFT}
                         resizeMode='contain'
-                        tintColor={'#1E2329'}
-
+                        // tintColor={'#1E2329'}
+                        tintColor={themeUser === 'dark' ? '#fff' : '#1E2329'}
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -102,7 +103,8 @@ const Header = () => {
                         size={hp(2)}
                         marginLeft={LEFT}
                         resizeMode='contain'
-                        tintColor={'#1E2329'}
+                        // tintColor={'#1E2329'}
+                        tintColor={themeUser === 'dark' ? '#fff' : '#1E2329'}
                     />
                     {/* <Notification
                         width={25}
@@ -133,7 +135,8 @@ const Header = () => {
                         marginLeft={LEFT}
                         resizeMode='contain'
                         // tintColor={colors.gray10}
-                        tintColor={'#1E2329'}
+                        // tintColor={'#1E2329'}
+                        tintColor={themeUser === 'dark' ? '#fff' : '#1E2329'}
                     />
                 </TouchableOpacity>
             </Box>

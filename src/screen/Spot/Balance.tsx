@@ -155,8 +155,9 @@ const Balance = ({ spot }: Props) => {
                         }}
                     >
                         <Txt size={29} fontFamily={'Myfont24-Regular'} marginTop={5} color={theme.black}>
-                            {numberCommasDot(spot.balanceSpot)}
+                            {/* {numberCommasDot(spot.balanceSpot)} */}
                             {/* {numberCommasDot(displayBalance.toFixed(2))} */}
+                            {displayBalance.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                         </Txt>
                         <DropDownPicker
                             open={open}

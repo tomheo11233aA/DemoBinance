@@ -45,7 +45,7 @@ const Options = () => {
                 row
                 alignStart
                 marginTop={30}
-                justifySpaceAround
+                justifySpaceBetween
             >
                 <Btn
                     width={60}
@@ -204,13 +204,12 @@ const Options = () => {
                         {t('Earn')}
                     </Txt>
                 </Btn>
-
             </Box>
             <Box
                 row
                 marginTop={15}
                 alignStart
-                marginLeft={20}
+                // justifySpaceBetween
             >
                 <Btn
                     width={60}
@@ -270,7 +269,7 @@ const Options = () => {
                     onPress={() => {
                         navigate(screen.COMMING_SOON)
                     }}
-                    marginLeft={40}
+                    marginLeft={50}
                 >
                     <Box
                         width={50}

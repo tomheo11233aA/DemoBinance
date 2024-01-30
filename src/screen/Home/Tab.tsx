@@ -14,7 +14,7 @@ interface Props {
     setTab: Function,
 }
 
-const data: string[] = ['Overview', 'Spot', 'Funding', 'Earn', 'Futures', 'Margin']
+const data: string[] = ['Favorites', 'Hot', 'Gainers', 'Losers', 'New Listings', '24h Vol', 'Market Cap']
 
 const Tab = ({ tab, setTab }: Props) => {
     const theme = useTheme()
@@ -22,9 +22,7 @@ const Tab = ({ tab, setTab }: Props) => {
     return (
         <Box
             row
-            marginTop={Platform.OS === 'android' ? 10 : 0}
-            justifySpaceAround
-            paddingHorizontal={30}
+            marginTop={Platform.OS === 'ios' ? 20 : 0}
         >
             <Scroll horizontal showsHorizontalScrollIndicator={false}>
                 {data.map(item =>
@@ -34,7 +32,7 @@ const Tab = ({ tab, setTab }: Props) => {
                                 fontFamily={fonts.BNPL}
                                 fontType={'600'}
                                 size={16}
-                                color={tab === item ? theme.black : colors.gray5}
+                                color={tab === item ? theme.black : colors.gray78}
                             >
                                 {t(item)}
                             </Txt>

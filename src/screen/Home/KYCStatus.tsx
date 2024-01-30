@@ -21,53 +21,92 @@ const KYCStatus = () => {
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
     const kyc = useAppSelector(kycUserSelector)
-
     useEffect(() => {
         dispatch(checKYCUserThunk())
+
     })
 
     return (
         <>
             {kyc === contants.NOT_KYC &&
-                <LinearGradient
-                    end={{ x: 1, y: 0 }}
-                    start={{ x: 0.2, y: 0.5 }}
+                // <LinearGradient
+                //     end={{ x: 1, y: 0 }}
+                //     start={{ x: 0.2, y: 0.5 }}
+                //     style={styles.linerContainer}
+                //     colors={[theme.gray2, theme.yellow2]}
+                // >
+                //     {/* <Box
+                //         row
+                //         alignCenter
+                //         height={'100%'}
+                //         justifySpaceBetween
+                //         paddingHorizontal={20}
+                //     >
+                //         <Box>
+                //             <Txt size={18} fontFamily={fonts.AS} color={theme.black}>
+                //                 {t('Verify Your Account')}
+                //             </Txt>
+                //             <Btn
+                //                 alignCenter={false}
+                //                 onPress={() => {
+                //                     dispatch(setStep(''))
+                //                     navigate(screen.KYC)
+                //                 }}
+                //             >
+                //                 <Txt
+                //                     size={16}
+                //                     marginTop={7}
+                //                     fontFamily={fonts.AS}
+                //                     color={colors.yellowBold}
+                //                 >
+                //                     {t('Verify Now →')}
+                //                 </Txt>
+                //             </Btn>
+                //         </Box>
+                //         <Icon
+                //             source={require('@images/home/kyc.png')}
+                //         />
+                //     </Box> */}
+                //      </LinearGradient>
+                <Box
                     style={styles.linerContainer}
-                    colors={[theme.gray2, theme.yellow2]}
                 >
-                    <Box
-                        row
-                        alignCenter
-                        height={'100%'}
-                        justifySpaceBetween
-                        paddingHorizontal={20}
+                    <Txt
+                        fontFamily={fonts.BNPL}
+                        fontType={'600'}
+                        size={20}
+                        color={theme.black}
                     >
-                        <Box>
-                            <Txt size={18} fontFamily={fonts.AS} color={theme.black}>
-                                {t('Verify Your Account')}
-                            </Txt>
-                            <Btn
-                                alignCenter={false}
-                                onPress={() => {
-                                    dispatch(setStep(''))
-                                    navigate(screen.KYC)
-                                }}
+                        {t('Complete Your Account With KYC Verification')}
+                    </Txt>
+                    <Box
+                        style={{
+                            marginTop: 10,
+                            backgroundColor: colors.yellow,
+                            paddingVertical: 5,
+                            paddingHorizontal: 20,
+                        }}
+                        width={'40%'}
+                        radius={8}
+                    >
+                        <Btn
+                            alignCenter={false}
+                            onPress={() => {
+                                dispatch(setStep(''))
+                                navigate(screen.KYC)
+                            }}
+                        >
+                            <Txt
+                                size={16}
+                                fontFamily={fonts.BNPL}
                             >
-                                <Txt
-                                    size={16}
-                                    marginTop={7}
-                                    fontFamily={fonts.AS}
-                                    color={colors.yellowBold}
-                                >
-                                    {t('Verify Now →')}
-                                </Txt>
-                            </Btn>
-                        </Box>
-                        <Icon
-                            source={require('@images/home/kyc.png')}
-                        />
+                                {/* {t('Verify Now →')} */}
+                                {t('Verify Identity')}
+                            </Txt>
+                        </Btn>
                     </Box>
-                </LinearGradient>
+
+                </Box>
             }
         </>
     )
@@ -78,7 +117,7 @@ export default KYCStatus
 const styles = StyleSheet.create({
     linerContainer: {
         width: '100%',
-        height: 120,
+        // height: 120,
         borderRadius: 7,
         marginTop: 20
     }
