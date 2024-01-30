@@ -14,7 +14,7 @@ interface Props {
     setTab: Function,
 }
 
-const data: string[] = ['Overview', 'Spot', 'Funding', 'Margin', 'Futures', 'Earn']
+const data: string[] = ['Overview', 'Spot', 'Funding', 'Earn', 'Futures', 'Margin']
 
 const Tab = ({ tab, setTab }: Props) => {
     const theme = useTheme()

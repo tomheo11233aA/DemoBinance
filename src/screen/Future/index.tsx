@@ -23,6 +23,7 @@ import Fee from './Fee'
 import History from './History'
 import Statistical from './Statistical'
 import { useTranslation } from 'react-i18next'
+import Icon from '@commom/Icon'
 
 const size_text_button = 13
 
@@ -84,8 +85,9 @@ const Future = () => {
             <Statistical {...{ totalPNL, balance, wallet_balance, t }} />
             <Box
                 row
-                marginTop={15}
+                marginTop={10}
                 paddingHorizontal={15}
+                zIndex={-1}
             >
                 <Btn
                     onPress={() => navigate(screen.TRADE)}
@@ -127,7 +129,28 @@ const Future = () => {
                     </Txt>
                 </Btn>
             </Box>
-            <Box height={5} backgroundColor={theme.gray2} marginTop={15} />
+            <Box
+                row
+                style={{
+                    justifyContent: 'flex-start',
+                    alignItems: 'center',
+                    marginTop: 15,
+                }}
+                zIndex={-1}
+            >
+                <Txt
+                    size={12}
+                    color={colors.gray77}
+                    marginLeft={15}
+                    fontFamily={fonts.BNPM}
+                >
+                    * {t('Use BNB for fees(10% discount)')}
+                </Txt>
+                <Icon marginLeft={5} size={12} source={require('@images/myHome/info.png')} />
+
+            </Box>
+
+            {/* <Box height={5} backgroundColor={theme.gray2} marginTop={15} /> */}
             {/* <Fee /> */}
             <History />
         </Box>

@@ -11,19 +11,25 @@ import { navigate } from '@navigation/navigationRef'
 import { screen } from '@util/screens'
 import { Profile } from 'src/model/userModel'
 import Recharge from '../../assets/images/svg/recharge.svg'
+import LightRecharge from '../../assets/images/svg/lRecharge.svg'
 import Referal from '../../assets/images/svg/referal.svg'
+import LightReferal from '../../assets/images/svg/lReferal.svg'
 import Bot from '../../assets/images/svg/bot.svg'
+import LightBot from '../../assets/images/svg/lBot.svg'
 import Pig from '../../assets/images/svg/pig.svg'
+import LightPig from '../../assets/images/svg/lPig.svg'
 import More from '../../assets/images/svg/more.svg'
+import LightMore from '../../assets/images/svg/lMore.svg'
 import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
-
+import { themeUserSelector } from '@selector/userSelector'
 
 const Options = () => {
     const theme = useTheme()
     const { t } = useTranslation()
     const isLogin = useAppSelector(isLoginUserSelector)
     const profile: Profile = useAppSelector<any>(profileUserSelector)
+    const themeUser = useAppSelector(themeUserSelector)
 
     const handle = () => {
         if (!isLogin) {
@@ -62,11 +68,15 @@ const Options = () => {
                             justifyContent: 'center',
                         }}
                     >
-                        <Recharge width={30} height={30} style={{
+                        {themeUser === 'dark' ? <LightRecharge width={30} height={30} style={{
                             alignSelf: 'center',
                             marginLeft: 5,
                             marginTop: 5
-                        }} />
+                        }} /> : <Recharge width={30} height={30} style={{
+                            alignSelf: 'center',
+                            marginLeft: 5,
+                            marginTop: 5
+                        }} />}
                     </Box>
                     <Txt
                         color={theme.black}
@@ -96,10 +106,17 @@ const Options = () => {
                             justifyContent: 'center',
                         }}
                     >
-                        <Referal width={30} height={30} style={{
+                        {/* <Referal width={30} height={30} style={{
                             alignSelf: 'center',
                             marginLeft: 5,
-                        }} />
+                        }} /> */}
+                        {themeUser === 'dark' ? <LightReferal width={30} height={30} style={{
+                            alignSelf: 'center',
+                            marginLeft: 5,
+                        }} /> : <Referal width={30} height={30} style={{
+                            alignSelf: 'center',
+                            marginLeft: 5,
+                        }} />}
                     </Box>
                     <Txt
                         color={theme.black}
@@ -129,11 +146,15 @@ const Options = () => {
                             justifyContent: 'center',
                         }}
                     >
-                        <Bot width={30} height={30} style={{
+                        {themeUser === 'dark' ? <LightBot width={30} height={30} style={{
                             alignSelf: 'center',
                             marginLeft: 5,
                             marginTop: 5
-                        }} />
+                        }} /> : <Bot width={30} height={30} style={{
+                            alignSelf: 'center',
+                            marginLeft: 5,
+                            marginTop: 5
+                        }} />}
                     </Box>
                     <Txt
                         color={theme.black}
@@ -163,9 +184,14 @@ const Options = () => {
                             justifyContent: 'center',
                         }}
                     >
-                        <Pig width={30} height={30} style={{
+                        {/* <Pig width={30} height={30} style={{
                             alignSelf: 'center',
-                        }} />
+                        }} /> */}
+                        {themeUser === 'dark' ? <LightPig width={30} height={30} style={{
+                            alignSelf: 'center',
+                        }} /> : <Pig width={30} height={30} style={{
+                            alignSelf: 'center',
+                        }} />}
                     </Box>
                     <Txt
                         color={theme.black}
@@ -203,14 +229,29 @@ const Options = () => {
                             justifyContent: 'center',
                         }}
                     >
-                        <Icon
+                        {/* <Icon
                             source={require('@images/myHome/live.png')}
                             size={30}
                             resizeMode={'contain'}
                             style={{
                                 alignSelf: 'center',
                             }}
-                        />
+                        /> */}
+                        {themeUser === 'dark' ? <Icon
+                            source={require('@images/myHome/light_live.png')}
+                            size={30}
+                            resizeMode={'contain'}
+                            style={{
+                                alignSelf: 'center',
+                            }}
+                        /> : <Icon
+                            source={require('@images/myHome/live.png')}
+                            size={30}
+                            resizeMode={'contain'}
+                            style={{
+                                alignSelf: 'center',
+                            }}
+                        />}
                     </Box>
                     <Txt
                         color={theme.black}
@@ -241,9 +282,14 @@ const Options = () => {
                             justifyContent: 'center',
                         }}
                     >
-                        <More width={20} height={20} style={{
+                        {/* <More width={20} height={20} style={{
                             alignSelf: 'center',
-                        }} />
+                        }} /> */}
+                        {themeUser === 'dark' ? <LightMore width={20} height={20} style={{
+                            alignSelf: 'center',
+                        }} /> : <More width={20} height={20} style={{
+                            alignSelf: 'center',
+                        }} />}
                     </Box>
                     <Txt
                         color={theme.black}

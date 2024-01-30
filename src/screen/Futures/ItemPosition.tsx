@@ -72,14 +72,39 @@ const ItemPosition = ({
                             {`${position.symbol} ${t('Perpetual')}`}
                         </Txt>
                     </Btn>
+                    <Box
+                        paddingHorizontal={6}
+                        backgroundColor={theme.gray}
+                        alignCenter
+                        justifyCenter
+                        paddingVertical={3}
+                        margin
+                        radius={3}
+                        marginLeft={3}
+                    >
+                        <Txt fontFamily={fonts.BNPM} size={12} color={theme.black}>
+                            {t('Perp')}
+                        </Txt>
+                    </Box>
+                    <Box
+                        paddingHorizontal={6}
+                        backgroundColor={theme.gray}
+                        alignCenter
+                        justifyCenter
+                        paddingVertical={3}
+                        margin
+                        radius={3}
+                        row
+                    >
+                        <Txt fontFamily={fonts.BNPM} size={12} color={theme.black}>
+                            {capitalizeFirst(position.regime)}
+                        </Txt>
 
-                    <Txt size={12} fontFamily={fonts.RM} color={colors.gray5} marginLeft={10}>
-                        {capitalizeFirst(position.regime)}
-                    </Txt>
-                    <Txt size={12} fontFamily={fonts.AS} color={colors.gray5} marginLeft={5}>
-                        {position.core}X
-                    </Txt>
-                    <Txt size={28} marginBottom={-10} marginLeft={7} color={colors.gray5}>
+                        <Txt fontFamily={fonts.BNPM} size={12} color={theme.black} marginLeft={3}>
+                            {position.core}X
+                        </Txt>
+                    </Box>
+                    <Txt size={28} marginBottom={-10} marginLeft={7} color={colors.gray77}>
                         <Txt size={28} color={colors.greenCan}>ᵎ</Txt>ᵎᵎᵎ
                     </Txt>
                 </Box>
@@ -115,6 +140,7 @@ const ItemPosition = ({
                         color={position?.PNL >= 0 ? colors.green2 : colors.red3}
                     >
                         {numberCommasDot(position?.PNL?.toFixed(2))}
+                        {/* {position?.PNL.toLocaleString('en-US', { maximumFractionDigits: 2 })} */}
                     </Txt>
                 </Box>
 
@@ -142,7 +168,8 @@ const ItemPosition = ({
                         <BoxLine title={`${t('Size')} (USDT)`} numberOfLines={1} />
                     </Box>
                     <Txt style={[styles.txtValue, { color: theme.black }]}>
-                        {numberCommasDot((position?.SIZE).toFixed(2))}
+                        {/* {numberCommasDot((position?.SIZE).toFixed(2))} */}
+                        {position?.SIZE.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                     </Txt>
 
                     <Box alignSelf={'flex-start'}>
@@ -150,31 +177,44 @@ const ItemPosition = ({
                     </Box>
                     <Box width={'90%'}>
                         <Txt style={[styles.txtValue, { color: theme.black }]}>
-                            {numberCommasDot(position.entryPrice.toFixed(position?.ROUND))}
+                            {/* {numberCommasDot(position.entryPrice.toFixed(position?.ROUND))} */}
+                            {position.entryPrice.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                         </Txt>
                     </Box>
                 </Box>
                 <Box marginHorizontal={5} flex={1}>
                     <Txt style={styles.title} numberOfLines={1}>Margin (USDT)</Txt>
-                    <Txt style={[styles.txtValue, { color: theme.black }]}>{numberCommasDot(position.margin.toFixed(2))}</Txt>
+                    <Txt style={[styles.txtValue, { color: theme.black }]}>
+                        {/* {numberCommasDot(position.margin.toFixed(2))} */}
+                        {position.margin.toLocaleString('en-US', { maximumFractionDigits: 2 })}
+                    </Txt>
 
                     <Txt style={[styles.title, { marginTop: -1, marginBottom: 1 }]} numberOfLines={1}>
                         {`${t('Mark Price')} (USDT)`}
                     </Txt>
                     <Txt style={[styles.txtValue, { marginTop: 3, color: theme.black }]}>
-                        {numberCommasDot(position?.MARK_PRICE.toFixed(position?.ROUND))}
+                        {/* {numberCommasDot(position?.MARK_PRICE.toFixed(position?.ROUND))} */}
+                        {position?.MARK_PRICE.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                     </Txt>
                 </Box>
 
                 <Box alignEnd flex={1}>
-                    <Txt style={[styles.title]}>{t('Risk')}</Txt>
+                    <BoxLine
+                        title={t('Margin Ratio')}
+                        numberOfLines={1}
+                        color={colors.gray5}
+                        size={13}
+                    />
+
                     <Txt
                         style={styles.riskTitle}
                         // color={position?.RISK > 35 ? colors.yellow : colors.green2}
                         color={position?.risk > 35 ? colors.yellow : colors.green2}
                     >
                         {/* {position.regime === 'cross' ? '0,01' : position?.risk.toFixed(2)} */}
-                        {position?.risk.toFixed(2) ?? '--'}
+                        {/* {position?.risk.toFixed(2) ?? '--'} */}
+                        {/* {position?.risk.toLocaleString('en-US', { maximumFractionDigits: 2 }) ?? '--'} */}
+                        {numberCommasDot(position?.risk.toFixed(2)) ?? '--'}
                         <Txt
                             fontFamily={fonts.FSCR}
                             color={position?.RISK > 35 ? colors.yellow : colors.green2}
@@ -190,7 +230,8 @@ const ItemPosition = ({
                             <Txt color={'#aaaaaa'} size={10} marginTop={-9} marginRight={1} bold>{'- -'}</Txt>
                         </Box> :
                         <Txt style={[styles.txtValue, { color: theme.black }]}>
-                            {numberCommasDot(position?.LIQ_PRICE.toFixed(2))}
+                            {/* {numberCommasDot(position?.LIQ_PRICE.toFixed(2))} */}
+                            {position?.LIQ_PRICE.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                         </Txt>
                     }
                 </Box>
@@ -268,20 +309,20 @@ export default ItemPosition
 
 const styles = StyleSheet.create({
     riskTitle: {
-        fontFamily: 'Myfont23-Regular',
+        fontFamily: fonts.BNPR,
         marginBottom: 5,
         fontSize: 16,
         marginTop: 4
     },
     txtValue2: {
-        fontFamily: 'Myfont23-Regular',
+        fontFamily: fonts.BNPR,
         marginBottom: 5,
         fontSize: 16,
         color: colors.green2,
         marginTop: 4
     },
     txtValue: {
-        fontFamily: 'Myfont23-Regular',
+        fontFamily: fonts.BNPR,
         marginBottom: 10,
         fontSize: 16,
         marginTop: 7,

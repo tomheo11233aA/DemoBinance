@@ -100,6 +100,7 @@ export const colors = {
     yellowBold: '#d19f12',
     green: '#34bb85',
     red: 'red',
+    myRed: '#f6465d',
     black2: '#1f2630',
     black3: '#2e3440',
     redCan: '#f74563',

@@ -23,6 +23,7 @@ import Button from './Button'
 import Portfolio from './Portfolio'
 import ComingSoon from '@screen/ComingSoon'
 import DropDownPicker from 'react-native-dropdown-picker'
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 
 const ArrowDownIcon = () => (
     <Icon
@@ -157,12 +158,14 @@ const Overview = () => {
                 </Box>
                 {showBalance ?
                     <>
-                        <Box row>
+                        <Box
+                            row
+                            marginTop={5}
+                        >
                             <Txt
                                 fontType={'600'}
                                 size={32}
                                 fontFamily={fonts.BNPM}
-                                marginTop={5}
                                 color={theme.black}
                             >
                                 {numberCommasDot(COIN_PRICE.toFixed(8))}
@@ -177,11 +180,12 @@ const Overview = () => {
                                 style={{
                                     marginTop: 5,
                                     borderWidth: 0,
-                                    width: '20%',
+                                    width: wp('20%'),
                                     zIndex: 1,
+                                    backgroundColor: 'transparent',
                                 }}
                                 dropDownContainerStyle={{
-                                    width: '30%',
+                                    width: wp('30%'),
                                     borderWidth: 0,
                                     backgroundColor: '#f5f5f5',
                                     zIndex: 1,
@@ -194,13 +198,10 @@ const Overview = () => {
                                 }}
                                 ArrowDownIconComponent={ArrowDownIcon}
                                 ArrowUpIconComponent={ArrowUpIcon}
-                                selectedItemLabelStyle={{ color: theme.black }}
+                                selectedItemLabelStyle={{ color: theme.gray }}
                                 labelStyle={{ color: theme.black }}
                                 listMode='SCROLLVIEW'
                                 showTickIcon={false}
-                                arrowIconContainerStyle={{
-                                    marginRight: 0,
-                                }}
                             />
                         </Box>
                         <Txt

@@ -18,6 +18,10 @@ import { Profile } from 'src/model/userModel'
 import { profileUserSelector } from '@selector/userSelector'
 import { convertToValueSpot } from '@method/format'
 import { walletSpotSelector } from '@selector/spotSelector'
+import { getCoinsFromSocket } from '@hooks/index'
+import { calcPNL, calcROE } from '@method/format'
+import { positionsFuturesSelector } from '@selector/futuresSelector'
+
 
 interface Props {
     t: any;
@@ -73,6 +77,18 @@ const Balance = ({ balance, t }: Props) => {
     }, [value])
 
     const balance1 = profile.balance / coinBalance
+    const positions = useAppSelector(positionsFuturesSelector)
+    getCoinsFromSocket()
+    let totalROE = 0
+    let totalPNL = 0
+    positions.map((position) => {
+        const index = coins.findIndex(coin => coin.symbol == position.symbol)
+        const close = coins[index]?.close || 0
+        const PNL = calcPNL(position, close)
+        let ROE = calcROE(PNL, position)
+        totalROE += ROE
+        totalPNL += PNL
+    })
     return (
         <Box paddingHorizontal={20}>
             <Box marginBottom={15} row alignCenter justifySpaceBetween>
@@ -93,6 +109,11 @@ const Balance = ({ balance, t }: Props) => {
                     <Box>
                         <Txt fontFamily={fonts.BNPM} size={12} color={colors.gray5}>COIN-M</Txt>
                     </Box>
+                    <Box
+                        marginLeft={10}
+                    >
+                        <Txt fontFamily={fonts.BNPM} size={12} color={colors.gray5}>Copy Trading</Txt>
+                    </Box>
                 </Box>
 
                 <Btn onPress={() => navigate(screen.FUTURES_HISTORY)}>
@@ -100,6 +121,7 @@ const Balance = ({ balance, t }: Props) => {
                         size={18}
                         resizeMode={'contain'}
                         source={require('@images/future/page-oclock.png')}
+                        tintColor={'black'}
                     />
                 </Btn>
             </Box>
@@ -117,7 +139,6 @@ const Balance = ({ balance, t }: Props) => {
                     >
                         {t(` ${t('Margin Balance')} `)}
                     </Txt>
-                    {/* underline style dotted */}
                     <View style={{
                         borderWidth: 0.3,
                         borderColor: theme.black,
@@ -176,6 +197,7 @@ const Balance = ({ balance, t }: Props) => {
                                 borderWidth: 0,
                                 width: '20%',
                                 zIndex: 1,
+                                backgroundColor: 'transparent',
                             }}
                             dropDownContainerStyle={{
                                 width: '30%',
@@ -191,7 +213,7 @@ const Balance = ({ balance, t }: Props) => {
                             }}
                             ArrowDownIconComponent={ArrowDownIcon}
                             ArrowUpIconComponent={ArrowUpIcon}
-                            selectedItemLabelStyle={{ color: theme.black }}
+                            selectedItemLabelStyle={{ color: theme.gray }}
                             labelStyle={{ color: theme.black }}
                             listMode='SCROLLVIEW'
                             showTickIcon={false}
@@ -219,6 +241,42 @@ const Balance = ({ balance, t }: Props) => {
                     <Txt fontFamily={fonts.BNPM} color={colors.gray5}>******</Txt>
                 </>
             }
+            <Box
+                row
+                marginTop={10}
+                style={{
+                    alignItems: 'center',
+                }}
+                zIndex={-1}
+            >
+                <Txt
+                    fontFamily={fonts.BNPL}
+                    fontType={'normal'}
+                    size={14}
+                    color={theme.black}
+                >
+                    {t('Today\'s Realized PnL')}
+                </Txt>
+                <Txt
+                    fontFamily={fonts.BNPL}
+                    size={14}
+                    marginLeft={7}
+                    color={totalPNL > 0 ? colors.green2 : colors.myRed}
+                >
+                    {`${numberCommasDot(totalPNL?.toFixed(2))}`}
+                </Txt>
+
+                <Txt
+                    fontFamily={fonts.BNPL}
+                    size={14}
+                    color={totalPNL > 0 ? colors.green2 : colors.myRed}
+                >
+                    {`(${numberCommasDot(totalROE?.toFixed(2))}%)`}
+                </Txt>
+            </Box>
+            {/* 
+
+
             <Btn
                 row
                 alignCenter
@@ -245,7 +303,7 @@ const Balance = ({ balance, t }: Props) => {
                         {`${winingDay} ${t('Winning Days')} >`}
                     </Txt>
                 </Box>
-            </Btn>
+            </Btn> */}
         </Box>
     )
 }

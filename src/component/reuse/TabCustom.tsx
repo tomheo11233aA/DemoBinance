@@ -26,7 +26,7 @@ const TabCustom = ({ icon, title, size = 20, forcus }: Props) => {
             <Txt
                 color={forcus ? '#eeba07' : colors.grayBlue}
                 size={10}
-                fontFamily={fonts.FSCR}
+                fontFamily={fonts.BNPL}
             >
                 {title}
             </Txt>

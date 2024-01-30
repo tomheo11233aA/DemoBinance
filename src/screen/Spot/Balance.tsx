@@ -169,6 +169,7 @@ const Balance = ({ spot }: Props) => {
                                 borderWidth: 0,
                                 width: '20%',
                                 zIndex: 1,
+                                backgroundColor: 'transparent',
                             }}
                             dropDownContainerStyle={{
                                 width: '25%',
@@ -185,7 +186,7 @@ const Balance = ({ spot }: Props) => {
                             }}
                             ArrowDownIconComponent={ArrowDownIcon}
                             ArrowUpIconComponent={ArrowUpIcon}
-                            selectedItemLabelStyle={{ color: theme.black }}
+                            selectedItemLabelStyle={{ color: theme.gray }}
                             labelStyle={{ color: theme.black }}
                             showTickIcon={false}
                         />

@@ -217,6 +217,7 @@
         "Block Trade": "Giao dịch lô",
         "Choose Network": "Chọn mạng",
         "Entry price": "Giá vào lệnh",
+        "Margin Ratio": "Tỷ lệ ký quỹ",
         "Wallet address": "Địa chỉ ví",
         "TWAP History": "Lịch sử TWAP",
         "Spot Trade": "Giao dịch Spot",
@@ -491,7 +492,6 @@
         "Awaiting verification": "Đang chờ xác minh",
         "Your verification request is pending approval. This process can take up to 3 business days. Please wait for the results.": "Yêu cầu xác minh của bạn đang chờ phê duyệt. Quá trình này có thể mất tới 3 ngày làm việc. Hãy chờ đợi kết quả.",
         "You have not KYC yet": "Bạn chưa KYC",
-
         "Trade a certain volume and you will unlock a certain number of HX": "Trade volume nhất định thì sẽ mở khóa tương ứng được 1 số HX nhất định",
         "Example": "Ví dụ",
         "Your balance is insufficient": "Số dư của bạn không đủ",
@@ -600,7 +600,6 @@
         "Currently copying": "Hiện đang sao chép",
         "Cancel copying trader": "Huỷ sao chép giao dịch viên",
         "Are you sure you want to cancel trader copying?": "Bạn có chắc chắn muốn hủy việc sao chép giao dịch viên không?",
-
         "Update version": "Cập nhật phiên bản"
     }
 }
