@@ -55,6 +55,14 @@ const ArrowUpIcon = () => {
     )
 }
 
+// text to long
+const formatText = (text: string) => {
+    if (text.length > 10) {
+        return text.slice(0, 10) + '...'
+    }
+    return text
+}
+
 const Balance = ({ balance, t }: Props) => {
     const theme = useTheme()
     const dispatch = useAppDispatch()
@@ -104,25 +112,25 @@ const Balance = ({ balance, t }: Props) => {
             <Box marginBottom={15} row alignCenter justifySpaceBetween>
                 <Box row alignCenter>
                     <Box
-                        paddingHorizontal={6}
+                        paddingHorizontal={10}
                         backgroundColor={theme.gray}
                         alignCenter
                         justifyCenter
-                        paddingVertical={3}
+                        paddingVertical={5}
                         marginRight={10}
-                        radius={3}
+                        radius={7}
                     >
-                        <Txt fontFamily={fonts.BNPM} size={12} color={theme.black}>
+                        <Txt fontFamily={fonts.BNPR} fontType={'500'} size={14} color={theme.black}>
                             USDⓈ-M
                         </Txt>
                     </Box>
                     <Box>
-                        <Txt fontFamily={fonts.BNPM} size={12} color={colors.gray5}>COIN-M</Txt>
+                        <Txt fontFamily={fonts.BNPR} fontType={'500'} size={14} color={colors.gray5}>COIN-M</Txt>
                     </Box>
                     <Box
                         marginLeft={10}
                     >
-                        <Txt fontFamily={fonts.BNPM} size={12} color={colors.gray5}>Copy Trading</Txt>
+                        <Txt fontFamily={fonts.BNPR} fontType={'500'} size={14} color={colors.gray5}>{t('Copy Trading')}</Txt>
                     </Box>
                 </Box>
 
@@ -142,9 +150,9 @@ const Balance = ({ balance, t }: Props) => {
                 }}
             >
                 <View>
-                    <Txt fontFamily={fonts.BNPL}
-                        fontType={'normal'}
-                        size={14}
+                    <Txt fontFamily={fonts.BNPR}
+                        fontType={'400'}
+                        size={16}
                         color={theme.black}
                     >
                         {t(` ${t('Margin Balance')} `)}
@@ -186,12 +194,12 @@ const Balance = ({ balance, t }: Props) => {
                         // alignItems: 'flex-end'
                     }}>
                         <Txt
-                            size={32}
+                            size={35}
                             fontFamily={fonts.BNPM}
-                            fontType={'600'}
+                            fontType={'bold'}
                             color={theme.black}
                         >
-                            {value === 'usdt' || value === 'usd' ? balance.toLocaleString('en-US', { maximumFractionDigits: 2 })
+                            ${value === 'usdt' || value === 'usd' ? balance.toLocaleString('en-US', { maximumFractionDigits: 2 })
                                 : balance1.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                         </Txt>
 
@@ -236,12 +244,12 @@ const Balance = ({ balance, t }: Props) => {
                     <Txt
                         fontFamily={fonts.BNPM}
                         color={colors.gray77}
-                        size={16}
+                        size={15}
                         style={{ zIndex: -1 }}
                     >
                         {/* ≈ {numberCommasDot(balance.toFixed(2))} */}
                         ≈ {balance.toLocaleString('en-US', { maximumFractionDigits: 2 })}
-                        <Txt color={colors.gray77} size={16} fontFamily={fonts.BNPM}>{' $'}</Txt>
+                        <Txt color={colors.gray77} size={15} fontFamily={fonts.BNPM}>{' $'}</Txt>
                     </Txt>
                 </Box>
                 :
@@ -261,24 +269,24 @@ const Balance = ({ balance, t }: Props) => {
                 <Txt
                     fontFamily={fonts.BNPL}
                     fontType={'normal'}
-                    size={14}
+                    size={15}
                     color={theme.black}
                 >
                     {t('Today\'s Realized PnL')}
                 </Txt>
                 <Txt
                     fontFamily={fonts.BNPL}
-                    size={14}
+                    size={15}
                     marginLeft={7}
-                    color={totalPNL > 0 ? colors.green2 : colors.myRed}
+                    color={totalPNL >= 0 ? colors.green2 : colors.myRed}
                 >
-                    {`${numberCommasDot(totalPNL?.toFixed(2))}`}
-                </Txt>
+                    {`${numberCommasDot(totalPNL?.toFixed(2))}`}$ 
+                 </Txt>
 
                 <Txt
                     fontFamily={fonts.BNPL}
                     size={14}
-                    color={totalPNL > 0 ? colors.green2 : colors.myRed}
+                    color={totalPNL >= 0 ? colors.green2 : colors.myRed}
                 >
                     {`(${numberCommasDot(totalROE?.toFixed(2))}%)`}
                 </Txt>

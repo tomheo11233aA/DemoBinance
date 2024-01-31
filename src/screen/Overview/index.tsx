@@ -128,7 +128,12 @@ const Overview = () => {
             <Box paddingHorizontal={20}>
                 <Box row alignCenter justifySpaceBetween>
                     <Box row alignCenter>
-                        <Txt fontType={'normal'} fontFamily={fonts.BNPL} size={14} color={theme.black}>
+                        <Txt
+                            fontType={'400'}
+                            fontFamily={fonts.BNPR}
+                            size={16}
+                            color={theme.black}
+                        >
                             {t('Total Balance') + ' '}
                         </Txt>
                         <Btn onPress={() => dispatch(userSlice.actions.setShowBalance(!showBalance))}>
@@ -173,7 +178,7 @@ const Overview = () => {
                         >
                             <Txt
                                 fontType={'bold'}
-                                size={32}
+                                size={35}
                                 fontFamily={fonts.BNPM}
                                 color={theme.black}
                             >
@@ -201,8 +206,9 @@ const Overview = () => {
                                     zIndex: 1,
                                 }}
                                 textStyle={{
-                                    fontFamily: fonts.BNPM,
-                                    fontSize: 14,
+                                    fontFamily: fonts.BNPR,
+                                    fontWeight: 'bold',
+                                    fontSize: 16,
                                     color: 'gray',
                                     alignSelf: 'center',
                                 }}
@@ -217,11 +223,11 @@ const Overview = () => {
                         <Txt
                             fontFamily={fonts.BNPM}
                             color={colors.gray77}
-                            size={16}
+                            size={15}
                             style={{ zIndex: -1 }}
                         >
                             ≈ {BALANCE.toLocaleString('en-US', { maximumFractionDigits: 2 })}
-                            <Txt color={colors.gray5} size={14} fontFamily={fonts.BNPM}>{' $'}</Txt>
+                            <Txt color={colors.gray5} size={15} fontFamily={fonts.BNPM}>{' $'}</Txt>
                         </Txt>
                     </>
                     :

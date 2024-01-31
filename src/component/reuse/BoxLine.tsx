@@ -15,6 +15,7 @@ interface Props {
     borderColor?: string;
     paddingText?: number;
     marginTop?: number;
+    fontWeigth?: any;
 }
 
 const BoxLine = ({
@@ -28,6 +29,7 @@ const BoxLine = ({
     borderColor = colors.gray5,
     paddingText = 0,
     marginTop = 0,
+    fontWeigth = 'normal'
 }: Props) => {
     const theme = useTheme()
 
@@ -45,6 +47,7 @@ const BoxLine = ({
                         color: 'white',
                         fontFamily: font,
                         // position: 'absolute',
+                        fontWeight: fontWeigth,
                     }}
                     numberOfLines={numberOfLines}
                 >
@@ -64,6 +67,7 @@ const BoxLine = ({
                         color: 'white',
                         opacity: 0,
                         fontFamily: font,
+                        fontWeight: fontWeigth,
                         // position: 'absolute',
                     }}
                 >
@@ -77,6 +81,7 @@ const BoxLine = ({
                         bottom: bottom,
                         fontFamily: font,
                         paddingVertical: paddingText,
+                        fontWeight: fontWeigth,
                     }}
                     numberOfLines={numberOfLines}
                 >
