@@ -46,9 +46,10 @@ const Amount = ({
         } else {
             const percent = positionX.value * 100 / WIDTH_SLIDE
             const amount = max * percent / 100
-
+            const amountToShow = amount.toFixed(2);
             return {
-                text: hint.value ? '' : `${amount}`
+                // text: hint.value ? '' : `${amount}`
+                text: hint.value ? '' : `${amountToShow}`
             }
         }
     })

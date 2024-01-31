@@ -189,6 +189,7 @@ const Overview = () => {
                                 style={{
                                     marginTop: 5,
                                     borderWidth: 0,
+                                    height: hp('5%'),
                                     width: wp('20%'),
                                     zIndex: 1,
                                     backgroundColor: 'transparent',
@@ -216,7 +217,6 @@ const Overview = () => {
                         <Txt
                             fontFamily={fonts.BNPM}
                             color={colors.gray77}
-                            marginTop={0}
                             size={16}
                             style={{ zIndex: -1 }}
                         >
