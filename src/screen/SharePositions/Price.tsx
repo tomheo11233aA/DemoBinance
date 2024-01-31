@@ -37,8 +37,7 @@ const Price = ({ position, t }: Props) => {
                     fontType={'600'}
                 >
                     {/* {numberCommasDot(position?.entryPrice.toFixed(1))} */}
-                    {/* {position?.entryPrice.toLocaleString('en-US', { maximumFractionDigits: 2 })} */}
-                    3,2271
+                    {position?.entryPrice.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                 </Txt>
                 <Txt
                     color={colors.yellow}
@@ -47,8 +46,7 @@ const Price = ({ position, t }: Props) => {
                     fontType={'600'}
                 >
                     {/* {position.liq_price > 0 ? numberCommasDot(position.liq_price.toFixed(1)) : '--'} */}
-                    {/* {position.liq_price > 0 ? position.liq_price.toLocaleString('en-US', { maximumFractionDigits: 2 }) : '--'} */}
-                    3,5460
+                    {position.liq_price > 0 ? position.liq_price.toLocaleString('en-US', { maximumFractionDigits: 2 }) : '--'}
                 </Txt>
             </Box>
         </Box>
