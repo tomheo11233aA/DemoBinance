@@ -21,6 +21,7 @@ import { Profile } from "src/model/userModel";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { themeUserSelector } from '@selector/userSelector'
 import DropDownPicker from "react-native-dropdown-picker";
+import { View } from "react-native";
 
 const ArrowDownIcon = () => {
     const themeUser = useAppSelector(themeUserSelector)
@@ -118,7 +119,7 @@ export default () => {
             marginBottom={-5}
             justifySpaceBetween
         >
-            <Box>
+            <Box flex={1}>
                 <Box row alignCenter>
                     <Txt
                         color={theme.black}
@@ -231,7 +232,7 @@ export default () => {
 
             </Box>
 
-            {/* <Btn
+            <Btn
                 onPress={() => navigate(screen.DEPOSIT_CRYPTO, { coin: { currency: 'USDT' } })}
                 width={80}
                 radius={4}
@@ -241,7 +242,7 @@ export default () => {
                 backgroundColor={colors.yellow}
             >
                 <Txt fontFamily={fonts.IBMPM} size={12}>{t('Deposit')}</Txt>
-            </Btn> */}
+            </Btn>
         </Box>
     )
 }
