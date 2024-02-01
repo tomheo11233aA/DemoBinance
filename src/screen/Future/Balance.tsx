@@ -394,16 +394,15 @@ const Balance = ({ balance, t }: Props) => {
                         marginLeft={5}
                         color={colors.green2}
                     >
-                        {editableTotalPNL ? `${Number(editableTotalPNL).toLocaleString('en-US', { maximumFractionDigits: 2 })}` : '0.000000'}
+                        +{editableTotalPNL ? `${Number(editableTotalPNL).toLocaleString('en-US', { maximumFractionDigits: 2 })}` : '0.000000'}
                     </Txt>
 
                     <Txt
                         fontFamily={fonts.BNPR}
                         size={15}
-                        marginLeft={5}
                         color={colors.green2}
                     >
-                        {editablePercent ? `(+${Number(editablePercent).toLocaleString('en-US', { maximumFractionDigits: 2 })}%)` : '0,00%'}
+                       {' $ '}{editablePercent ? `(+${Number(editablePercent).toLocaleString('en-US', { maximumFractionDigits: 2 })}%)` : '0,00%'}
                     </Txt>
                 </Btn>
                 {/* <Txt
