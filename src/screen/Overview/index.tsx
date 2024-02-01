@@ -182,7 +182,7 @@ const Overview = () => {
                                 fontFamily={fonts.BNPM}
                                 color={theme.black}
                             >
-                                ${numberCommasDot(COIN_PRICE.toFixed(8))}
+                                {numberCommasDot(COIN_PRICE.toFixed(8))}
                             </Txt>
                             <DropDownPicker
                                 open={open}

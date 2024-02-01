@@ -8,12 +8,15 @@ import React from 'react'
 import QRCode from 'react-native-qrcode-svg'
 import { Profile } from 'src/model/userModel'
 
+
 interface Props {
     t: any;
     profile: Profile;
 }
 
 const QRReferral = ({ t, profile }: Props) => {
+    
+
     return (
         <Box row marginTop={10} width={'100%'} alignCenter>
             <Box
@@ -26,7 +29,8 @@ const QRReferral = ({ t, profile }: Props) => {
                     size={40}
                     color='black'
                     backgroundColor='white'
-                    value={`${contants.HOSTING}/register?ref=${profile.referral}`}
+                    // value={`${contants.HOSTING}/register?ref=${profile.referral}`}
+                    value='https://www.binance.info/vi/futures/ref?code=170597461'
                 />
             </Box>
 
@@ -35,12 +39,13 @@ const QRReferral = ({ t, profile }: Props) => {
                 <Txt
                     color={colors.white}
                     fontFamily={fonts.M24}
-                    size={23}
+                    size={20}
                     numberOfLines={10}
                     marginVertical={2}
-                    marginTop={-3}
+                // marginTop={-3}
                 >
-                    {profile.referral}
+                    {/* {profile.referral} */}
+                    170587461
                 </Txt>
                 <Txt color={colors.yellow} size={9}>
                     {t('Download the Binance App')}

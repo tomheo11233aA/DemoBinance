@@ -35,7 +35,8 @@ const Avbl = ({ theme }: any) => {
 
             <Box row>
                 <Txt size={13} fontFamily={'Myfont21-Regular'} color={theme.black}>
-                    {numberCommasDot(profile?.balance.toFixed(3))}
+                    {/* {numberCommasDot(profile?.balance.toFixed(3))} */}
+                    {profile?.balance ? numberCommasDot(profile?.balance.toFixed(3)) : '0.000000'}
                     <Txt size={11} fontFamily={fonts.IBMPR} color={theme.black}>
                         {' USDT'}
                     </Txt>
