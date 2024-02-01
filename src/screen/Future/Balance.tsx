@@ -25,6 +25,7 @@ import { calcPNL, calcROE } from '@method/format'
 import { positionsFuturesSelector } from '@selector/futuresSelector'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import { themeUserSelector } from '@selector/userSelector'
+import { Modal, Portal, Provider } from 'react-native-paper'
 
 interface Props {
     t: any;
@@ -108,25 +109,62 @@ const Balance = ({ balance, t }: Props) => {
         totalROE += ROE
         totalPNL += PNL
     })
-    const [editableTotalPNL, setEditableTotalPNL] = useState<any>('');
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [tempTotalPNL, setTempTotalPNL] = useState('');
+    const [editableTotalPNL, setEditableTotalPNL] = useState('');
 
     useEffect(() => {
-        const storedTotalPNL = AsyncStorage.getItem('totalPNL') || '0.00';
-        const stored = async () => {
-            const value = await storedTotalPNL;
-            setEditableTotalPNL(value);
-        }
-        stored();
+        const fetchTotalPNL = async () => {
+            const totalPNL = await AsyncStorage.getItem('totalPNL');
+            if (totalPNL !== null) {
+                setEditableTotalPNL(totalPNL);
+            }
+        };
+        fetchTotalPNL();
     }, []);
 
-    const handleTotalPNLChange = async (value: any) => {
-        setEditableTotalPNL(value);
-        await AsyncStorage.setItem('totalPNL', value);
+    const showModal = () => setIsModalVisible(true);
+    const hideModal = () => setIsModalVisible(false);
+
+    const handleSave = async () => {
+        await AsyncStorage.setItem('totalPNL', tempTotalPNL);
+        setEditableTotalPNL(tempTotalPNL);
+        hideModal();
     };
 
 
     return (
         <Box paddingHorizontal={20}>
+            <Portal>
+                <Modal visible={isModalVisible} onDismiss={hideModal} contentContainerStyle={{
+                    backgroundColor: 'white',
+                    padding: 20,
+                    margin: 20,
+                    borderRadius: 10,
+                }}>
+                    <Input
+                        value={tempTotalPNL}
+                        onChangeText={setTempTotalPNL}
+                        keyboardType={'numeric'}
+                        style={{
+                            height: hp('3%'),
+                            backgroundColor: theme.gray,
+                            color: colors.green2,
+                            fontSize: 15,
+                            textAlign: 'center',
+                        }}
+                        font={fonts.BNPR}
+                        hint={t('Write here')}
+                    />
+                    <Btn
+                        marginTop={10}
+                        onPress={handleSave}
+                    >
+                        <Txt size={15} color={colors.green2}>{t('Save')}</Txt>
+                    </Btn>
+                </Modal>
+            </Portal>
+
             <Box marginBottom={15} row alignCenter justifySpaceBetween>
                 <Box row alignCenter>
                     <Box
@@ -292,7 +330,8 @@ const Balance = ({ balance, t }: Props) => {
                 >
                     {t('Today\'s Realized PnL')}
                 </Txt>
-                <Input
+                {/* <Input
+                    onPress={showModal}
                     value={editableTotalPNL}
                     onChangeText={handleTotalPNLChange}
                     keyboardType={'numeric'}
@@ -307,14 +346,15 @@ const Balance = ({ balance, t }: Props) => {
                     }}
                     font={fonts.BNPR}
                     hint={t('Write here')}
-                />
+                /> */}
                 <Txt
-                    fontFamily={fonts.BNPL}
+                    onPress={showModal}
+                    fontFamily={fonts.BNPR}
                     size={15}
                     marginLeft={5}
                     color={colors.green2}
                 >
-                    $
+                    {editableTotalPNL ? `${Number(editableTotalPNL).toLocaleString('en-US', { maximumFractionDigits: 2 })}` : '0.000000'}$
                 </Txt>
                 {/* <Txt
                     fontFamily={fonts.BNPL}
