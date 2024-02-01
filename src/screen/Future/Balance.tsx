@@ -112,13 +112,20 @@ const Balance = ({ balance, t }: Props) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [tempTotalPNL, setTempTotalPNL] = useState('');
     const [editableTotalPNL, setEditableTotalPNL] = useState('');
+    const [tempPercent, setTempPercent] = useState('');
+    const [editablePercent, setEditablePercent] = useState('');
 
     useEffect(() => {
         const fetchTotalPNL = async () => {
             const totalPNL = await AsyncStorage.getItem('totalPNL');
+            const totalPercent = await AsyncStorage.getItem('totalPercent');
             if (totalPNL !== null) {
                 setEditableTotalPNL(totalPNL);
                 setTempTotalPNL(totalPNL);
+            }
+            if (totalPercent !== null) {
+                setEditablePercent(totalPercent);
+                setTempPercent(totalPercent);
             }
         };
         fetchTotalPNL();
@@ -129,6 +136,8 @@ const Balance = ({ balance, t }: Props) => {
 
     const handleSave = async () => {
         await AsyncStorage.setItem('totalPNL', tempTotalPNL);
+        await AsyncStorage.setItem('totalPercent', tempPercent);
+        setEditablePercent(tempPercent);
         setEditableTotalPNL(tempTotalPNL);
         hideModal();
     };
@@ -145,22 +154,48 @@ const Balance = ({ balance, t }: Props) => {
                     width: wp('80%'),
                     alignSelf: 'center',
                 }}>
-                    <Input
-                        radius={3}
-                        padding={5}
-                        value={tempTotalPNL}
-                        onChangeText={setTempTotalPNL}
-                        keyboardType={'numeric'}
-                        style={{
-                            height: hp('3%'),
-                            backgroundColor: theme.gray,
-                            color: colors.green2,
-                            fontSize: 15,
-                            textAlign: 'center',
-                        }}
-                        font={fonts.BNPR}
-                        hint={t('Write here')}
-                    />
+                    <Box>
+                        <Txt fontFamily={fonts.BNPR} size={15} color={theme.black}>{t('Today\'s Realized PnL')}</Txt>
+                        <Input
+                            radius={3}
+                            padding={5}
+                            marginTop={5}
+                            value={tempTotalPNL}
+                            onChangeText={setTempTotalPNL}
+                            keyboardType={'numeric'}
+                            style={{
+                                height: hp('3%'),
+                                backgroundColor: theme.gray,
+                                color: colors.green2,
+                                fontSize: 15,
+                                textAlign: 'center',
+                            }}
+                            font={fonts.BNPR}
+                            hint={t('Write here')}
+                        />
+                    </Box>
+                    <Box
+                        marginTop={10}
+                    >
+                        <Txt fontFamily={fonts.BNPR} size={15} color={theme.black}>{t('Today\'s Realized Percent')}</Txt>
+                        <Input
+                            radius={3}
+                            marginTop={5}
+                            padding={5}
+                            value={tempPercent}
+                            onChangeText={setTempPercent}
+                            keyboardType={'numeric'}
+                            style={{
+                                height: hp('3%'),
+                                backgroundColor: theme.gray,
+                                color: colors.green2,
+                                fontSize: 15,
+                                textAlign: 'center',
+                            }}
+                            font={fonts.BNPR}
+                            hint={t('Write here')}
+                        />
+                    </Box>
                     <Btn
                         marginTop={10}
                         onPress={handleSave}
@@ -352,15 +387,25 @@ const Balance = ({ balance, t }: Props) => {
                     font={fonts.BNPR}
                     hint={t('Write here')}
                 /> */}
-                <Txt
-                    onPress={showModal}
-                    fontFamily={fonts.BNPR}
-                    size={15}
-                    marginLeft={5}
-                    color={colors.green2}
-                >
-                    {editableTotalPNL ? `${Number(editableTotalPNL).toLocaleString('en-US', { maximumFractionDigits: 2 })}` : '0.000000'}
-                </Txt>
+                <Btn onPress={showModal} row>
+                    <Txt
+                        fontFamily={fonts.BNPR}
+                        size={15}
+                        marginLeft={5}
+                        color={colors.green2}
+                    >
+                        {editableTotalPNL ? `${Number(editableTotalPNL).toLocaleString('en-US', { maximumFractionDigits: 2 })}` : '0.000000'}
+                    </Txt>
+
+                    <Txt
+                        fontFamily={fonts.BNPR}
+                        size={15}
+                        marginLeft={5}
+                        color={colors.green2}
+                    >
+                        {editablePercent ? `(+${Number(editablePercent).toLocaleString('en-US', { maximumFractionDigits: 2 })}%)` : '0,00%'}
+                    </Txt>
+                </Btn>
                 {/* <Txt
                     fontFamily={fonts.BNPL}
                     size={15}
