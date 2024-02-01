@@ -192,7 +192,7 @@ const Balance = ({ spot }: Props) => {
                             }}
                             ArrowDownIconComponent={ArrowDownIcon}
                             ArrowUpIconComponent={ArrowUpIcon}
-                            selectedItemLabelStyle={{ color: theme.gray }}
+                            selectedItemLabelStyle={{ color: colors.black }}
                             labelStyle={{ color: theme.black }}
                             showTickIcon={false}
                         />

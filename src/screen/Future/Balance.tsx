@@ -233,7 +233,7 @@ const Balance = ({ balance, t }: Props) => {
                             }}
                             ArrowDownIconComponent={ArrowDownIcon}
                             ArrowUpIconComponent={ArrowUpIcon}
-                            selectedItemLabelStyle={{ color: theme.gray }}
+                            selectedItemLabelStyle={{ color: colors.black }}
                             labelStyle={{ color: theme.black }}
                             listMode='SCROLLVIEW'
                             showTickIcon={false}

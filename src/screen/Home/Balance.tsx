@@ -158,7 +158,7 @@ export default () => {
                         }}
                         ArrowDownIconComponent={ArrowDownIcon}
                         ArrowUpIconComponent={ArrowUpIcon}
-                        selectedItemLabelStyle={{ color: theme.gray }}
+                        selectedItemLabelStyle={{ color: colors.black}}
                         labelStyle={{
                             fontFamily: fonts.BNPL,
                             fontSize: 14,

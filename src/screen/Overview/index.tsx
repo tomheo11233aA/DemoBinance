@@ -25,6 +25,8 @@ import ComingSoon from '@screen/ComingSoon'
 import DropDownPicker from 'react-native-dropdown-picker'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import { themeUserSelector } from '@selector/userSelector'
+import { walletSpotSelector } from '@selector/spotSelector'
+import { convertToValueSpot } from '@method/format'
 
 const ArrowDownIcon = () => {
     const themeUser = useAppSelector(themeUserSelector)
@@ -63,7 +65,7 @@ const Overview = () => {
     const positions = useAppSelector(positionsFuturesSelector)
     const navigation = useNavigation<any>()
     const [open, setOpen] = useState(false);
-    const [value, setValue] = useState('usdt');
+    const [value, setValue] = useState('btc');
     const [items, setItems] = useState([
         { label: 'BTC', value: 'btc' },
         { label: 'ETH', value: 'eth' },
@@ -71,7 +73,15 @@ const Overview = () => {
         { label: 'USDT', value: 'usdt' },
         { label: 'USD', value: 'usd' },
     ]);
-
+    const [coinBalance, setCoinBalance] = useState(0)
+    const wallet = useAppSelector(walletSpotSelector)
+    const spot = convertToValueSpot(coins, wallet, profile)
+    useEffect(() => {
+        const selectCoin = spot.coins.find((coin: any) => coin.currency === value.toUpperCase())
+        if (selectCoin) {
+            setCoinBalance(selectCoin.close)
+        }
+    }, [value, spot])
     useEffect(() => {
         handleGetListCoin()
     }, [])
@@ -122,6 +132,7 @@ const Overview = () => {
 
         COIN_PRICE = BALANCE / coins[0].close
     }
+    const COIN_PRICE_1 = coinBalance > 0 ? BALANCE / coinBalance : 0
 
     return (
         <Box backgroundColor={theme.bg}>
@@ -182,7 +193,9 @@ const Overview = () => {
                                 fontFamily={fonts.BNPM}
                                 color={theme.black}
                             >
-                                {numberCommasDot(COIN_PRICE.toFixed(8))}
+                                {/* {numberCommasDot(COIN_PRICE.toFixed(8))} */}
+                                ${value === 'usdt' || value === 'usd' ? BALANCE.toLocaleString('en-US', { maximumFractionDigits: 2 })
+                                    : COIN_PRICE_1.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                             </Txt>
                             <DropDownPicker
                                 open={open}
@@ -214,7 +227,7 @@ const Overview = () => {
                                 }}
                                 ArrowDownIconComponent={ArrowDownIcon}
                                 ArrowUpIconComponent={ArrowUpIcon}
-                                selectedItemLabelStyle={{ color: theme.gray }}
+                                selectedItemLabelStyle={{ color: colors.black }}
                                 labelStyle={{ color: theme.black }}
                                 listMode='SCROLLVIEW'
                                 showTickIcon={false}
