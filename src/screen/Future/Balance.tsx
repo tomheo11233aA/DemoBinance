@@ -2,6 +2,8 @@ import Box from '@commom/Box'
 import Btn from '@commom/Btn'
 import Icon from '@commom/Icon'
 import Txt from '@commom/Txt'
+import Input from '@commom/Input'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useAppDispatch, useAppSelector, useTheme } from '@hooks/index'
 import { numberCommasDot } from '@method/format'
 import { navigate } from '@navigation/navigationRef'
@@ -55,7 +57,6 @@ const ArrowUpIcon = () => {
     )
 }
 
-// text to long
 const formatText = (text: string) => {
     if (text.length > 10) {
         return text.slice(0, 10) + '...'
@@ -107,6 +108,23 @@ const Balance = ({ balance, t }: Props) => {
         totalROE += ROE
         totalPNL += PNL
     })
+    const [editableTotalPNL, setEditableTotalPNL] = useState<any>('');
+
+    useEffect(() => {
+        const storedTotalPNL = AsyncStorage.getItem('totalPNL') || '0.00';
+        const stored = async () => {
+            const value = await storedTotalPNL;
+            setEditableTotalPNL(value);
+        }
+        stored();
+    }, []);
+
+    const handleTotalPNLChange = async (value: any) => {
+        setEditableTotalPNL(value);
+        await AsyncStorage.setItem('totalPNL', value);
+    };
+
+
     return (
         <Box paddingHorizontal={20}>
             <Box marginBottom={15} row alignCenter justifySpaceBetween>
@@ -274,22 +292,46 @@ const Balance = ({ balance, t }: Props) => {
                 >
                     {t('Today\'s Realized PnL')}
                 </Txt>
+                <Input
+                    value={editableTotalPNL}
+                    onChangeText={handleTotalPNLChange}
+                    keyboardType={'numeric'}
+                    style={{
+                        // width: wp('20%'),
+                        height: hp('3%'),
+                        backgroundColor: theme.gray,
+                        color: colors.green2,
+                        fontSize: 15,
+                        marginLeft: 5,
+                        textAlign: 'center',
+                    }}
+                    font={fonts.BNPR}
+                    hint={t('Write here')}
+                />
                 <Txt
+                    fontFamily={fonts.BNPL}
+                    size={15}
+                    marginLeft={5}
+                    color={colors.green2}
+                >
+                    $
+                </Txt>
+                {/* <Txt
                     fontFamily={fonts.BNPL}
                     size={15}
                     marginLeft={7}
                     color={totalPNL >= 0 ? colors.green2 : colors.myRed}
                 >
                     {`${numberCommasDot(totalPNL?.toFixed(2))}`}$ 
-                 </Txt>
+                 </Txt> */}
 
-                <Txt
+                {/* <Txt
                     fontFamily={fonts.BNPL}
                     size={14}
                     color={totalPNL >= 0 ? colors.green2 : colors.myRed}
                 >
                     {`(${numberCommasDot(totalROE?.toFixed(2))}%)`}
-                </Txt>
+                </Txt> */}
             </Box>
             {/* 
 

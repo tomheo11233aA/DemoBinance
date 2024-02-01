@@ -65,6 +65,7 @@ export default ({ t }: any) => {
 
     const handleLogout = async () => {
         await AsyncStorage.removeItem(contants.TOKEN)
+        await AsyncStorage.removeItem("totalPNL")
         dispatch(userSlice.actions.signOut())
         reset(0, screen.LOGIN)
     }
