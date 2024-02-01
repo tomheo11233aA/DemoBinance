@@ -118,6 +118,7 @@ const Balance = ({ balance, t }: Props) => {
             const totalPNL = await AsyncStorage.getItem('totalPNL');
             if (totalPNL !== null) {
                 setEditableTotalPNL(totalPNL);
+                setTempTotalPNL(totalPNL);
             }
         };
         fetchTotalPNL();
@@ -141,8 +142,12 @@ const Balance = ({ balance, t }: Props) => {
                     padding: 20,
                     margin: 20,
                     borderRadius: 10,
+                    width: wp('80%'),
+                    alignSelf: 'center',
                 }}>
                     <Input
+                        radius={3}
+                        padding={5}
                         value={tempTotalPNL}
                         onChangeText={setTempTotalPNL}
                         keyboardType={'numeric'}
@@ -354,7 +359,7 @@ const Balance = ({ balance, t }: Props) => {
                     marginLeft={5}
                     color={colors.green2}
                 >
-                    {editableTotalPNL ? `${Number(editableTotalPNL).toLocaleString('en-US', { maximumFractionDigits: 2 })}` : '0.000000'}$
+                    {editableTotalPNL ? `${Number(editableTotalPNL).toLocaleString('en-US', { maximumFractionDigits: 2 })}` : '0.000000'}
                 </Txt>
                 {/* <Txt
                     fontFamily={fonts.BNPL}
@@ -374,7 +379,6 @@ const Balance = ({ balance, t }: Props) => {
                 </Txt> */}
             </Box>
             {/* 
-
 
             <Btn
                 row
