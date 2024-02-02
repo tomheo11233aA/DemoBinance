@@ -27,7 +27,7 @@ const ArrowDownIcon = () => {
     const themeUser = useAppSelector(themeUserSelector)
     return (
         <Icon
-            source={require('@images/wallet/arrow-down.png')}
+            source={require('@images/myHome/down-arrow.png')}
             size={10}
             resizeMode={'contain'}
             marginRight={2}
@@ -40,7 +40,8 @@ const ArrowUpIcon = () => {
     const themeUser = useAppSelector(themeUserSelector)
     return (
         <Icon
-            source={require('@images/wallet/arrow-up.png')}
+            source={require('@images/myHome/down-arrow.png')}
+            style={{ transform: [{ rotate: '180deg' }] }}
             size={10}
             resizeMode={'contain'}
             marginRight={2}
@@ -158,7 +159,7 @@ export default () => {
                         }}
                         ArrowDownIconComponent={ArrowDownIcon}
                         ArrowUpIconComponent={ArrowUpIcon}
-                        selectedItemLabelStyle={{ color: colors.black}}
+                        selectedItemLabelStyle={{ color: colors.black }}
                         labelStyle={{
                             fontFamily: fonts.BNPL,
                             fontSize: 14,

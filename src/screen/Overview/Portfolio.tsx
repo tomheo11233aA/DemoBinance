@@ -2,11 +2,12 @@ import Box from '@commom/Box'
 import Txt from '@commom/Txt'
 import { numberCommasDot } from '@method/format'
 import { fonts } from '@theme/fonts'
-import React from 'react'
+import React, { useState } from 'react'
 import { ImageSourcePropType } from 'react-native/types'
 import HideWallet from './HideWallet'
 import ItemPortfolio from './ItemPortfolio'
 import { useTheme } from '@hooks/index'
+import Tab from './Tab'
 
 export interface IPortfolios {
     title: string;
@@ -25,6 +26,8 @@ interface Props {
 
 const Portfolio = ({ COIN_PRICE, BALANCE, t }: Props) => {
     const theme = useTheme()
+    const [tab, setTab] = useState('Account')
+
 
     const portfolios: IPortfolios[] = [
         {
@@ -85,9 +88,11 @@ const Portfolio = ({ COIN_PRICE, BALANCE, t }: Props) => {
 
     return (
         <Box paddingHorizontal={20} zIndex={-1}>
-            <Txt marginTop={15} fontFamily={fonts.AS} size={18} marginBottom={10} color={theme.black}>
+            {/* <Txt marginTop={15} fontFamily={fonts.AS} size={18} marginBottom={10} color={theme.black}>
                 {t('Portfolio')}
-            </Txt>
+            </Txt> */}
+            <Tab {...{ tab, setTab }} />
+
             <HideWallet t={t} />
             {portfolios.map((portfolio: IPortfolios, index: number) =>
                 <ItemPortfolio

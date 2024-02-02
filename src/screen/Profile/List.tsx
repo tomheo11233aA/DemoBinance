@@ -67,6 +67,8 @@ export default ({ t }: any) => {
         await AsyncStorage.removeItem(contants.TOKEN)
         await AsyncStorage.removeItem("totalPNL")
         await AsyncStorage.removeItem("totalPercent")
+        await AsyncStorage.removeItem("todayPNL")
+        await AsyncStorage.removeItem("todayPNLPercent")
         dispatch(userSlice.actions.signOut())
         reset(0, screen.LOGIN)
     }

@@ -27,6 +27,10 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import { themeUserSelector } from '@selector/userSelector'
 import { walletSpotSelector } from '@selector/spotSelector'
 import { convertToValueSpot } from '@method/format'
+import { Modal, Portal, Provider } from 'react-native-paper'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import Input from '@commom/Input'
+import { View } from 'react-native'
 
 const ArrowDownIcon = () => {
     const themeUser = useAppSelector(themeUserSelector)
@@ -133,9 +137,101 @@ const Overview = () => {
         COIN_PRICE = BALANCE / coins[0].close
     }
     const COIN_PRICE_1 = coinBalance > 0 ? BALANCE / coinBalance : 0
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [tempTodayPNL, setTempTodayPNL] = useState('');
+    const [editableTotalPNL, setEditableTotalPNL] = useState('');
+    const [tempTodayPercent, setTempTodayPercent] = useState('');
+    const [editablePercent, setEditablePercent] = useState('');
 
+    useEffect(() => {
+        const fetchTotalPNL = async () => {
+            const todayPNL = await AsyncStorage.getItem('todayPNL');
+            const todayPNLPercent = await AsyncStorage.getItem('todayPNLPercent');
+            if (todayPNL !== null) {
+                setEditableTotalPNL(todayPNL);
+                setTempTodayPNL(todayPNL);
+            }
+            if (todayPNLPercent !== null) {
+                setEditablePercent(todayPNLPercent);
+                setTempTodayPercent(todayPNLPercent);
+            }
+        };
+        fetchTotalPNL();
+    }, []);
+
+    const showModal = () => setIsModalVisible(true);
+    const hideModal = () => setIsModalVisible(false);
+
+    const handleSave = async () => {
+        await AsyncStorage.setItem('todayPNL', tempTodayPNL);
+        await AsyncStorage.setItem('todayPNLPercent', tempTodayPercent);
+        setEditablePercent(tempTodayPercent);
+        setEditableTotalPNL(tempTodayPNL);
+        hideModal();
+    };
     return (
         <Box backgroundColor={theme.bg}>
+            <Portal>
+                <Modal visible={isModalVisible} onDismiss={hideModal} contentContainerStyle={{
+                    backgroundColor: 'white',
+                    padding: 20,
+                    margin: 20,
+                    borderRadius: 10,
+                    width: wp('80%'),
+                    alignSelf: 'center',
+                }}>
+                    <Box>
+                        <Txt fontFamily={fonts.BNPR} size={15} color={theme.black}>{t('Today\'s PNL')}</Txt>
+                        <Input
+                            radius={3}
+                            padding={5}
+                            marginTop={5}
+                            value={tempTodayPNL}
+                            onChangeText={setTempTodayPNL}
+                            keyboardType={'numeric'}
+                            style={{
+                                height: hp('3%'),
+                                backgroundColor: theme.gray,
+                                color: colors.green2,
+                                fontSize: 15,
+                                textAlign: 'center',
+                            }}
+                            font={fonts.BNPR}
+                            hint={t('Write here')}
+                        />
+                    </Box>
+                    <Box
+                        marginTop={10}
+                    >
+                        <Txt fontFamily={fonts.BNPR} size={15} color={theme.black}>{t('Today\'s PNL Percent')}</Txt>
+                        <Input
+                            radius={3}
+                            marginTop={5}
+                            padding={5}
+                            // value={tempPercent}
+                            value={tempTodayPercent}
+                            // onChangeText={setTempPercent}
+                            onChangeText={setTempTodayPercent}
+                            keyboardType={'numeric'}
+                            style={{
+                                height: hp('3%'),
+                                backgroundColor: theme.gray,
+                                color: colors.green2,
+                                fontSize: 15,
+                                textAlign: 'center',
+                            }}
+                            font={fonts.BNPR}
+                            hint={t('Write here')}
+                        />
+                    </Box>
+                    <Btn
+                        marginTop={10}
+                        onPress={handleSave}
+                    >
+                        <Txt size={15} color={colors.green2}>{t('Save')}</Txt>
+                    </Btn>
+                </Modal>
+            </Portal>
             <Box paddingHorizontal={20}>
                 <Box row alignCenter justifySpaceBetween>
                     <Box row alignCenter>
@@ -249,6 +345,48 @@ const Overview = () => {
                         <Txt fontFamily={fonts.AS} color={colors.gray5}>******</Txt>
                     </>
                 }
+                <Box
+                    row
+                    marginTop={10}
+                    style={{
+                        alignItems: 'center',
+                    }}
+                    zIndex={-1}
+                >
+                    <Box>
+                        <Txt
+                            fontFamily={fonts.BNPL}
+                            fontType={'normal'}
+                            size={15}
+                            color={theme.black}
+                        >
+                            {t('Today\'s PNL')}
+                        </Txt>
+                        <View style={{
+                            borderWidth: 0.3,
+                            borderColor: theme.black,
+                            borderStyle: 'dashed',
+                        }} />
+                    </Box>
+                    <Btn onPress={showModal} row>
+                        <Txt
+                            fontFamily={fonts.BNPR}
+                            size={15}
+                            marginLeft={5}
+                            color={colors.green2}
+                        >
+                            +{editableTotalPNL ? `${Number(editableTotalPNL).toLocaleString('en-US', { maximumFractionDigits: 2 })}` : '0.000000'}
+                        </Txt>
+
+                        <Txt
+                            fontFamily={fonts.BNPR}
+                            size={15}
+                            color={colors.green2}
+                        >
+                            {' $ '}{editablePercent ? `(+${Number(editablePercent).toLocaleString('en-US', { maximumFractionDigits: 2 })}%)` : '0,00%'}
+                        </Txt>
+                    </Btn>
+                </Box>
                 <Button t={t} />
             </Box>
             <Portfolio {...{ COIN_PRICE, BALANCE, t }} />

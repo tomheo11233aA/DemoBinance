@@ -21,6 +21,7 @@ import LoadingYellow from '@reuse/LoadingYellow'
 import { getProfileThunk } from '@asyncThunk/userAsyncThunk'
 import KYCStatus from './KYCStatus'
 import Tab from './Tab'
+import Tab2 from './Tab2'
 
 const Home = () => {
   const theme = useTheme()
@@ -29,6 +30,7 @@ const Home = () => {
   const navigation = useNavigation()
   const isLogin = useAppSelector(isLoginUserSelector)
   const [tab, setTab] = useState('Hot')
+  const [tab2, setTab2] = useState('Discover')
 
   const [refesh, setRefesh] = useState(false)
 
@@ -112,6 +114,10 @@ const Home = () => {
               }
             </>
             {/* <Coins /> */}
+            {/* a line */}
+            <Box height={1} backgroundColor={theme.gray} marginTop={10} width={'120%'} style={{ alignSelf: 'center' }} />
+            {isLogin && <Tab2 {...{ tab2, setTab2 }} />}
+
           </Box>
         </KeyBoardSafe>
       }

@@ -14,12 +14,14 @@ import { heightBottomTab } from '@util/responsive'
 import React, { useRef, useState } from 'react'
 import Login from './Login'
 import Tab from './Tab'
+import TopTab from './TopTab'
 
 const Wallet = () => {
   const dispatch = useAppDispatch()
   const theme = useTheme()
   const toastTopRef = useRef(null)
   const [tab, setTab] = useState('Overview')
+  const [topTab, setTopTab] = useState('Exchange')
   const isLogin = useAppSelector(isLoginUserSelector)
   const [refesh, setRefesh] = useState(false)
 
@@ -43,6 +45,7 @@ const Wallet = () => {
             onRefesh={handleRefesh}
             paddingBottom={heightBottomTab()}
           >
+            <TopTab {...{ topTab, setTopTab }} />
             <Tab {...{ tab, setTab }} />
             <>
               {refesh ?
