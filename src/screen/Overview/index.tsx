@@ -290,7 +290,7 @@ const Overview = () => {
                                 color={theme.black}
                             >
                                 {/* {numberCommasDot(COIN_PRICE.toFixed(8))} */}
-                                ${value === 'usdt' || value === 'usd' ? BALANCE.toLocaleString('en-US', { maximumFractionDigits: 2 })
+                                {value === 'usdt' || value === 'usd' ? BALANCE.toLocaleString('en-US', { maximumFractionDigits: 2 })
                                     : COIN_PRICE_1.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                             </Txt>
                             <DropDownPicker
