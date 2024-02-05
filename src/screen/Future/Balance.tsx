@@ -295,7 +295,7 @@ const Balance = ({ balance, t }: Props) => {
                             fontType={'bold'}
                             color={theme.black}
                         >
-                            ${value === 'usdt' || value === 'usd' ? balance.toLocaleString('en-US', { maximumFractionDigits: 2 })
+                            {value === 'usdt' || value === 'usd' ? balance.toLocaleString('en-US', { maximumFractionDigits: 2 })
                                 : balance1.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                         </Txt>
 
