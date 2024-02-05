@@ -224,16 +224,19 @@ const ItemPosition = ({
                     </Txt>
 
                     <Txt style={styles.title} numberOfLines={1}>{`${t(`Liq. Price`)}(USDT)`}</Txt>
-                    {isNaN(position?.liquidationPrice) ?
+                    {/* {isNaN(position?.liquidationPrice) ?
                         <Box width={'100%'} alignEnd marginTop={3}>
                             <Txt color={'#aaaaaa'}>--</Txt>
                             <Txt color={'#aaaaaa'} size={10} marginTop={-9} marginRight={1} bold>{'- -'}</Txt>
                         </Box> :
                         <Txt style={[styles.txtValue, { color: theme.black }]}>
-                            {/* {numberCommasDot(position?.LIQ_PRICE.toFixed(2))} */}
                             {position?.LIQ_PRICE.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                         </Txt>
-                    }
+                    } */}
+                    <Box width={'100%'} alignEnd marginTop={3}>
+                        <Txt color={'#aaaaaa'}>--</Txt>
+                        {/* <Txt color={'#aaaaaa'} size={10} marginTop={-9} marginRight={1} bold>{'- -'}</Txt> */}
+                    </Box>
                 </Box>
             </Box>
 
