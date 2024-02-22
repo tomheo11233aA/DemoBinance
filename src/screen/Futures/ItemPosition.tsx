@@ -146,7 +146,7 @@ const ItemPosition = ({
 
                 <Box alignEnd>
                     <Txt color={colors.gray5} size={12} marginTop={2}>
-                        ROE
+                        ROI
                     </Txt>
                     <Txt
                         size={20}
