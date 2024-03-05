@@ -34,7 +34,7 @@ export default ({
 
     return (
         <G key={'G_cursor'} >
-            <Line
+            {/* <Line
                 key={'L_cursor_yellow'}
                 x1={(size_chart - 1) * gap_candle - padding_right_candle}
                 y1={closeSVG}
@@ -43,7 +43,7 @@ export default ({
                 stroke={colors.yellow}
                 strokeWidth={1}
                 strokeDasharray={'1 2'}
-            />
+            /> */}
             <Line
                 key={'L_cursor'}
                 x1={width}

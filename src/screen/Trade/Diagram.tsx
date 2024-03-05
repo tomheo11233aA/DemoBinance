@@ -20,9 +20,9 @@ import LineX from "./LineX"
 import MinMaxLowHigh from "./MinMaxLowHigh"
 import PathMA from "./PathMA"
 import { CandlestickChart } from 'react-native-wagmi-charts';
-
+import { ScrollView, Text } from "react-native"
 import React from "react"
-import Box from "@commom/Box"
+import Btn from "@commom/Btn"
 
 export const height_container = height * 35 / 100
 export const heigh_candle = height_container - 40
@@ -32,7 +32,6 @@ const gap_candle = width * 2.55 / 100
 const width_candle = width * 2.052 / 100
 const width_candles = (width * 2.55 / 100) * 30 - width_candle
 const padding_right_candle = size_chart * gap_candle - width_candle - width_candles
-
 const Diagram = () => {
     const theme = useTheme()
     const dispatch = useAppDispatch()
@@ -218,54 +217,66 @@ const Diagram = () => {
                 <PinchGestureHandler onGestureEvent={pinchHandle}>
                     <Animated.View>
                         {candles.length > 0 &&
-                            <Svg>
-                                <CandlestickChart.Provider
-                                    data={candles}
-                                >
-                                    <CandlestickChart>
-                                        <CandlestickChart.Candles
-                                            height={heigh_candle}
-                                            style={{
-                                                right: 80,
-                                                top: paddingTop,
-                                            }} />
-                                    </CandlestickChart>
-                                </CandlestickChart.Provider>
-                                <G key={'G'}>
-                                    <LineX
+                            <ScrollView>
+                                <Svg>
+                                    <G key={'G'}>
+                                        <LineX
+                                            {...{
+                                                theme,
+                                                candles,
+                                                maxHighItem,
+                                                heighValueChart,
+                                                gap_candle: gapCandle.value,
+                                                padding_right_candle: paddingRightCandles.value,
+                                            }}
+                                        />
+
+                                        <MinMaxLowHigh
+                                            {...{
+                                                candles,
+                                                size_chart,
+                                                gap_candle: gapCandle.value,
+                                                minLowItem,
+                                                maxHighItem,
+                                                padding_right_candle: paddingRightCandles.value,
+                                            }}
+                                        />
+                                        {/* <PathMA {...{ dPathMA, dPathGreen, dPathRed }} /> */}
+                                        <CandlestickChart.Provider
+                                            data={candles}
+                                        >
+                                            <CandlestickChart
+                                                width={width}
+                                                height={heigh_candle}
+                                                style={{
+                                                    right: 60,
+                                                }}
+                                            >
+                                                <CandlestickChart.Candles
+                                                    rectProps={{
+                                                        width: width_candle,
+                                                    }}
+                                                    lineProps={{
+                                                    }}
+                                                    style={{
+                                                        top: paddingTop,                                                        
+                                                    }}
+                                                />
+                                            </CandlestickChart>
+                                        </CandlestickChart.Provider>
+                                    </G>
+                                    <Cursor
                                         {...{
                                             theme,
                                             candles,
-                                            maxHighItem,
-                                            heighValueChart,
-                                            gap_candle: gapCandle.value,
-                                            padding_right_candle: paddingRightCandles.value,
-                                        }}
-                                    />
-
-                                    <MinMaxLowHigh
-                                        {...{
-                                            candles,
+                                            countDown,
                                             size_chart,
                                             gap_candle: gapCandle.value,
-                                            minLowItem,
-                                            maxHighItem,
                                             padding_right_candle: paddingRightCandles.value,
                                         }}
                                     />
-                                    {/* <PathMA {...{ dPathMA, dPathGreen, dPathRed }} /> */}
-                                </G>
-                                <Cursor
-                                    {...{
-                                        theme,
-                                        candles,
-                                        countDown,
-                                        size_chart,
-                                        gap_candle: gapCandle.value,
-                                        padding_right_candle: paddingRightCandles.value,
-                                    }}
-                                />
-                            </Svg>
+                                </Svg>
+                            </ScrollView>
                         }
                     </Animated.View>
                 </PinchGestureHandler>
