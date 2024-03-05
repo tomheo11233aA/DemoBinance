@@ -9,7 +9,7 @@ import { colors } from "@theme/colors"
 import contants from "@util/contants"
 import { height, width } from "@util/responsive"
 import { useEffect } from "react"
-import { AppState, AppStateStatus, StyleSheet } from "react-native"
+import { AppState, AppStateStatus, InteractionManager, StyleSheet } from "react-native"
 import { PanGestureHandler, PinchGestureHandler, PinchGestureHandlerGestureEvent } from "react-native-gesture-handler"
 import Animated, { runOnJS, useAnimatedGestureHandler, useSharedValue } from "react-native-reanimated"
 import { G, Svg } from "react-native-svg"
@@ -19,6 +19,10 @@ import Cursor from "./Cursor"
 import LineX from "./LineX"
 import MinMaxLowHigh from "./MinMaxLowHigh"
 import PathMA from "./PathMA"
+import { CandlestickChart } from 'react-native-wagmi-charts';
+
+import React from "react"
+import Box from "@commom/Box"
 
 export const height_container = height * 35 / 100
 export const heigh_candle = height_container - 40
@@ -29,7 +33,7 @@ const width_candle = width * 2.052 / 100
 const width_candles = (width * 2.55 / 100) * 30 - width_candle
 const padding_right_candle = size_chart * gap_candle - width_candle - width_candles
 
-export default () => {
+const Diagram = () => {
     const theme = useTheme()
     const dispatch = useAppDispatch()
     const symbol = useAppSelector(symbolFuturesSelector)
@@ -215,6 +219,18 @@ export default () => {
                     <Animated.View>
                         {candles.length > 0 &&
                             <Svg>
+                                <CandlestickChart.Provider
+                                    data={candles}
+                                >
+                                    <CandlestickChart>
+                                        <CandlestickChart.Candles
+                                            height={heigh_candle}
+                                            style={{
+                                                right: 80,
+                                                top: paddingTop,
+                                            }} />
+                                    </CandlestickChart>
+                                </CandlestickChart.Provider>
                                 <G key={'G'}>
                                     <LineX
                                         {...{
@@ -237,7 +253,7 @@ export default () => {
                                             padding_right_candle: paddingRightCandles.value,
                                         }}
                                     />
-                                    <PathMA {...{ dPathMA, dPathGreen, dPathRed }} />
+                                    {/* <PathMA {...{ dPathMA, dPathGreen, dPathRed }} /> */}
                                 </G>
                                 <Cursor
                                     {...{
@@ -266,3 +282,5 @@ const styles = StyleSheet.create({
         borderColor: colors.line,
     }
 })
+
+export default React.memo(Diagram)
