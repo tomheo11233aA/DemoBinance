@@ -59,8 +59,8 @@ export default () => {
   return (
     <View style={styles.container}>
       <KeyBoardSafe
-        refesh={loading}
-        onRefesh={handleRefesh}
+        // refesh={loading}
+        // onRefesh={handleRefesh}
         bg={theme.bg}
         paddingBottom={10}
       >

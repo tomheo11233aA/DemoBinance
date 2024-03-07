@@ -31,7 +31,7 @@ const History = () => {
                 )}
             </View>
 
-            <View style={{ flexDirection: 'row', paddingHorizontal: 15 }}>
+            <View style={{ flexDirection: 'row', paddingHorizontal: 15}}>
                 <BuyInto />
                 <SellInto />
             </View>
