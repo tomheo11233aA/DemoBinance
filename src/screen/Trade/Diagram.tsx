@@ -24,7 +24,6 @@ import { WebView } from 'react-native-webview';
 import { SafeAreaView } from "react-native"
 import { ActivityIndicator } from "react-native"
 
-
 export const height_container = height * 35 / 100
 export const heigh_candle = height_container - 40
 export const paddingTop = 20
@@ -55,6 +54,9 @@ const Diagram = () => {
     const gapCandle = useSharedValue(gap_candle)
     const paddingRightCandles = useSharedValue(padding_right_candle)
     const newSocket = io(contants.HOSTING_CHART)
+    const [loading, setLoading] = React.useState(true)
+
+    const [time, setTime] = React.useState(1 * 60)
 
     useEffect((): any => {
         handleGetChart()
@@ -112,6 +114,7 @@ const Diagram = () => {
         if (timeLimit.timeString) {
             time = convertTimeGetChart(timeLimit.timeString)
         }
+        setTime(time)
         const res = await getChart({
             limit: 500,
             symbol: symbol,
@@ -245,7 +248,7 @@ const Diagram = () => {
                     body: JSON.stringify({
                         "limit": 500,
                         "symbol": "BTCUSDT",
-                        "time": 60
+                        "time": ${time},
                     })
                 });
                 if (!response.ok) {
@@ -267,6 +270,7 @@ const Diagram = () => {
             }
             async function initChart() {
                 const chart = LightweightCharts.createChart(document.getElementById('chart'), {
+                    height: ${height_container},
                 });
                 chart.applyOptions({
                     crosshair: {
@@ -281,15 +285,15 @@ const Diagram = () => {
                         },
                         lastValueVisible: false,
                     },
-                    // timeScale: {
-                    //     tickMarkFormatter: (time, tickMarkType, locale) => {
-                    //         const date = new Date(time);
-                    //         if (date.getMinutes() % 5 === 0) {
-                    //             return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-                    //         }
-                    //         return '';
-                    //     }
-                    // },
+                    timeScale: {
+                        tickMarkFormatter: (time, tickMarkType, locale) => {
+                            const date = new Date(time);
+                            if (date.getMinutes() % 5 === 0) {
+                                return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                            }
+                            return '';
+                        }
+                    },
                 });
                 chart.timeScale().applyOptions({
                     barSpacing: 10,
@@ -413,12 +417,19 @@ const Diagram = () => {
         //         </PinchGestureHandler>
         //     </Animated.View>
         // </PanGestureHandler>
-        <SafeAreaView style={{ flex: 1}}>
+        <SafeAreaView style={{ flex: 1 }}>
+            {loading && <ActivityIndicator size="large" color={colors.grayBlue} />}
             <WebView
+                style={{
+                    height: height_container,
+                }}
                 originWhitelist={['*']}
                 source={{ html: chartHtml }}
                 scalesPageToFit={false}
                 javaScriptEnabled={true}
+                onLoadEnd={() => setLoading(false)}
+                onLoadStart={() => setLoading(true)}
+                onLoad={() => setLoading(false)}
             />
         </SafeAreaView>
     )
@@ -430,7 +441,8 @@ const styles = StyleSheet.create({
         borderTopWidth: 0.5,
         borderBottomWidth: 0.5,
         borderColor: colors.line,
-    }
+    },
+
 })
 
 export default React.memo(Diagram)
