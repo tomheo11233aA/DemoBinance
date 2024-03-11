@@ -62,7 +62,7 @@ export default () => {
         // refesh={loading}
         // onRefesh={handleRefesh}
         bg={theme.bg}
-        paddingBottom={10}
+        // paddingBottom={10}
       >
         {!loading ?
           <>
@@ -90,6 +90,7 @@ export default () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.black2,
+    // backgroundColor: colors.black2,
+    backgroundColor: 'green'
   }
 })
