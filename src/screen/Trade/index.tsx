@@ -90,7 +90,6 @@ export default () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: colors.black2,
-    backgroundColor: 'green'
+    backgroundColor: colors.black2,
   }
 })

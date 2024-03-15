@@ -429,7 +429,6 @@ const Diagram = () => {
                 style={{
                     height: height_container,
                     width: width,
-                    backgroundColor: 'green'
                 }}
                 originWhitelist={['*']}
                 source={{ html: chartHtml }}
