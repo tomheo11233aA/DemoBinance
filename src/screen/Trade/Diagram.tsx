@@ -56,7 +56,7 @@ const Diagram = () => {
     const [loading, setLoading] = React.useState(true)
     const [chartHtml, setChartHtml] = React.useState('');
     const [time, setTime] = React.useState(1 * 60)
-
+    const hosting = contants.HOSTING_CHART + 'api/binaryOption/getChart'
     useEffect(() => {
         const newChartHtml = `
         <!DOCTYPE html>
@@ -85,15 +85,15 @@ const Diagram = () => {
             <div id="chart"></div>
             <script>
                 async function fetchData() {
-                    const response = await fetch('https://trade.dk-tech.vn/api/binaryOption/getChart', {
+                    const response = await fetch("${hosting}", {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({
-                            "limit": 500,
-                            "symbol": "${symbol}",
-                            "time": ${time},
+                            limit: 500,
+                            symbol: "${symbol}",
+                            time: ${time},
                         })
                     });
                     if (!response.ok) {
