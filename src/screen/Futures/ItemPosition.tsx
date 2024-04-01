@@ -41,6 +41,7 @@ const ItemPosition = ({
     onShowModalTPSLPosition,
 }: Props) => {
     position = converPostirions(position, coins, profile.balance)
+    // console.log('position', position)
     return (
         <Box
             marginTop={10}
@@ -233,10 +234,30 @@ const ItemPosition = ({
                             {position?.LIQ_PRICE.toLocaleString('en-US', { maximumFractionDigits: 2 })}
                         </Txt>
                     } */}
-                    <Box width={'100%'} alignEnd marginTop={3}>
+                    {/* <Box width={'100%'} alignEnd marginTop={3}>
                         <Txt color={'#aaaaaa'}>--</Txt>
-                        {/* <Txt color={'#aaaaaa'} size={10} marginTop={-9} marginRight={1} bold>{'- -'}</Txt> */}
-                    </Box>
+                        <Txt color={'#aaaaaa'} size={10} marginTop={-9} marginRight={1} bold>{'- -'}</Txt>
+                    </Box> */}
+
+                    {/* nếu posiotion.side là sell thì hiện ra {position?.LIQ_PRICE.toLocaleString('en-US', { maximumFractionDigits: 2 })}
+ còn không hiện --*/}
+
+                    {
+                        position?.side === 'sell' ?
+                            isNaN(position?.liquidationPrice) ?
+                                <Box width={'100%'} alignEnd marginTop={3}>
+                                    <Txt color={'#aaaaaa'}>--</Txt>
+                                    <Txt color={'#aaaaaa'} size={10} marginTop={-9} marginRight={1} bold>{'- -'}</Txt>
+                                </Box> :
+                                <Txt style={[styles.txtValue, { color: theme.black }]}>
+                                    {position?.liquidationPrice.toLocaleString('en-US', { maximumFractionDigits: 2 })}
+                                </Txt>
+                            : <Box width={'100%'} alignEnd marginTop={3}>
+                                <Txt color={'#aaaaaa'}>--</Txt>
+                            </Box>
+
+                    }
+
                 </Box>
             </Box>
 
