@@ -1,8 +1,8 @@
 const contants = { 
     // HOSTING: 'https://trade.dk-tech.vn',
-    HOSTING: 'https://happinessmilk.vn/',
+    HOSTING: 'https://sub.uncapital.co/',
     // HOSTING_CHART: 'https://trade.dk-tech.vn',
-    HOSTING_CHART: 'https://happinessmilk.vn/',
+    HOSTING_CHART: 'https://sub.uncapital.co/',
     TOKEN: 'token',
     NOT_KYC: 'NOT_KYC',
     KYC_PENDING: 'PENDING',

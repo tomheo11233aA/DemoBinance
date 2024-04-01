@@ -77,7 +77,7 @@ const BuySellButton = () => {
                 {loading ?
                     <LoadingWhite /> :
                     <Txt color={colors.white} size={15} fontFamily={fonts.SGM}>
-                        {side === 'buy' ? t('Buy/Long') : t('Sell/Long')}
+                        {side === 'buy' ? t('Buy/Long') : t('Sell/Short')}
                     </Txt>
                 }
             </Btn>
