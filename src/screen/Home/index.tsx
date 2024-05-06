@@ -88,7 +88,7 @@ const Home = () => {
             <Header />
             {!isLogin && <Login />}
             {isLogin && <Balance />}
-            {isLogin && <KYCStatus />}
+            {/* {isLogin && <KYCStatus />} */}
             <Options />
             {/* <Funding /> */}
             <Tab {...{ tab, setTab }} />
